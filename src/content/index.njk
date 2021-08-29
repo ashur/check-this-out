@@ -30,13 +30,28 @@ layout: layouts/base.njk
 		<section class="[][ text-center theme-cream-light ][ page-section ]">
 			<div class="[ center stack ][ measure ][]">
 				<h2 class="[][][ page-section-heading ]">Libby is awesome</h2>
-				<p>An app for Android, iOS, and the web, Libby is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
 
-				{% call component( "Disclaimer", {} ) %}
-					<p>Check This Out is not affiliated with or endorsed by OverDrive, the makers of Libby. <a href="/about">Learn more</a></p>
-				{% endcall %}
+				<div class="[ stack-lg ][][]">
+					<p>An app for Android, iOS, and the web, Libby is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
 
-				<p>But you’re not always using Libby when a new title or author catches your eye.</p>
+					<div class="[ stack ][][]">
+						<a href="https://www.overdrive.com/apps/libby/">
+							<img
+								src="/images/icon-libby.svg"
+								alt="Libby app icon"
+								class="[ center ][][ app-icon ]"
+								width="128"
+								height="128"
+							>
+						</a>
+
+						{% call component( "Disclaimer", {} ) %}
+							<p>Check This Out is not affiliated with or endorsed by OverDrive, the makers of Libby. <a href="/about">Learn more</a></p>
+						{% endcall %}
+					</div>
+
+					<p>But you’re not always using Libby when a new title or author catches your eye.</p>
+				</div>
 			</div>
 		</section>
 
