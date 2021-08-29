@@ -1,0 +1,17 @@
+---
+pagination:
+  data: collections.pages
+  size: 1
+  alias: collectionPage
+
+permalink: "{{ plugins.aces.dir.output }}/{{ collectionPage.filePathStem | replace( '/content/', '' ) }}.css"
+---
+{%- set scopedInclude -%}
+	{#- Styles defined in components imported by the current page's layout -#}
+	{#- Scoped to prevent rendering of layout template -#}
+	{%- if collectionPage.data.layout -%}
+		{%- include collectionPage.data.layout -%}
+	{%- endif -%}
+{%- endset -%}
+
+{{ plugins.aces.async({ identifier: collectionPage.filePathStem }) | safe }}

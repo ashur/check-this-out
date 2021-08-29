@@ -1,0 +1,30 @@
+.box {
+	--box-padding: var( --page-margin );
+	padding: var( --box-padding );
+}
+
+.center {
+	--center-padding: var( --page-margin );
+
+	box-sizing: content-box;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var( --center-padding );
+	padding-right: var( --center-padding );
+}
+
+.container {
+	max-width: var( --container-size );
+}
+
+.stack-sm > * + * {
+	margin-top: var( --stack-sm-size );
+}
+
+.stack > * + * {
+	margin-top: var( --stack-size );
+}
+
+.stack-lg > * + * {
+	margin-top: var( --stack-lg-size );
+}

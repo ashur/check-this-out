@@ -1,0 +1,32 @@
+.bold {
+	font-weight: bold;
+}
+
+.flex {
+	display: flex;
+}
+
+.measure {
+	max-width: var( --measure-size );
+}
+
+.no-underline {
+	text-decoration: none;
+}
+
+.showcase {
+	--gap: var( --showcase-gap );
+
+	display: grid;
+}
+	@media (min-width: 720px) {
+		.showcase {
+			--column-width: 1fr;
+
+			grid-template-columns: repeat( 2, var( --column-width ) );
+		}
+	}
+
+.text-center {
+	text-align: center;
+}

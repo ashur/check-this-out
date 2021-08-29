@@ -1,0 +1,38 @@
+{#-
+ # Huge thanks to Trys Mudford for introducing me to the encapsulated components
+ # model https://www.trysmudford.com/blog/encapsulated-11ty-components/
+-#}
+{%- macro component( name, props ) -%}
+	{%- set pageFilePath -%}
+		{#- Support asynchronous stylesheets generated through pagination -#}
+		{%- if pagination -%}
+			{{- pagination.items[0].filePathStem -}}
+		{%- else -%}
+			{{- page.filePathStem -}}
+		{%- endif -%}
+	{%- endset -%}
+
+	{%- import plugins.aces.dir.components + "/" + name + ".njk" as Component with context -%}
+
+	{% if Component.async %}
+		{{ plugins.aces.addStyle({
+			identifier: pageFilePath,
+			scope: "async",
+			style: (Component.async | striptags(true))
+		}) }}
+	{% endif %}
+
+	{% if Component.critical %}
+		{{ plugins.aces.addStyle({
+			identifier: pageFilePath,
+			scope: "critical",
+			style: (Component.critical | striptags(true))
+		}) }}
+	{% endif %}
+
+	{%- if caller -%}
+		{%- call Component.render( props ) -%}{{ caller() | escape }}{%- endcall -%}
+	{%- else -%}
+		{{- Component.render( props ) | escape -}}
+	{%- endif -%}
+{%- endmacro -%}

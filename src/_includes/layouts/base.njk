@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{% if title %}{{ title }} | {% endif %}{{ site.title }}</title>
+
+	<style>
+		{{ plugins.aces.critical({ identifier: page.filePathStem }) | safe }}
+	</style>
+
+	{% if plugins.aces.hasAsync( page.filePathStem ) %}
+	<link
+		rel="stylesheet"
+		href="{{ plugins.aces.dir.output }}/{{ page.filePathStem | replace( '/content/', '' )}}.css"
+		media="print"
+		onload="this.media='all'"
+	>
+	{% endif %}
+</head>
+<body>
+	{{ content | safe }}
+</body>
+</html>

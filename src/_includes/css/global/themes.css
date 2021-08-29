@@ -1,0 +1,59 @@
+.theme-black,
+.theme-cream,
+.theme-cream-light,
+.theme-yellow {
+	background-color: var( --theme-background-color );
+	color: var( --theme-text-color );
+	border-color: var( --theme-accent-color );
+}
+
+.theme-black {
+	--theme-background-color: var( --color-black );
+	--theme-heading-color: var( --color-cream );
+	--theme-text-color: var( --color-cream );
+	--theme-accent-color: var( --color-orange );
+
+	/* cta */
+	--theme-cta-background-color: var( --color-yellow );
+	--theme-cta-border-color: var( --color-black );
+
+	/* cta--secondary */
+	--theme-cta--secondary-border-color: var( --color-orange );
+}
+
+.theme-cream {
+	--theme-background-color: var( --color-cream );
+	--theme-heading-color: var( --color-black );
+	--theme-text-color: var( --color-black );
+
+	/* cta */
+	--theme-cta-background-color: var( --color-black );
+	--theme-cta-text-color: white;
+
+	/* cta--secondary */
+	--theme-cta--secondary-border-color: var( --color-teal );
+}
+
+.theme-cream-light {
+	--theme-background-color: var( --color-cream-light );
+	--theme-heading-color: var( --color-black );
+	--theme-text-color: var( --color-black );
+
+	/* cta */
+	--theme-cta-text-color: white;
+}
+
+.theme-yellow {
+	--theme-background-color: var( --color-yellow );
+	--theme-heading-color: var( --color-black );
+	--theme-text-color: var( --color-black );
+
+	/* cta */
+	--theme-cta-text-color: white;
+}
+
+.theme h1,
+.theme h2,
+.theme h3 {
+	color: var( --theme-heading-color );
+}

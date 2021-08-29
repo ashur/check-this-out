@@ -1,0 +1,33 @@
+.page-section {
+	--section-padding: var( --size-2 );
+
+	padding: var( --section-padding );
+}
+	@media (min-width: 720px) {
+		.page-section {
+			padding: var( --size-4 );
+		}
+
+		.page-sections > * {
+			position: relative;
+			left: 50vw;
+			right: 0;
+			width: 50vw;
+		}
+		.page-sections > :nth-child(1) {
+			position: fixed;
+			left: 0;
+			right: 50vw;
+			min-height: 100vh;
+		}
+	}
+
+.page-section-heading {
+	font-size: var( --size-3 );
+	line-height: 1;
+}
+
+.page-section-subheading {
+	font-size: var( --size-2 );
+	line-height: 1;
+}

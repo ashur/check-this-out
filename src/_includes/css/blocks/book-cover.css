@@ -1,0 +1,28 @@
+.page-section.book-cover {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.book-cover {
+	--measure-size: 40ch;
+	--stack-sm-size: calc( var( --font-size ) / var( --ratio-2 ) );
+}
+
+.book-cover > * {
+	padding-left: var( --section-padding );
+	padding-right: var( --section-padding );
+}
+
+.book-cover-title {
+	border-bottom: solid currentcolor 1px;
+	margin-bottom: calc( var( --stack-sm-size ) * 2 );
+	padding-bottom: calc( var( --stack-sm-size ) * 2 );
+	font-size: var( --size-4 );
+	letter-spacing: -0.0875em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.book-cover-subtitle {
+	font-size: var( --size-1 );
+}

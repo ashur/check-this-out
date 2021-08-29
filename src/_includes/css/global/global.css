@@ -1,0 +1,56 @@
+:root {
+	--ratio: 1.5;
+	--ratio-0: var( --ratio );
+	--ratio-1: calc( var( --ratio-0 ) * var( --ratio ) );
+	--ratio-2: calc( var( --ratio-1 ) * var( --ratio ) );
+	--ratio-3: calc( var( --ratio-2 ) * var( --ratio ) );
+
+	--size--4: calc( var( --size--3 ) / var( --ratio ) );
+	--size--3: calc( var( --size--2 ) / var( --ratio ) );
+	--size--2: calc( var( --size--1 ) / var( --ratio ) );
+	--size--1: calc( var( --size-0 ) / var( --ratio ) );
+	--size-0: 1rem;
+	--size-1: calc( var( --size-0 ) * var( --ratio ) );
+	--size-2: calc( var( --size-1 ) * var( --ratio ) );
+	--size-3: calc( var( --size-2 ) * var( --ratio ) );
+	--size-4: calc( var( --size-3 ) * var( --ratio ) );
+	--size-5: calc( var( --size-4 ) * var( --ratio ) );
+	--size-6: calc( var( --size-5 ) * var( --ratio ) );
+
+	--font-size: var( --size-0 );
+
+	/* Composition */
+	--measure-size: 64ch;
+	--page-margin: clamp( var( --size-1 ), 5vw, var( --size-3 ) );
+	--stack-sm-size: calc( var( --font-size ) / var( --ratio-2 ) );
+	--stack-size: 1em;
+	--stack-lg-size: calc( var( --font-size ) * var( --ratio-2 ) );
+
+	--font-sans: "neue-haas-grotesk-display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+	/* Colors */
+	--color-cream-light: #fdf8e9;
+	--color-cream: #fbf1d3;
+	--color-orange: #f36b36;
+	--color-pink: #b94d5e;
+	--color-teal: #1fd1b8;
+	--color-yellow: #fedc57;
+	--color-black: #100e0c;
+}
+
+body {
+	color: var( --color-base );
+	font-family: var( --font-sans );
+}
+
+a {
+	color: currentcolor;
+}
+
+p, li {
+	line-height: var( --s-ratio );
+}
+
+code {
+	font-family: var( --font-mono );
+}

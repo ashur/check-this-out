@@ -1,0 +1,49 @@
+---
+permalink: /
+layout: layouts/base.njk
+---
+{%- from "plugins/css/component.njk" import component with context -%}
+
+<article class="[][ showcase ][ page-sections ]">
+	<header class="[ stack-sm ][ text-center theme-black ][ page-section book-cover ]">
+		<p class="[][][ book-cover-subtitle ]">
+			{{ site.subtitle }}
+		</p>
+
+		<h1 class="[][][ book-cover-title ]">
+			{{ site.title }}
+		</h1>
+
+		<p class="[ center ][ measure ][]">
+			Launch <a href="https://www.overdrive.com/apps/libby/">Libby</a> from any web page to see if a book is available to borrow from your local library.
+		</p>
+	</header>
+
+	<main>
+		<section class="[][ text-center theme-cream-light ][ page-section ]">
+			<div class="[ stack ][][]">
+				<h2 class="[][][ page-section-heading ]">Libby is awesome</h2>
+				<p>An app for Android, iOS, and the web, Libby is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
+				<p>But you’re not always using Libby when a new title or author catches your eye.</p>
+			</div>
+		</section>
+
+		<section class="[][ text-center theme-yellow ][ page-section ]">
+			<div class="[ stack ][][]">
+				<h2 class="[][][ page-section-heading ]">New books abound</h2>
+				<p>There are so many places online to find something new to read — best-of lists, links from the group chat, virtual book clubs, and on and on.</p>
+			</div>
+		</section>
+
+		<section class="[][][ page-section theme-cream ]">
+			<div class="[ stack ][][]">
+				<h2 class="[][][ page-section-heading ]">Start a new book with just a few taps</h2>
+				<p>No matter where you are on the internet, {{ site.title }} makes it a cinch to borrow or reserve a new book in Libby.</p>
+				<p>Select the title or author, choose {{ site.title }}, and jump straight to a search in Libby.</p>
+
+				<h2 class="[][][ page-section-subheading ]">Available everywhere</h2>
+				<p>Best of all, {{ site.title }} is a special kind of link you add next to all your other bookmarks. That means in any browser, on any platform, you’re always just a few clicks or taps away from your next book.</p>
+			</div>
+		</section>
+	</main>
+</article>
