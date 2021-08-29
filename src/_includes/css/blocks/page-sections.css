@@ -16,8 +16,8 @@
 }
 
 .page-section {
-	--section-padding-x: calc( var( --size-1 ) + 1vw );
-	--section-padding-y: calc( var( --size-3 ) + 2vw );
+	--section-padding-x: calc( var( --size-0 ) + 1vw );
+	--section-padding-y: calc( var( --size-3 ) + 3vw );
 
 	padding: var( --section-padding-y ) var( --section-padding-x );
 }
