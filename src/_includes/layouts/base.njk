@@ -6,6 +6,11 @@
 
 	<title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.subtitle }}{% endif %}</title>
 
+	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64x64.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="180x180" href="/icons/favicon-180x180.png">
+
 	<style>
 		{{ plugins.aces.critical({ identifier: page.filePathStem }) | safe }}
 	</style>
