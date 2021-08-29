@@ -10,3 +10,8 @@
 	color: var( --theme-cta-text-color, var( --theme-background-color ) );
 	text-decoration: none;
 }
+
+.cta:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 var( --cta-border-width ) var( --theme-accent-color );
+}

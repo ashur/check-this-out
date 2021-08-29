@@ -4,6 +4,7 @@
 }
 
 .book-cover {
+	--cta-border-width: var( --size--4 );
 	--measure-size: 40ch;
 	--stack-size: calc( var( --font-size ) );
 }
