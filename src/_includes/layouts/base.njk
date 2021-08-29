@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>{% if title %}{{ title }} | {% endif %}{{ site.title }}</title>
+	<title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.subtitle }}{% endif %}</title>
 
 	<style>
 		{{ plugins.aces.critical({ identifier: page.filePathStem }) | safe }}
