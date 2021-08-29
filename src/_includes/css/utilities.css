@@ -19,7 +19,7 @@
 
 	display: grid;
 }
-	@media (min-width: 720px) {
+	@media (min-width: 800px) {
 		.showcase {
 			--column-width: 1fr;
 

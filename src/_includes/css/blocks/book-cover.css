@@ -21,7 +21,7 @@
 	line-height: 1;
 	text-transform: uppercase;
 }
-	@media (min-width: 720px) {
+	@media (min-width: 800px) {
 		.book-cover-title {
 			font-size: var( --size-4 );
 		}
