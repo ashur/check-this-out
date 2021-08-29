@@ -38,6 +38,7 @@
 	--theme-background-color: var( --color-cream-light );
 	--theme-heading-color: var( --color-black );
 	--theme-text-color: var( --color-black );
+	--theme-accent-color: var( --color-teal );
 
 	/* cta */
 	--theme-cta-text-color: white;

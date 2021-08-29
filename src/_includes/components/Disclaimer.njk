@@ -1,0 +1,25 @@
+{#
+ # @prop {string} title
+ # @callable true
+ #}
+{% macro render( props ) %}
+<aside class="[ center stack ][ measure ][ Disclaimer ]">
+	{% if caller %}{{ caller() }}{% endif -%}
+</aside>
+{% endmacro %}
+
+{% set critical %}
+<style>
+	.Disclaimer {
+		--disclaimer-padding-x: var( --size-0 );
+		--disclaimer-padding-y: var( --size--1 );
+		--measure-size: 32ch;
+
+		display: inline-block;
+		border: solid var( --theme-accent-color, transparent ) var( --cta-border-width, 3px );
+		padding: var( --disclaimer-padding-y ) var( --disclaimer-padding-x );
+		font-size: calc( var( --font-size ) * 0.75 );
+		font-weight: 500;
+	}
+</style>
+{% endset %}
