@@ -4,13 +4,9 @@
 }
 
 .center {
-	--center-padding: var( --page-margin );
-
 	box-sizing: content-box;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: var( --center-padding );
-	padding-right: var( --center-padding );
 }
 
 .container {
