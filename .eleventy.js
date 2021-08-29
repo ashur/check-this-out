@@ -3,6 +3,8 @@ const {eleventyPlugin: eleventyPluginAces} = require( "eleventy-plugin-aces" );
 
 module.exports = config =>
 {
+	config.addPassthroughCopy( { "src/static": "/" } );
+
 	/* Data */
 	config.addDataExtension( "yml", require( "./src/_eleventy/data/yaml" ) );
 
