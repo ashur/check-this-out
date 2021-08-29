@@ -23,10 +23,11 @@
 	--measure-size: 64ch;
 	--page-margin: clamp( var( --size-1 ), 5vw, var( --size-3 ) );
 	--stack-sm-size: calc( var( --font-size ) / var( --ratio-2 ) );
-	--stack-size: 1em;
+	--stack-size: calc( var( --font-size ) * var( --ratio-0 ) );
 	--stack-lg-size: calc( var( --font-size ) * var( --ratio-2 ) );
 
-	--font-sans: "neue-haas-grotesk-display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-body: "neue-haas-grotesk-display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--font-heading: "itc-avant-garde-gothic-pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 	/* Colors */
 	--color-cream-light: #fdf8e9;
@@ -40,17 +41,25 @@
 
 body {
 	color: var( --color-base );
-	font-family: var( --font-sans );
+	font-family: var( --font-body );
 }
 
 a {
 	color: currentcolor;
 }
 
-p, li {
-	line-height: var( --s-ratio );
+p,
+li {
+	line-height: var( --ratio-0 );
 }
 
-code {
-	font-family: var( --font-mono );
+h1,
+h2,
+h3 {
+	font-family: var( --font-heading );
+}
+
+h2,
+h3 {
+	letter-spacing: -0.05em;
 }

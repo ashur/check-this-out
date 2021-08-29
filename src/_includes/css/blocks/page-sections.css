@@ -1,31 +1,40 @@
-.page-section {
-	--section-padding: var( --size-2 );
+.page-sections {}
 
-	padding: var( --section-padding );
-}
-	@media (min-width: 720px) {
-		.page-section {
-			padding: var( --size-4 );
-		}
-
-		.page-sections > * {
-			position: relative;
-			left: 50vw;
-			right: 0;
-			width: 50vw;
-		}
-		.page-sections > :nth-child(1) {
-			position: fixed;
-			left: 0;
-			right: 50vw;
-			min-height: 100vh;
-		}
+@media (min-width: 720px) {
+	.page-sections > * {
+		position: relative;
+		left: 50vw;
+		right: 0;
+		width: 50vw;
 	}
+	.page-sections > :nth-child(1) {
+		position: fixed;
+		left: 0;
+		right: 50vw;
+		min-height: 100vh;
+	}
+}
+
+.page-section {
+	--section-padding-x: calc( var( --size-1 ) + 1vw );
+	--section-padding-y: calc( var( --size-3 ) + 2vw );
+
+	padding: var( --section-padding-y ) var( --section-padding-x );
+}
+
+.page-section > * {
+	--measure-size: 56ch;
+}
 
 .page-section-heading {
-	font-size: var( --size-3 );
+	font-size: var( --size-2 );
 	line-height: 1;
 }
+	@media (min-width: 720px) {
+		.page-section-heading {
+			font-size: var( --size-3 );
+		}
+	}
 
 .page-section-subheading {
 	font-size: var( --size-2 );
