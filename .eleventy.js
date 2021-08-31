@@ -9,7 +9,6 @@ module.exports = config =>
 	config.addDataExtension( "yml", require( "./src/_eleventy/data/yaml" ) );
 
 	/* Filters */
-	config.addFilter( "cssmin", require( "./src/_eleventy/filters/cssmin" ) );
 
 	/* Plugins */
 	if( config.addGlobalData )
