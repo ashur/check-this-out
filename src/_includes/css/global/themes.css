@@ -42,6 +42,8 @@
 
 	/* cta */
 	--theme-cta-text-color: white;
+
+	--theme-disclaimer-color: var( --color-cream );
 }
 
 .theme-yellow {

@@ -6,7 +6,6 @@
 	border: solid var( --theme-cta-border-color, transparent ) var( --cta-border-width, 2px );
 	padding: var( --cta-padding-y ) var( --cta-padding-x );
 	background-color: var( --theme-cta-background-color, var( --theme-text-color ) );
-	font-weight: 500;
 	color: var( --theme-cta-text-color, var( --theme-background-color ) );
 	text-decoration: none;
 }

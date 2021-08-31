@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="830px" height="1183px" viewBox="0 0 830 1183" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Books</title>
+    <g id="Page:-Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Split" transform="translate(56.000000, -391.000000)">
+            <g id="Header" transform="translate(-56.000000, -11.000000)">
+                <g id="Group" transform="translate(0.000000, 402.000000)">
+                    <g transform="translate(0.000000, 123.000000)">
+                        <rect id="Rectangle" fill="#1FD1B8" x="0" y="145" width="150" height="250"></rect>
+                        <rect id="Rectangle" fill="#1FD1B8" x="170" y="270" width="150" height="250"></rect>
+                        <rect id="Rectangle" fill="#FBF1D3" x="340" y="145" width="150" height="250"></rect>
+                        <rect id="Rectangle" fill="#1FD1B8" x="510" y="270" width="150" height="250"></rect>
+                        <rect id="Rectangle" fill="#1FD1B8" x="510" y="0" width="150" height="250"></rect>
+                        <rect id="Rectangle" fill="#1FD1B8" x="170" y="0" width="150" height="250"></rect>
+                        <rect id="Rectangle" fill="#1FD1B8" x="680" y="147" width="150" height="250"></rect>
+                    </g>
+                    <g transform="translate(0.000000, 538.000000)" fill="#1FD1B8">
+                        <rect id="Rectangle" x="0" y="0" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="170" y="125" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="340" y="0" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="510" y="125" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="680" y="2" width="150" height="250"></rect>
+                    </g>
+                    <g fill="#1FD1B8">
+                        <rect id="Rectangle" x="0" y="808" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="170" y="933" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="340" y="808" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="510" y="933" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="680" y="810" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="680" y="0" width="150" height="250"></rect>
+                        <rect id="Rectangle" x="0" y="0" width="150" height="250"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

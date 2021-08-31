@@ -10,6 +10,10 @@
 	max-width: var( --measure-size );
 }
 
+.padding-bottom\:0 {
+	padding-bottom: 0;
+}
+
 .no-underline {
 	text-decoration: none;
 }

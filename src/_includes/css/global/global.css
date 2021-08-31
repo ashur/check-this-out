@@ -20,7 +20,7 @@
 	--font-size: var( --size-0 );
 
 	/* Composition */
-	--measure-size: 64ch;
+	--measure-size: 56ch;
 	--page-margin: clamp( var( --size-1 ), 5vw, var( --size-3 ) );
 	--stack-sm-size: calc( var( --font-size ) / var( --ratio-2 ) );
 	--stack-size: calc( var( --font-size ) * var( --ratio-0 ) );

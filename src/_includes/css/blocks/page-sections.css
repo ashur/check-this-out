@@ -16,14 +16,18 @@
 }
 
 .page-section {
-	--section-padding-x: calc( var( --size-0 ) + 1vw );
-	--section-padding-y: calc( var( --size-3 ) + 3vw );
+	--section-padding-x: calc( var( --size-1 ) + 1vw );
+	--section-padding-y: calc( var( --size-2 ) + 5vw );
 
 	padding: var( --section-padding-y ) var( --section-padding-x );
 }
+	.page-section.fullbleed--bottom {
+		padding-bottom: 0;
+	}
 
 .page-section > * {
-	--measure-size: 56ch;
+	--measure-size: 48ch;
+	font-size: 1.125em;
 }
 
 .page-section-heading {
