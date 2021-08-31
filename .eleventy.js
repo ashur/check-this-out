@@ -16,7 +16,15 @@ module.exports = config =>
 	{
 		// Support scheduled for Eleventy v1.0.0
 		// https://www.11ty.dev/docs/data-global-custom/
-		config.addPlugin( eleventyPluginAces );
+		config.addPlugin( eleventyPluginAces, {
+			categorySortOrder: [
+				"reset",
+				"global",
+				"composition",
+				"utilities",
+				"blocks",
+			],
+		});
 	}
 
 	/* Markdown */
