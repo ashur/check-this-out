@@ -1,5 +1,6 @@
 {#
  # @prop {string} [aspectRatio] - ex., "1.75"
+ # @prop {boolean} [autoplay]
  # @prop {string} [caption]
  # @prop {boolean} [fade]
  # @prop {Object[]} frames - Array of frame definitions
@@ -10,29 +11,20 @@
 {% macro render( props ) %}
 <figure
 	x-data="PhoneApp()"
-	x-init="$watch( 'frameIndex', (newValue, oldValue) => framestart( '$watch', oldValue, newValue ) )"
+	x-init="$watch( 'frameIndex', () => framestart() )"
 
 	id="{{ props.id }}"
 	class="[ center stack-sm ][ --measure ][ Phone ]"
 	style="--aspect-ratio: {{ props.aspectRatio if props.aspectRatio else '1.0' }};"
 >
 	<div class="[ center ][][ Phone-body {{ 'Phone-body--faded' if props.fade else '' }} ]">
-	<div
-		x-bind:style="screenStyles.bottom"
+		<div
+			x-bind:style="screens.style"
+			x-on:transitionend="frametransitionend()"
 
-		class="[][][ Phone-screen ]"
-		style="--screen-background: url( {{ props.frames[0].screens.bottom.background }} )"
-	></div>
-
-	{% if props.frames.length > 1 %}
-	<div
-		x-bind:style="screenStyles.top"
-		x-on:transitionend="frametransitionend()"
-
-		class="[][][ Phone-screen ]"
-		style="opacity: 0;"
-	></div>
-	{% endif %}
+			class="[][][ Phone-screen ]"
+			style="--screen-bottom-background: url( {{ props.frames[0].screens.bottom.background }} )"
+		></div>
 	</div>
 
 	{% if props.caption %}
@@ -58,6 +50,7 @@
 		width: var( --width );
 		padding-top: calc( var( --aspect-ratio ) * var( --width ) );
 	}
+		/* Device body */
 		.Phone-body::after {
 			content: "";
 			display: block;
@@ -74,8 +67,10 @@
 			;
 			background-repeat: no-repeat;
 		}
+
+		/* Fade effect */
 		.Phone-body--faded::before {
-			--height: 100px;
+			--height: 90px;
 
 			z-index: 10;
 			content: "";
@@ -94,19 +89,70 @@
 			mask-repeat: no-repeat;
 		}
 
-	.Phone-screen {
+	/* Pointer */
+	.Phone-screen::after {
+		--screen-pointer-x-min: 0.055;
+		--screen-pointer-y-min: 0.0275;
+
+		--size: 15; /* A percentage of the device width */
+		--size-coefficient: calc( 100 / var( --size ) );
+
+		content: "";
+		display: block;
+
+		position: relative;
+		transform: translate(
+			calc(
+				(100% * var( --size-coefficient )) * var( --screen-pointer-x-min ) +
+				(100% * var( --size-coefficient )) * var( --screen-pointer-x, 0.0 )
+			),
+			calc(
+				(100% * var( --size-coefficient )) * var( --screen-pointer-y-min ) * {{ props.aspectRatio }} +
+				(100% * var( --size-coefficient )) * var( --screen-pointer-y, 0.0 ) * {{ props.aspectRatio }}
+			)
+		);
+
+		height: 0;
+		width: calc( var( --size ) * 1% );
+		padding-bottom: calc( var( --size ) * 1% );
+
+		border-radius: 50%;
+		background-color: var( --color-teal );
+		opacity: 0.75;
+
+		transition: transform 0.75s ease;
+	}
+
+	/* Both Screens */
+	.Phone-screen,
+	.Phone-screen::before {
 		display: block;
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
 
-		filter: grayscale( 0.25 );
-
 		background-position: top center;
 		background-size: calc( 100% + 2px );
-		background-image: var( --screen-background );
 		background-repeat: no-repeat;
-
 		transition: opacity 0.75s ease;
+	}
+
+	/* Top Screen */
+	.Phone-screen::before {
+		/* background-color: green; */
+		background-image: var( --screen-top-background );
+		opacity: var( --screen-top-opacity );
+
+		content: "";
+	}
+
+	/* Bottom Screen */
+	.Phone-screen {
+		/* background-color: red; */
+		background-image: var( --screen-bottom-background );
+		opacity: var( --screen-bottom-opacity );
+
+		/* Styles for the entire element */
+		filter: grayscale( 0.25 );
 	}
 
 	.Phone figcaption {
@@ -133,39 +179,55 @@
 				return this.frames[this.frameIndex];
 			},
 
+			autoplay: {{ props.autoplay === true }},
 			frameIndex: 0,
 			frames: {{ props.frames | dump | safe }},
 			loop: {{ props.loop === true }},
 
-			get screenStyles()
-			{
-				return {
-					top: `--screen-background: url( ${this.screens.top.background} ); opacity: ${this.screens.top.opacity};`,
-					bottom: `--screen-background: url( ${this.screens.bottom.background} ); opacity: ${this.screens.bottom.opacity};`,
-				};
-			},
 			screens: {
 				top: {},
 				bottom: {},
+
+				pointer: {
+					x: 0.0,
+					y: 0.0,
+				},
+
+				get style()
+				{
+					let styles = [
+						`--screen-top-background: url( ${this.top.background} )`,
+						`--screen-top-opacity: ${this.top.opacity}`,
+						`--screen-bottom-background: url( ${this.bottom.background} )`,
+						`--screen-bottom-opacity: ${this.bottom.opacity}`,
+						`--screen-pointer-x: ${this.pointer.x}`,
+						`--screen-pointer-y: ${this.pointer.y}`,
+					];
+
+					return styles.join( "; " );
+				},
 			},
 
 			init()
 			{
-				this.framestart( "init()" );
+				this.framestart();
 			},
 
 			frameend()
 			{
-				if( this.frameIndex >= this.frames.length - 1 )
+				if( this.autoplay )
 				{
-					if( this.loop )
+					if( this.frameIndex >= this.frames.length - 1 )
 					{
-						this.frameIndex = 0;
+						if( this.loop )
+						{
+							this.frameIndex = 0;
+						}
 					}
-				}
-				else
-				{
-					this.frameIndex++;
+					else
+					{
+						this.frameIndex++;
+					}
 				}
 			},
 
@@ -185,7 +247,7 @@
 				}
 			},
 
-			framestart( reason )
+			framestart()
 			{
 				this.screens.top = Object.assign(
 					this.screens.top,
