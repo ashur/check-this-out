@@ -1,0 +1,214 @@
+{#
+ # @prop {string} [aspectRatio] - ex., "1.75"
+ # @prop {string} [caption]
+ # @prop {boolean} [fade]
+ # @prop {Object[]} frames - Array of frame definitions
+ # @prop {string} id
+ # @prop {boolean} [loop]
+ # @callable false
+ #}
+{% macro render( props ) %}
+<figure
+	x-data="PhoneApp()"
+	x-init="$watch( 'frameIndex', (newValue, oldValue) => framestart( '$watch', oldValue, newValue ) )"
+
+	id="{{ props.id }}"
+	class="[ center stack-sm ][ --measure ][ Phone ]"
+	style="--aspect-ratio: {{ props.aspectRatio if props.aspectRatio else '1.0' }};"
+>
+	<div class="[ center ][][ Phone-body {{ 'Phone-body--faded' if props.fade else '' }} ]">
+	<div
+		x-bind:style="screenStyles.bottom"
+
+		class="[][][ Phone-screen ]"
+		style="--screen-background: url( {{ props.frames[0].screens.bottom.background }} )"
+	></div>
+
+	{% if props.frames.length > 1 %}
+	<div
+		x-bind:style="screenStyles.top"
+		x-on:transitionend="frametransitionend()"
+
+		class="[][][ Phone-screen ]"
+		style="opacity: 0;"
+	></div>
+	{% endif %}
+	</div>
+
+	{% if props.caption %}
+	<figcaption class="[ center ][ measure text-center ][]">{{ props.caption | safe }}</figcaption>
+	{% endif %}
+</figure>
+{% endmacro %}
+
+{% set criticalStyles %}
+<style>
+	.Phone {
+		max-width: calc( var( --measure-size) - 5em );
+	}
+
+	.Phone-body {
+		--width: 90%;
+
+		position: relative;
+		overflow-y: hidden;
+
+		height: 0;
+		width: var( --width );
+		padding-top: calc( var( --aspect-ratio ) * var( --width ) );
+	}
+		.Phone-body::after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0; right: 0; bottom: 0; left: 0;
+
+			background-position: top center;
+			background-size: 100%;
+			background-image:
+				url( /images/iphone-frame-outside.svg ),
+				url( /images/iphone-frame-inside.svg )
+			;
+			background-repeat: no-repeat;
+		}
+		.Phone-body--faded::before {
+			z-index: 10;
+			content: "";
+			display: "block";
+			position: absolute;
+			right: 0; bottom: 0; left: 0;
+			height: 50px;
+
+			background-color: var( --theme-background-color );
+			mask-image: url( /images/iphone-mask-gradient.png );
+			mask-size: 100% 50px;
+			mask-repeat: no-repeat;
+			-webkit-mask-image: url( /images/iphone-mask-gradient.png );
+			-webkit-mask-size: 100% 50px;
+			-webkit-mask-repeat: no-repeat;
+		}
+
+	.Phone-screen {
+		display: block;
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+
+		background-position: top center;
+		background-size: calc( 100% + 2px );
+		background-image: var( --screen-background );
+		background-repeat: no-repeat;
+
+		transition: opacity 0.75s ease;
+	}
+
+	.Phone figcaption {
+		--measure-size: 40ch;
+		font-size: calc( var( --font-size ) );
+	}
+</style>
+{% endset %}
+
+{% set asyncScripts = [
+	{
+		src: "https://unpkg.com/alpinejs@3.4.1/dist/cdn.min.js",
+		defer: true
+	}
+]%}
+
+{% set criticalScript %}
+<script>
+	let PhoneApp = (id) =>
+	{
+		return {
+			get currentFrame()
+			{
+				return this.frames[this.frameIndex];
+			},
+
+			frameIndex: 0,
+			frames: {{ props.frames | dump | safe }},
+			loop: {{ props.loop === true }},
+
+			get screenStyles()
+			{
+				return {
+					top: `--screen-background: url( ${this.screens.top.background} ); opacity: ${this.screens.top.opacity};`,
+					bottom: `--screen-background: url( ${this.screens.bottom.background} ); opacity: ${this.screens.bottom.opacity};`,
+				};
+			},
+			screens: {
+				top: {},
+				bottom: {},
+			},
+
+			init()
+			{
+				this.framestart( "init()" );
+			},
+
+			frameend()
+			{
+				if( this.frameIndex >= this.frames.length - 1 )
+				{
+					if( this.loop )
+					{
+						this.frameIndex = 0;
+					}
+				}
+				else
+				{
+					this.frameIndex++;
+				}
+			},
+
+			framerun()
+			{
+				if( this.currentFrame.duration )
+				{
+					setTimeout( () =>
+					{
+						this.frameend();
+
+					}, this.currentFrame.duration );
+				}
+				else
+				{
+					this.frameend();
+				}
+			},
+
+			framestart( reason )
+			{
+				this.screens.top = Object.assign(
+					this.screens.top,
+					this.currentFrame.screens.top || {}
+				);
+				this.screens.bottom = Object.assign(
+					this.screens.bottom,
+					this.currentFrame.screens.bottom || {}
+				);
+
+				let willTransition = true;
+				willTransition = willTransition && this.frameIndex > 0;
+				willTransition = willTransition && this.currentFrame.screens.top;
+				willTransition = willTransition && this.currentFrame.screens.top.opacity !== undefined;
+
+				// If the top screen isn't transitioning this frame, move along
+				if( !willTransition )
+				{
+					this.framerun( this.currentFrame.id );
+				}
+			},
+
+			frametransitionend()
+			{
+				// Don't transition after setting values for the initial frame
+				if( this.frameIndex > 0 )
+				{
+					this.framerun();
+				}
+			},
+		}
+	}
+</script>
+{% endset %}
