@@ -9,7 +9,6 @@ module.exports = config =>
 	config.addDataExtension( "yml", require( "./src/_eleventy/data/yaml" ) );
 
 	/* Filters */
-	config.addFilter( "encodeUri", require( "./src/_eleventy/filters/encode-uri" ) );
 
 	/* Plugins */
 	if( config.addGlobalData )
