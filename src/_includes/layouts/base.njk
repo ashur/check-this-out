@@ -11,20 +11,28 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="180x180" href="/icons/favicon-180x180.png">
 
+	{% if plugins.esc.hasCriticalStyles( page.filePathStem ) %}
 	<style>
-		{{ plugins.aces.critical({ identifier: page.filePathStem }) | safe }}
+		{{ plugins.esc.criticalStyles({ identifier: page.filePathStem }) | safe }}
 	</style>
+	{% endif %}
 
-	{% if plugins.aces.hasAsync( page.filePathStem ) %}
+	{% if plugins.esc.hasAsyncStyles( page.filePathStem ) %}
 	<link
 		rel="stylesheet"
-		href="{{ plugins.aces.dir.output }}/{{ page.filePathStem | replace( '/content/', '' )}}.css"
+		href="{{ plugins.esc.dir.output }}/{{ page.filePathStem | replace( '/content/', '' )}}.css"
 		media="print"
 		onload="this.media='all'"
 	>
 	{% endif %}
+
+	{{ plugins.esc.asyncScripts({ identifier: page.filePathStem }) | safe }}
 </head>
 <body>
 	{{ content | safe }}
+
+	{% if plugins.esc.hasCriticalScripts( page.filePathStem ) %}
+	<script>{{ plugins.esc.criticalScripts({ identifier: page.filePathStem }) | safe }}</script>
+	{% endif %}
 </body>
 </html>

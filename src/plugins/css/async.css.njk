@@ -4,7 +4,7 @@ pagination:
   size: 1
   alias: collectionPage
 
-permalink: "{{ plugins.aces.dir.output }}/{{ collectionPage.filePathStem | replace( '/content/', '' ) }}.css"
+permalink: "{{ plugins.esc.dir.output }}/{{ collectionPage.filePathStem | replace( '/content/', '' ) }}.css"
 ---
 {%- set scopedInclude -%}
 	{#- Styles defined in components imported by the current page's layout -#}
@@ -14,4 +14,4 @@ permalink: "{{ plugins.aces.dir.output }}/{{ collectionPage.filePathStem | repla
 	{%- endif -%}
 {%- endset -%}
 
-{{ plugins.aces.async({ identifier: collectionPage.filePathStem }) | safe }}
+{{ plugins.esc.asyncStyles({ identifier: collectionPage.filePathStem }) | safe }}

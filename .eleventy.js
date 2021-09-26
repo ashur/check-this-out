@@ -1,5 +1,5 @@
 const markdownIt = require( "markdown-it" );
-const {eleventyPlugin: eleventyPluginAces} = require( "eleventy-plugin-aces" );
+const {eleventyPlugin: eleventyPluginEsc} = require( "eleventy-plugin-esc" );
 
 module.exports = config =>
 {
@@ -9,13 +9,14 @@ module.exports = config =>
 	config.addDataExtension( "yml", require( "./src/_eleventy/data/yaml" ) );
 
 	/* Filters */
+	config.addFilter( "encodeUri", require( "./src/_eleventy/filters/encode-uri" ) );
 
 	/* Plugins */
 	if( config.addGlobalData )
 	{
 		// Support scheduled for Eleventy v1.0.0
 		// https://www.11ty.dev/docs/data-global-custom/
-		config.addPlugin( eleventyPluginAces, {
+		config.addPlugin( eleventyPluginEsc, {
 			categorySortOrder: [
 				"reset",
 				"global",

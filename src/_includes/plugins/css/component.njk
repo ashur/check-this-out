@@ -12,21 +12,39 @@
 		{%- endif -%}
 	{%- endset -%}
 
-	{%- import plugins.aces.dir.components + "/" + name + ".njk" as Component with context -%}
+	{%- import plugins.esc.dir.components + "/" + name + ".njk" as Component with context -%}
 
-	{% if Component.async %}
-		{{ plugins.aces.addStyle({
+	{% if Component.asyncStyles %}
+		{{ plugins.esc.addStyle({
 			identifier: pageFilePath,
 			scope: "async",
 			style: (Component.async | striptags(true))
 		}) }}
 	{% endif %}
 
-	{% if Component.critical %}
-		{{ plugins.aces.addStyle({
+	{% if Component.criticalStyles %}
+		{{ plugins.esc.addStyle({
 			identifier: pageFilePath,
 			scope: "critical",
 			style: (Component.critical | striptags(true))
+		}) }}
+	{% endif %}
+
+	{% if Component.asyncScripts %}
+		{% for asyncScript in Component.asyncScripts %}
+			{{ plugins.esc.addScript({
+				identifier: pageFilePath,
+				scope: "async",
+				script: asyncScript
+			}) }}
+		{% endfor %}
+	{% endif %}
+
+	{% if Component.criticalScript %}
+		{{ plugins.esc.addScript({
+			identifier: pageFilePath,
+			scope: "critical",
+			script: (Component.criticalScript | striptags(true))
 		}) }}
 	{% endif %}
 
