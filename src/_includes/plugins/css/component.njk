@@ -18,7 +18,7 @@
 		{{ plugins.esc.addStyle({
 			identifier: pageFilePath,
 			scope: "async",
-			style: (Component.async | striptags(true))
+			style: (Component.asyncStyles | striptags(true))
 		}) }}
 	{% endif %}
 
@@ -26,7 +26,7 @@
 		{{ plugins.esc.addStyle({
 			identifier: pageFilePath,
 			scope: "critical",
-			style: (Component.critical | striptags(true))
+			style: (Component.criticalStyles | striptags(true))
 		}) }}
 	{% endif %}
 
