@@ -45,6 +45,7 @@
 <style>
 	.Phone {
 		max-width: calc( var( --measure-size) - 5em );
+		mix-blend-mode: multiply;
 	}
 
 	.Phone-body {
@@ -63,6 +64,8 @@
 			position: absolute;
 			top: 0; right: 0; bottom: 0; left: 0;
 
+			filter: grayscale( 0.25 );
+
 			background-position: top center;
 			background-size: 100%;
 			background-image:
@@ -72,26 +75,31 @@
 			background-repeat: no-repeat;
 		}
 		.Phone-body--faded::before {
+			--height: 100px;
+
 			z-index: 10;
 			content: "";
 			display: "block";
 			position: absolute;
 			right: 0; bottom: 0; left: 0;
-			height: 50px;
+			height: var( --height );
 
 			background-color: var( --theme-background-color );
-			mask-image: url( /images/iphone-mask-gradient.png );
-			mask-size: 100% 50px;
-			mask-repeat: no-repeat;
+			background-color: white;
 			-webkit-mask-image: url( /images/iphone-mask-gradient.png );
-			-webkit-mask-size: 100% 50px;
+			-webkit-mask-size: 100% var( --height );
 			-webkit-mask-repeat: no-repeat;
+			mask-image: url( /images/iphone-mask-gradient.png );
+			mask-size: 100% var( --height );
+			mask-repeat: no-repeat;
 		}
 
 	.Phone-screen {
 		display: block;
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
+
+		filter: grayscale( 0.25 );
 
 		background-position: top center;
 		background-size: calc( 100% + 2px );
