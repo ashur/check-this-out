@@ -27,38 +27,11 @@ layout: layouts/base.njk
 	</header>
 
 	<main>
-		<section class="[][ text-center theme-cream-light ][ page-section ]">
-			<div class="[ center stack ][ measure ][]">
-
-				<h2 class="[][][ page-section-heading ]">Libby is awesome</h2>
-
-				<p>An app for Android, iOS, and the web, Libby is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
-
-				<p>
-					<a href="https://www.overdrive.com/apps/libby/">
-						<img
-							src="/images/icon-libby.svg"
-							alt="Libby app icon"
-							class="[ center ][][ app-icon ]"
-							width="128"
-							height="128"
-						>
-					</a>
-				</p>
-
-				{% call component( "Disclaimer", {} ) %}
-					<p>Check This Out is not affiliated with or endorsed by OverDrive&reg;, makers of Libby. <a href="/about">Learn more</a></p>
-				{% endcall %}
-
-				<p>But you’re not always using Libby when a new title or author catches your eye.</p>
-			</div>
-		</section>
-
-		<section class="[][ text-center theme-yellow ][ page-section fullbleed--bottom ]">
+		<section class="[][ text-center theme-cream ][ page-section fullbleed--bottom ]">
 			<div class="[ center stack-lg ][ measure ][]">
-				<div class="[ stack ][][]">
+				<div class="[ stack-sm ][][]">
 					<h2 class="[][][ page-section-heading ]">New books abound</h2>
-					<p>There are so many places online to find something new to read — best-of lists, links from the group chat, virtual book clubs, yadda yadda.</p>
+					<p>There are so many places to find something new to read — best-of lists, links from the group chat, virtual book clubs, you name it.</p>
 				</div>
 
 				<div class="[][][]">
@@ -67,9 +40,42 @@ layout: layouts/base.njk
 			</div>
 		</section>
 
+		<section class="[][ text-center theme-yellow ][ page-section ]">
+			<div class="[ center stack-lg ][ measure ][]">
+
+				<div class="[ stack-sm ][][]">
+					<h2 class="[][][ page-section-heading ]"><a href="https://www.overdrive.com/apps/libby/">Libby</a> is awesome</h2>
+					<p>An app for Android, iOS, and the web, Libby is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
+				</div>
+
+				<div class="[ stack ][][]">
+					<p>
+						<a
+							class="[][ inline-block ][]"
+							href="https://www.overdrive.com/apps/libby/"
+						>
+							<img
+								src="/images/icon-libby.svg"
+								alt="Libby app icon"
+								class="[ center ][][ app-icon ]"
+								width="128"
+								height="128"
+							>
+						</a>
+					</p>
+
+					{% call component( "Disclaimer", {} ) %}
+						<p>Check This Out is not affiliated with or endorsed by OverDrive&reg;, makers of Libby. <a href="/about">Learn more</a></p>
+					{% endcall %}
+				</div>
+
+				<p>But you’re not always using Libby when a new title or author catches your eye&hellip;</p>
+			</div>
+		</section>
+
 		<section class="[][ text-center ][ page-section theme-cream ]">
 			<div class="[ center stack-lg ][ measure ][]">
-				<div class="[ stack ][][]">
+				<div class="[ stack-sm ][][]">
 					<h2 class="[][][ page-section-heading ]">Start a new book with just a few taps</h2>
 					<p>No matter where you are on the internet, {{ site.title }} makes it a cinch to borrow or reserve a new book in Libby.</p>
 				</div>

@@ -7,6 +7,7 @@ module.exports = {
 	hideCaption: true,
 	fade: false,
 	loop: false,
+	printedEffect: true,
 
 	frames: [
 		{

@@ -6,6 +6,10 @@
 	display: flex;
 }
 
+.inline-block {
+	display: inline-block;
+}
+
 .measure {
 	max-width: var( --measure-size );
 }
