@@ -32,6 +32,8 @@
 
 	/* cta--secondary */
 	--theme-cta--secondary-border-color: var( --color-teal );
+
+	--theme-disclaimer-color: var( --color-cream-light );
 }
 
 .theme-cream-light {

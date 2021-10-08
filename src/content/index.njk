@@ -58,18 +58,11 @@ layout: layouts/base.njk
 			<div class="[ center stack-lg ][ measure ][]">
 				<div class="[ stack ][][]">
 					<h2 class="[][][ page-section-heading ]">New books abound</h2>
-					<p>There are so many places online to find something new to read — best-of lists, links from the group chat, virtual book clubs, and more.</p>
+					<p>There are so many places online to find something new to read — best-of lists, links from the group chat, virtual book clubs, yadda yadda.</p>
 				</div>
 
 				<div class="[][][]">
-					{# {{ component( "Phone",
-						{
-							aspectRatio: 1.2,
-							screens: [
-								"/images/screen-imessage.png"
-							]
-						}
-					) }} #}
+					{{ component( "Phone", components.PhoneMessages ) }}
 				</div>
 			</div>
 		</section>
@@ -82,89 +75,7 @@ layout: layouts/base.njk
 				</div>
 
 				<div class="[][][]">
-					{{ component( "Phone",
-						{
-							id: "Phone-Demo",
-							aspectRatio: 1.75,
-							autoplay: true,
-							caption: "Select the title or author, choose <strong>" + site.title + "</strong>, and jump straight to a search in Libby",
-							fade: true,
-							frames: [
-								{
-									description: "Gideon the Ninth featured on NPR's Book Concierge",
-									screens: {
-										top: {
-											background: "/images/screen-gideon-2.png",
-											opacity: "0"
-										},
-										bottom: {
-											background: "/images/screen-gideon-1.png",
-											opacity: "1"
-										}
-									},
-									duration: 2000
-								},
-								{
-									description: "Book Concierge page with book title selected",
-									screens: {
-										top: {
-											opacity: "1"
-										}
-									}
-								},
-								{
-									comment: "Swap bottom image behind top image",
-									screens: {
-										bottom: {
-											background: "/images/screen-gideon-3.png"
-										}
-									},
-									duration: 50
-								},
-								{
-									description: "Book title selected and iOS text selection menu visible",
-									screens: {
-										top: {
-											opacity: "0"
-										}
-									},
-									duration: 2000
-								},
-								{
-									comment: "Swap top image while layer is hidden",
-									screens: {
-										top: {
-											background: "/images/screen-gideon-4.png"
-										}
-									}
-								},
-								{
-									description: "iOS share sheet is visible showing Check This Out shortcut",
-									screens: {
-										top: {
-											opacity: 1
-										}
-									},
-									duration: 2000
-								},
-								{
-									screens: {
-										bottom: {
-											background: "/images/screen-gideon-1.png"
-										}
-									}
-								},
-								{
-									screens: {
-										top: {
-											opacity: 0
-										}
-									}
-								}
-							],
-							loop: true
-						}
-					) }}
+					{{ component( "Phone", components.PhoneDemo ) }}
 				</div>
 			</div>
 		</section>

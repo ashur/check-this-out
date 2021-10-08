@@ -6,29 +6,47 @@
  # @prop {Object[]} frames - Array of frame definitions
  # @prop {string} id
  # @prop {boolean} [loop]
+ # @prop {boolean} [pointer]
+ # @prop {boolean} [printedEffect]
  # @callable false
  #}
 {% macro render( props ) %}
 <figure
-	x-data="PhoneApp()"
+	x-data="PhoneApp({
+		id: '{{ props.id }}',
+		autoplay: {{ props.autoplay === true }},
+		frames: {{ props.frames | dump | safe | replace( '"', "'" ) }},
+		loop: {{ props.loop === true }},
+	})
+	"
 	x-init="$watch( 'frameIndex', () => framestart() )"
 
 	id="{{ props.id }}"
-	class="[ center stack-sm ][ --measure ][ Phone ]"
+	class="[ center stack-sm ][ --measure ][ Phone {{ 'Phone--printed' if props.printedEffect else '' }} ]"
 	style="--aspect-ratio: {{ props.aspectRatio if props.aspectRatio else '1.0' }};"
 >
 	<div class="[ center ][][ Phone-body {{ 'Phone-body--faded' if props.fade else '' }} ]">
 		<div
 			x-bind:style="screens.style"
-			x-on:transitionend="frametransitionend()"
+			x-on:transitionend="frametransitionend"
+
+			data-framerun="true"
 
 			class="[][][ Phone-screen ]"
-			style="--screen-bottom-background: url( {{ props.frames[0].screens.bottom.background }} )"
-		></div>
+			style="--screen-bottom-background: url( {{ props.frames[0].screens.bottom.background }} ); --screen-pointer-x: {{ props.frames[0].screens.pointer.x }}; --screen-pointer-y: {{ props.frames[0].screens.pointer.y }};"
+		>
+			{% if props.pointer %}
+			<div
+				class="[][][ Phone-pointer ]"
+			></div>
+			{% endif %}
+		</div>
 	</div>
 
 	{% if props.caption %}
-	<figcaption class="[ center ][ measure text-center ][]">{{ props.caption | safe }}</figcaption>
+	<figcaption
+		class="[ center ][ measure text-center {{ 'visually-hidden' if props.hideCaption else '' }} ][]"
+	>{{ props.caption | safe }}</figcaption>
 	{% endif %}
 </figure>
 {% endmacro %}
@@ -37,6 +55,9 @@
 <style>
 	.Phone {
 		max-width: calc( var( --measure-size) - 5em );
+	}
+
+	.Phone--printed {
 		mix-blend-mode: multiply;
 	}
 
@@ -68,9 +89,13 @@
 			background-repeat: no-repeat;
 		}
 
+		.Phone--printed .Phone-body::after {
+			filter: grayscale( 1 );
+		}
+
 		/* Fade effect */
 		.Phone-body--faded::before {
-			--height: 90px;
+			--height: 100px;
 
 			z-index: 10;
 			content: "";
@@ -79,8 +104,8 @@
 			right: 0; bottom: 0; left: 0;
 			height: var( --height );
 
-			background-color: var( --theme-background-color );
 			background-color: white;
+
 			-webkit-mask-image: url( /images/iphone-mask-gradient.png );
 			-webkit-mask-size: 100% var( --height );
 			-webkit-mask-repeat: no-repeat;
@@ -90,38 +115,53 @@
 		}
 
 	/* Pointer */
-	.Phone-screen::after {
+	.Phone-pointer {
 		--screen-pointer-x-min: 0.055;
 		--screen-pointer-y-min: 0.0275;
 
 		--size: 15; /* A percentage of the device width */
 		--size-coefficient: calc( 100 / var( --size ) );
 
-		content: "";
-		display: block;
+		filter: grayscale( 0.25 );
 
 		position: relative;
 		transform: translate(
-			calc(
-				(100% * var( --size-coefficient )) * var( --screen-pointer-x-min ) +
-				(100% * var( --size-coefficient )) * var( --screen-pointer-x, 0.0 )
-			),
-			calc(
-				(100% * var( --size-coefficient )) * var( --screen-pointer-y-min ) * {{ props.aspectRatio }} +
-				(100% * var( --size-coefficient )) * var( --screen-pointer-y, 0.0 ) * {{ props.aspectRatio }}
+				calc(
+					(100% * var( --size-coefficient )) * var( --screen-pointer-x-min ) +
+					(100% * var( --size-coefficient )) * var( --screen-pointer-x, 0.0 )
+				),
+				calc(
+					(100% * var( --size-coefficient )) * var( --screen-pointer-y-min ) * {{ props.aspectRatio }} +
+					(100% * var( --size-coefficient )) * var( --screen-pointer-y, 0.0 ) * {{ props.aspectRatio }}
+				)
 			)
-		);
+		;
 
 		height: 0;
 		width: calc( var( --size ) * 1% );
 		padding-bottom: calc( var( --size ) * 1% );
 
-		border-radius: 50%;
-		background-color: var( --color-teal );
-		opacity: 0.75;
-
-		transition: transform 0.75s ease;
+		transition: transform 0.875s ease;
 	}
+		.Phone-pointer::after {
+			/*
+			 * Animating the scale of the "child" element instead of its parent
+			 * prevents the %-based x/y translation from causing the pointer
+			 * to jump all over the place.
+			 */
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0; right: 0; bottom: 0; left: 0;
+
+			border-radius: 50%;
+			background-color: var( --color-teal );
+
+			transform: scale( var( --screen-pointer-scale, 1 ) );
+			opacity: var( --screen-pointer-opacity, 0.675 );
+
+			transition: transform 0.20s ease, opacity 0.20s ease;
+		}
 
 	/* Both Screens */
 	.Phone-screen,
@@ -138,7 +178,6 @@
 
 	/* Top Screen */
 	.Phone-screen::before {
-		/* background-color: green; */
 		background-image: var( --screen-top-background );
 		opacity: var( --screen-top-opacity );
 
@@ -147,7 +186,6 @@
 
 	/* Bottom Screen */
 	.Phone-screen {
-		/* background-color: red; */
 		background-image: var( --screen-bottom-background );
 		opacity: var( --screen-bottom-opacity );
 
@@ -171,7 +209,7 @@
 
 {% set criticalScript %}
 <script>
-	let PhoneApp = (id) =>
+	let PhoneApp = ({id, autoplay, frames=[], loop} = {}) =>
 	{
 		return {
 			get currentFrame()
@@ -179,10 +217,10 @@
 				return this.frames[this.frameIndex];
 			},
 
-			autoplay: {{ props.autoplay === true }},
+			autoplay: autoplay,
 			frameIndex: 0,
-			frames: {{ props.frames | dump | safe }},
-			loop: {{ props.loop === true }},
+			frames: frames,
+			loop: loop,
 
 			screens: {
 				top: {},
@@ -203,6 +241,12 @@
 						`--screen-pointer-x: ${this.pointer.x}`,
 						`--screen-pointer-y: ${this.pointer.y}`,
 					];
+
+					if( this.pointer.tapDown )
+					{
+						styles.push( `--screen-pointer-scale: 0.875` );
+						styles.push( `--screen-pointer-opacity: 0.875` );
+					}
 
 					return styles.join( "; " );
 				},
@@ -257,6 +301,10 @@
 					this.screens.bottom,
 					this.currentFrame.screens.bottom || {}
 				);
+				this.screens.pointer = Object.assign(
+					this.screens.pointer,
+					this.currentFrame.screens.pointer || {}
+				);
 
 				let willTransition = true;
 				willTransition = willTransition && this.frameIndex > 0;
@@ -270,10 +318,10 @@
 				}
 			},
 
-			frametransitionend()
+			frametransitionend( event )
 			{
 				// Don't transition after setting values for the initial frame
-				if( this.frameIndex > 0 )
+				if( this.frameIndex > 0 && event.target.dataset.framerun )
 				{
 					this.framerun();
 				}
