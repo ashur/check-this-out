@@ -24,7 +24,7 @@ module.exports = {
 
 				pointer: {
 					x: -0.04,
-					y: 0.40
+					y: 0.395
 				}
 			},
 			duration: 1000
@@ -84,7 +84,7 @@ module.exports = {
 			// "Move pointer to Share menu button",
 			screens: {
 				pointer: {
-					y: 0.34
+					y: 0.335
 				}
 			},
 			duration: 1000
@@ -208,7 +208,7 @@ module.exports = {
 					opacity: 1
 				}
 			},
-			duration: 500,
+			duration: 1000,
 		},
 		{
 			// "Move pointer to Safari in system status bar",
@@ -218,7 +218,7 @@ module.exports = {
 					y:  0.0075,
 				}
 			},
-			duration: 2000,
+			duration: 1500,
 		},
 		{
 			// "Tap down",
@@ -250,7 +250,11 @@ module.exports = {
 			screens: {
 				top: {
 					opacity: 0
-				}
+				},
+				pointer: {
+					x: -0.04,
+					y: 0.40,
+				},
 			}
 		},
 	],
