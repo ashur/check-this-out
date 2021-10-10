@@ -14,7 +14,7 @@ module.exports = {
 			description: `Person asking via text, "what’s that book you recommended?" Another person responds, "Gideon the Ninth" with a link to NPR’s book concierge`,
 			screens: {
 				bottom: {
-					background: "/images/screen-imessage.png",
+					background: "screen-imessage",
 					opacity: "1"
 				},
 			},

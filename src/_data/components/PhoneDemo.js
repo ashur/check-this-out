@@ -14,11 +14,11 @@ module.exports = {
 			// "Gideon the Ninth featured on NPR’s Book Concierge",
 			screens: {
 				top: {
-					background: "/images/screen-gideon-2.png",
+					background: "screen-gideon-2",
 					opacity: "0"
 				},
 				bottom: {
-					background: "/images/screen-gideon-1.png",
+					background: "screen-gideon-1",
 					opacity: "1"
 				},
 
@@ -67,7 +67,7 @@ module.exports = {
 			// "Swap bottom image behind top image",
 			screens: {
 				bottom: {
-					background: "/images/screen-gideon-3.png"
+					background: "screen-gideon-3"
 				}
 			},
 			duration: 50
@@ -110,7 +110,7 @@ module.exports = {
 			// "Swap top image while layer is hidden",
 			screens: {
 				top: {
-					background: "/images/screen-gideon-4.png"
+					background: "screen-gideon-4"
 				}
 			}
 		},
@@ -152,7 +152,7 @@ module.exports = {
 		{
 			screens: {
 				bottom: {
-					background: "/images/screen-gideon-5.png"
+					background: "screen-gideon-5"
 				}
 			}
 		},
@@ -198,7 +198,7 @@ module.exports = {
 			// "Swap top image while layer is hidden",
 			screens: {
 				top: {
-					background: "/images/screen-gideon-6.png"
+					background: "screen-gideon-6"
 				}
 			},
 		},
@@ -242,7 +242,7 @@ module.exports = {
 		{
 			screens: {
 				bottom: {
-					background: "/images/screen-gideon-1.png"
+					background: "screen-gideon-1"
 				}
 			}
 		},

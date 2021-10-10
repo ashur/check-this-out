@@ -31,18 +31,60 @@
 	>
 		<div
 			x-bind:style="screens.style"
-			x-on:transitionend="frametransitionend"
-
-			data-framerun="true"
-
-			class="[][][ Phone-screen ]"
+			style="--screen-top-opacity: 0"
 		>
-			{% if props.pointer %}
-			<div
-				class="[][][ Phone-pointer ]"
-			></div>
-			{% endif %}
+			<picture
+				x-on:transitionend="frametransitionend"
+
+				class="[][][ Phone-screen Phone-screen-bottom ]"
+				data-framerun="true"
+			>
+				<source
+					x-bind:srcset="'/images/' + screens.bottom.background + '.avif'"
+					type="image/avif"
+				/>
+				<source
+					x-bind:srcset="'/images/' + screens.bottom.background + '.webp'"
+					type="image/webp"
+				/>
+				<source
+					x-bind:srcset="'/images/' + screens.bottom.background + '.jpg'"
+					type="image/jpeg"
+				/>
+				<img
+					x-bind:src="'/images/' + screens.bottom.background + '.png'"
+				/>
+			</picture>
+
+			<picture
+				x-on:transitionend="frametransitionend"
+
+				class="[][][ Phone-screen Phone-screen-top ]"
+				data-framerun="true"
+			>
+				<source
+					x-bind:srcset="'/images/' + screens.top.background + '.avif'"
+					type="image/avif"
+				/>
+				<source
+					x-bind:srcset="'/images/' + screens.top.background + '.webp'"
+					type="image/webp"
+				/>
+				<source
+					x-bind:srcset="'/images/' + screens.top.background + '.png'"
+					type="image/png"
+				/>
+				<img
+					x-bind:src="'/images/' + screens.top.background + '.png'"
+				/>
+			</picture>
 		</div>
+
+		{# {% if props.pointer %}
+		<div
+			class="[][][ Phone-pointer ]"
+		></div>
+		{% endif %} #}
 	</div>
 
 	{% if props.caption %}
@@ -145,6 +187,16 @@
 		width: 0;
 		padding-right: calc( var( --size ) * 1% );
 		padding-bottom: calc( var( --size ) * 1% );
+
+		transition-property: transform;
+		transition-timing-function: ease;
+
+		/*
+		 * Delay with no transition to keep timing correct for animations, but
+		 * but default to no actual animation
+		 */
+		transition-duration: 0s;
+		transition-delay: 0.875s;
 	}
 		.Phone-pointer::after {
 			/*
@@ -166,40 +218,29 @@
 			transition: transform 0.20s ease, opacity 0.20s ease;
 		}
 
-	/* Screen */
-	.Phone-screen,
-	.Phone-screen::after,
-	.Phone-screen::before {
+	/* Both Screens */
+	.Phone-screen {
 		display: block;
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
-	}
-
-	/* Both Screens */
-	.Phone-screen::after,
-	.Phone-screen::before {
-		content: "";
-		background-position: top center;
-		background-size: calc( 100% + 2px );
-		background-repeat: no-repeat;
 
 		filter: grayscale( 1 ) contrast( 1.125 );
 
 		transition-property: opacity;
+		transition-timing-function: ease;
+
+		/*
+		 * Delay with no transition to keep timing correct for animations, but
+		 * but default to no animation
+		 */
 		transition-duration: 0s;
 		transition-delay: 0.75s;
-		transition-timing-function: ease;
 	}
 
-	/* Top Screen */
-	.Phone-screen::after {
-		background-image: var( --screen-top-background );
+	.Phone-screen-top {
 		opacity: var( --screen-top-opacity );
 	}
-
-	/* Bottom Screen */
-	.Phone-screen::before {
-		background-image: var( --screen-bottom-background );
+	.Phone-screen-bottom {
 		opacity: var( --screen-bottom-opacity );
 	}
 
@@ -209,12 +250,15 @@
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
+		/*
+		 * Switch to duration with no delay to add animation for users who don't
+		 * have reduced motion enabled
+		 */
 		.Phone-pointer {
-			transition: transform 0.875s ease;
+			transition-duration: 0.875s;
+			transition-delay: 0s;
 		}
-
-		.Phone-screen::after,
-		.Phone-screen::before {
+		.Phone-screen {
 			transition-duration: 0.75s;
 			transition-delay: 0s;
 		}
@@ -256,10 +300,8 @@
 				get style()
 				{
 					let styles = [
-						`--screen-top-background: url( ${this.top.background} )`,
-						`--screen-top-opacity: ${this.top.opacity}`,
-						`--screen-bottom-background: url( ${this.bottom.background} )`,
-						`--screen-bottom-opacity: ${this.bottom.opacity}`,
+						`--screen-top-opacity: ${this.top.opacity || 0}`,
+						`--screen-bottom-opacity: ${this.bottom.opacity || 0}`,
 						`--screen-pointer-x: ${this.pointer.x}`,
 						`--screen-pointer-y: ${this.pointer.y}`,
 					];
