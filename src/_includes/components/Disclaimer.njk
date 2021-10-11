@@ -14,8 +14,11 @@
 		--disclaimer-padding-y: var( --size--1 );
 		--measure-size: 32ch;
 
+		filter: grayscale( 1 );
+		mix-blend-mode: multiply;
+
 		display: inline-block;
-		border: solid var( --theme-disclaimer-color, transparent ) var( --disclaimer-border-width, 3px );
+		border: solid var( --theme-disclaimer-color, transparent ) var( --disclaimer-border-width, 4px );
 		padding: var( --disclaimer-padding-y ) var( --disclaimer-padding-x );
 		font-size: calc( var( --font-size ) * 0.75 );
 		font-weight: 500;
