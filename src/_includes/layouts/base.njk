@@ -11,6 +11,10 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="180x180" href="/icons/favicon-180x180.png">
 
+	{% for link in prefetch %}
+	<link rel="prefetch" href="{{ link.href }}" as="{{ link.as }}">
+	{% endfor %}
+
 	{% if plugins.esc.hasCriticalStyles( page.filePathStem ) %}
 	<style>
 		{{ plugins.esc.criticalStyles({ identifier: page.filePathStem }) | safe }}
