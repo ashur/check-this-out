@@ -23,7 +23,14 @@
 		background-position: center top;
 		background-size: 100%;
 	}
-
+	.book-cover::after {
+		content: "";
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		background-color: var( --color-black );
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
 .book-cover > * {
 	z-index: 1;
 	position: relative;
