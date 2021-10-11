@@ -17,8 +17,7 @@
 		autoplay: {{ props.autoplay === true }},
 		frames: {{ props.frames | dump | safe | replace( '"', "'" ) }},
 		loop: {{ props.loop === true }},
-	})
-	"
+	})"
 	x-init="$watch( 'frameIndex', () => framestart() )"
 
 	id="{{ props.id }}"
@@ -27,11 +26,11 @@
 >
 	<div
 		class="[ center ][][ Phone-body {{ 'Phone-body--faded' if props.fade else '' }} ]"
-		style="--screen-bottom-background: url( {{ props.frames[0].screens.bottom.background }} ); --screen-pointer-x: {{ props.frames[0].screens.pointer.x }}; --screen-pointer-y: {{ props.frames[0].screens.pointer.y }};"
 	>
 		<div
 			x-bind:style="screens.style"
-			style="--screen-top-opacity: 0"
+			class="[][ absolute ][]"
+			style="--screen-top-opacity: 0;"
 		>
 			<picture
 				x-on:transitionend="frametransitionend"
@@ -80,11 +79,15 @@
 			</picture>
 		</div>
 
-		{# {% if props.pointer %}
+		{% if props.pointer %}
+		{% set initialPosition = props.frames[0].screens.pointer %}
 		<div
+			x-bind:style="pointer.style"
+
 			class="[][][ Phone-pointer ]"
+			style="--screen-pointer-x: {{ initialPosition.x }}; --screen-pointer-y: {{ initialPosition.y }};"
 		></div>
-		{% endif %} #}
+		{% endif %}
 	</div>
 
 	{% if props.caption %}
@@ -145,7 +148,7 @@
 
 			z-index: 10;
 			content: "";
-			display: "block";
+			display: block;
 			position: absolute;
 			right: 0; bottom: 0; left: 0;
 			height: var( --height );
@@ -170,7 +173,9 @@
 
 		z-index: 1;
 
-		position: relative;
+		position: absolute;
+		top: 0; left: 0;
+
 		transform: translate(
 				calc(
 					(100% * var( --size-coefficient )) * var( --screen-pointer-x-min ) +
@@ -292,28 +297,36 @@
 				top: {},
 				bottom: {},
 
-				pointer: {
-					x: 0.0,
-					y: 0.0,
-				},
-
 				get style()
 				{
 					let styles = [
 						`--screen-top-opacity: ${this.top.opacity || 0}`,
 						`--screen-bottom-opacity: ${this.bottom.opacity || 0}`,
-						`--screen-pointer-x: ${this.pointer.x}`,
-						`--screen-pointer-y: ${this.pointer.y}`,
 					];
 
-					if( this.pointer.tapDown )
+					return styles.join( "; " );
+				},
+			},
+
+			pointer: {
+				x: 0.0,
+				y: 0.0,
+
+				get style()
+				{
+					let styles = [
+						`--screen-pointer-x: ${this.x}`,
+						`--screen-pointer-y: ${this.y}`,
+					];
+
+					if( this.tapDown )
 					{
 						styles.push( `--screen-pointer-scale: 0.875` );
 						styles.push( `--screen-pointer-opacity: 0.625` );
 					}
 
 					return styles.join( "; " );
-				},
+				}
 			},
 
 			init()
@@ -365,8 +378,8 @@
 					this.screens.bottom,
 					this.currentFrame.screens.bottom || {}
 				);
-				this.screens.pointer = Object.assign(
-					this.screens.pointer,
+				this.pointer = Object.assign(
+					this.pointer,
 					this.currentFrame.screens.pointer || {}
 				);
 
