@@ -1,0 +1,3 @@
+.paper {
+	box-shadow: 0 0 var( --size-3 ) var( --theme-shadow-color ) inset;
+}
