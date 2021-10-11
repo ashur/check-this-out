@@ -28,10 +28,12 @@
 
 	/* cta */
 	--theme-cta-background-color: var( --color-black );
-	--theme-cta-text-color: white;
+	--theme-cta-text-color: var( --theme-background-color );
 
 	/* cta--secondary */
 	--theme-cta--secondary-border-color: var( --color-teal );
+	/* cta--secondary */
+	--theme-cta--secondary-border-color: var( --color-orange );
 
 	--theme-disclaimer-color: var( --color-teal );
 	--theme-shadow-color: rgba(177, 163, 124, 0.5);
@@ -39,16 +41,15 @@
 
 .theme-cream-light {
 	--theme-background-color: var( --color-cream-light );
-	--theme-background-color: linear-gradient( var( --color-cream-light ), var( --color-cream ) );
 	--theme-heading-color: var( --color-black );
 	--theme-text-color: var( --color-black );
 	--theme-accent-color: var( --color-teal );
 
 	/* cta */
-	--theme-cta-text-color: white;
+	--theme-cta-text-color: var( --theme-background-color );
 
 	--theme-disclaimer-color: var( --color-yellow );
-	--theme-shadow-color: rgba(177, 163, 124, 0.5);
+	--theme-shadow-color: rgba(177, 163, 124, 0.3);
 }
 
 .theme-yellow {
