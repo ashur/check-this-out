@@ -33,8 +33,7 @@
 	/* cta--secondary */
 	--theme-cta--secondary-border-color: var( --color-teal );
 
-	--theme-disclaimer-color: rgba(192, 171, 109, 0.2);
-	--theme-disclaimer-color: var( --color-yellow );
+	--theme-disclaimer-color: var( --color-teal );
 	--theme-shadow-color: rgba(177, 163, 124, 0.5);
 }
 
@@ -48,7 +47,7 @@
 	/* cta */
 	--theme-cta-text-color: white;
 
-	--theme-disclaimer-color: var( --color-cream );
+	--theme-disclaimer-color: var( --color-yellow );
 	--theme-shadow-color: rgba(177, 163, 124, 0.5);
 }
 
