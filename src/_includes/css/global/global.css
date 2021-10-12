@@ -4,6 +4,7 @@
 	--ratio-1: calc( var( --ratio-0 ) * var( --ratio ) );
 	--ratio-2: calc( var( --ratio-1 ) * var( --ratio ) );
 	--ratio-3: calc( var( --ratio-2 ) * var( --ratio ) );
+	--ratio-4: calc( var( --ratio-3 ) * var( --ratio ) );
 
 	--size--4: calc( var( --size--3 ) / var( --ratio ) );
 	--size--3: calc( var( --size--2 ) / var( --ratio ) );
@@ -22,9 +23,11 @@
 	/* Composition */
 	--measure-size: 56ch;
 	--page-margin: clamp( var( --size-1 ), 5vw, var( --size-3 ) );
+
 	--stack-sm-size: calc( var( --font-size ) / var( --ratio-2 ) );
 	--stack-size: calc( var( --font-size ) * var( --ratio-0 ) );
 	--stack-lg-size: calc( var( --font-size ) * var( --ratio-2 ) );
+	--stack-xl-size: calc( var( --font-size ) * var( --ratio-4 ) );
 
 	--font-body: "neue-haas-grotesk-display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	--font-heading: "itc-avant-garde-gothic-pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

@@ -24,3 +24,7 @@
 .stack-lg > * + * {
 	margin-top: var( --stack-lg-size );
 }
+
+.stack-xl > * + * {
+	margin-top: var( --stack-xl-size );
+}
