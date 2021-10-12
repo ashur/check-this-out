@@ -1,6 +1,4 @@
 .app-icon {
-	/* --theme-shadow-color: var( --theme-shadow-color ); */
-
 	z-index: 1;
 	position: relative;
 	border-radius: calc( var( --size-1 ) * 1.125 );
