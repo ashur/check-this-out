@@ -12,5 +12,5 @@
 
 .cta:focus-visible {
 	outline: none;
-	box-shadow: 0 0 0 var( --cta-border-width ) var( --theme-accent-color );
+	box-shadow: 0 0 0 var( --cta-border-width, 3px ) var( --theme-accent-color );
 }
