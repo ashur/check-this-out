@@ -12,6 +12,10 @@
 	display: flex;
 }
 
+.font-sm {
+	font-size: calc( var( --font-size ) * 0.75 );
+}
+
 .inline-block {
 	display: inline-block;
 }
