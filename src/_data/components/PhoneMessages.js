@@ -1,11 +1,11 @@
 module.exports = {
 	id: "Phone-Messages",
-	aspectRatio: 1.2,
+	aspectRatio: 1.25,
 	caption: `Person asking via text, "what’s that book you recommended?" Another person responds, "Gideon the Ninth" with a link to NPR’s book concierge`,
 
 	autoplay: false,
 	hideCaption: true,
-	fade: false,
+	fade: true,
 	loop: false,
 	printedEffect: true,
 
