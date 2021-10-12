@@ -3,4 +3,5 @@
 	background-color: var( --color-cream );
 	background-blend-mode: multiply;
 	mix-blend-mode: screen;
+	opacity: 0.8;
 }
