@@ -1,9 +1,9 @@
 .page-section.book-cover {
 	padding-left: 0;
 	padding-right: 0;
-	padding-bottom: 27vh;
-	min-height: 50vh;
+	min-height: 80vh;
 	overflow-y: hidden;
+	border: solid red 1px;
 }
 
 .book-cover {
@@ -16,10 +16,9 @@
 		z-index: 0;
 		content: "";
 		position: absolute;
-		right: 0; bottom: 0; left: 0;
-		height: 45%;
+		top: calc( 33% + 0vmax ); right: 0; bottom: 0; left: 0;
 		background-repeat: no-repeat;
-		background-image: url(/images/bg-books.svg);
+		background-image: url(/images/bg-books-stripes.svg);
 		background-position: center top;
 		background-size: 100%;
 	}
