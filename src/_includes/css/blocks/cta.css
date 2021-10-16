@@ -14,3 +14,15 @@
 	outline: none;
 	box-shadow: 0 0 0 var( --cta-border-width, 3px ) var( --theme-accent-color );
 }
+
+.cta-inline {
+	text-decoration: none;
+	border-bottom: solid currentcolor 1px;
+}
+.cta-inline::after {
+	content: "→";
+	margin-left: 0.25em;
+}
+.cta-inline:hover {
+	text-decoration: none;
+}
