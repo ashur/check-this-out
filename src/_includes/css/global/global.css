@@ -32,6 +32,10 @@
 	--font-body: "neue-haas-grotesk-display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	--font-heading: "itc-avant-garde-gothic-pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
+	/* Blocks */
+	--section-padding-x: calc( var( --size-1 ) + 1vw );
+	--section-padding-y: calc( var( --size-2 ) + 5vw );
+
 	/* Colors */
 	--color-cream-light: #fdf8e9;
 	--color-cream: #fbf1d3;

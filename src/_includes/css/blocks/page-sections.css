@@ -16,9 +16,6 @@
 }
 
 .page-section {
-	--section-padding-x: calc( var( --size-1 ) + 1vw );
-	--section-padding-y: calc( var( --size-2 ) + 5vw );
-
 	padding: var( --section-padding-y ) var( --section-padding-x );
 }
 	.page-section.fullbleed--bottom {
