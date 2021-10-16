@@ -5,6 +5,26 @@
 	overflow-y: hidden;
 }
 
+.book-cover-contents {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	padding-top: var( --section-padding-y );
+
+	display: grid;
+	grid-template-rows: auto 1fr;
+}
+.book-cover-contents header > * {
+	padding-right: var( --section-padding-x );
+	padding-left: var( --section-padding-x );
+}
+.book-cover-art {
+	width: 100%;
+}
+
 .book-cover {
 	--cta-border-width: var( --size--2 );
 	--measure-size: 40ch;
@@ -12,14 +32,18 @@
 	position: relative;
 }
 	.book-cover::before {
-		z-index: 0;
+		z-index: 10;
 		content: "";
 		position: absolute;
-		top: calc( 33% + 0vmax ); right: 0; bottom: 0; left: 0;
-		background-repeat: no-repeat;
-		background-image: url(/images/bg-books-stripes.svg);
-		background-position: center top;
-		background-size: 100%;
+		top: 0; right: 0; bottom: 0; left: 0;
+		box-shadow:
+			var( --size-0 )
+			0
+			var( --size-3 )
+			var( --color-black )
+			inset
+		;
+		mix-blend-mode: soft-light;
 	}
 	.book-cover::after {
 		content: "";
@@ -29,15 +53,6 @@
 		background-repeat: no-repeat;
 		background-size: 100%;
 	}
-.book-cover > * {
-	z-index: 1;
-	position: relative;
-}
-
-.book-cover > * > * {
-	padding-left: var( --section-padding-x );
-	padding-right: var( --section-padding-x );
-}
 
 .book-cover-title {
 	border-bottom: solid currentcolor 1px;

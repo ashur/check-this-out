@@ -8,25 +8,27 @@ prefetch:
 {%- from "plugins/css/component.njk" import component with context -%}
 
 <article class="[][ showcase ][ page-sections ]">
-	<header class="[ stack-lg ][ text-center theme-black ][ page-section book-cover ]">
-		<div class="[ stack ][][]">
-			<p class="[ center ][ measure ][ book-cover-subtitle ]">
-				{{ site.subtitle }}
-			</p>
+	<header class="[][ text-center theme-black ][ book-cover ]">
+		<div class="[ stack ][][ book-cover-contents ]">
+			<header class="[ stack ][][]">
+				<p class="[ center ][ measure ][ book-cover-subtitle ]">
+					{{ site.subtitle }}
+				</p>
 
-			<h1 class="[][][ book-cover-title ]">
-				{{ site.title }}
-			</h1>
+				<h1 class="[][][ book-cover-title ]">
+					{{ site.title }}
+				</h1>
 
-			<p class="[ center ][ measure ][]">
-				{{ site.description }}
-			</p>
+				<p class="[ center ][ measure ][]">
+					{{ site.description }}
+				</p>
+			</header>
+
+			<img
+				class="[][][ book-cover-art ]"
+				src="/images/bg-books-stripes.svg"
+			/>
 		</div>
-
- 		{# <a
-			class="[][][ cta ]"
-			href="/install"
-		>Install Now</a> #}
 	</header>
 
 	<div>
