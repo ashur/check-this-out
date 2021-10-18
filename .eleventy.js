@@ -7,6 +7,7 @@ module.exports = config =>
 
 	/* Data */
 	config.addDataExtension( "yml", require( "./src/_eleventy/data/yaml" ) );
+	config.setDataDeepMerge( true );
 
 	/* Filters */
 
