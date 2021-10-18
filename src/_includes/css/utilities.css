@@ -45,6 +45,11 @@
 		}
 	}
 
+.sticky {
+	position: sticky;
+	top: 0;
+}
+
 .text-center {
 	text-align: center;
 }
