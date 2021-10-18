@@ -4,6 +4,8 @@ layout: layouts/base.njk
 prefetch:
   - href: /images/worn-paperback-02.jpg
     as: image
+page:
+  theme: theme-black
 ---
 {%- from "plugins/css/component.njk" import component with context -%}
 
@@ -33,7 +35,7 @@ prefetch:
 
 	<div>
 		<main>
-			<div class="[ stack-lg ][ text-center theme-cream-light ][ page-section paper ]">
+			<div class="[ stack-lg ][ text-center theme-cream ][ page-section ]">
 				<section class="[ center stack-lg ][ measure ][]">
 					<div class="[ stack-sm ][][]">
 						<h2 class="[][][ page-section-heading ]">Libby is <span class="[][][ pencil pencil--underline ]">awesome</span></h2>
@@ -123,7 +125,7 @@ prefetch:
 			</div>
 		</main>
 
-		<footer class="[ stack ][][ page-footer page-section theme-yellow ]">
+		<footer class="[ stack ][][ page-footer page-section theme-black ]">
 			<div class="[][ text-center ][]">
 				<p class="[ center ][ font-sm measure ][]"><strong>{{ site.title }}</strong> is not affiliated with or endorsed by OverDrive&reg;, makers of Libby. <a href="/about">Learn more</a></p>
 			</div>
