@@ -4,10 +4,10 @@
     <g id="bg-books-stripes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Group" transform="translate(-400.000000, -206.000000)"></g>
         <g id="Group-2" transform="translate(590.931483, 394.000000) rotate(-15.000000) translate(-590.931483, -394.000000) translate(-619.680097, 174.000000)">
-            <polygon id="Rectangle" fill="#FEDC57" transform="translate(1200.000000, 55.000000) rotate(90.000000) translate(-1200.000000, -55.000000) " points="1145 -1145 1255 -1145 1255 1255 1145 1255"></polygon>
+            <polygon id="Rectangle" fill="#b94d5e" transform="translate(1200.000000, 55.000000) rotate(90.000000) translate(-1200.000000, -55.000000) " points="1145 -1145 1255 -1145 1255 1255 1145 1255"></polygon>
             <polygon id="Rectangle" fill="#F36B36" transform="translate(1210.611581, 165.000000) rotate(90.000000) translate(-1210.611581, -165.000000) " points="1155.61158 -1035 1265.61158 -1035 1265.61158 1365 1155.61158 1365"></polygon>
-            <polygon id="Rectangle" fill="#1FD1B8" transform="translate(1221.223162, 275.000000) rotate(90.000000) translate(-1221.223162, -275.000000) " points="1166.22316 -925 1276.22316 -925 1276.22316 1475 1166.22316 1475"></polygon>
-            <polygon id="Rectangle" fill="#FBF1D3" transform="translate(1200.000000, 385.000000) rotate(90.000000) translate(-1200.000000, -385.000000) " points="1145 -815 1255 -815 1255 1585 1145 1585"></polygon>
+            <polygon id="Rectangle" fill="#FEDC57" transform="translate(1221.223162, 275.000000) rotate(90.000000) translate(-1221.223162, -275.000000) " points="1166.22316 -925 1276.22316 -925 1276.22316 1475 1166.22316 1475"></polygon>
+<!--             <polygon id="Rectangle" fill="#FBF1D3" transform="translate(1200.000000, 385.000000) rotate(90.000000) translate(-1200.000000, -385.000000) " points="1145 -815 1255 -815 1255 1585 1145 1585"></polygon> -->
         </g>
     </g>
 </svg>
