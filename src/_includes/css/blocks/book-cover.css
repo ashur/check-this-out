@@ -33,6 +33,9 @@
 	padding-right: var( --section-padding-x );
 	padding-left: var( --section-padding-x );
 }
+.book-cover-art {
+	mix-blend-mode: difference;
+}
 
 .book-cover-title {
 	border-bottom: solid currentcolor 1px;
