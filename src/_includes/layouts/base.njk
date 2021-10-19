@@ -7,6 +7,19 @@
 	{% set pageTitle = metadata.title if metadata.title else title %}
 	<title>{% if pageTitle %}{{ pageTitle }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.subtitle }}{% endif %}</title>
 
+	<meta name="title" content="{{ pageTitle }}">
+	<meta name="description" content="{{ site.subtitle }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ site.url }}">
+	<meta property="og:title" content="{{ pageTitle }}">
+	<meta property="og:description" content="{{ site.subtitle }}">
+	<meta property="og:image" content="{{ site.url }}/images/social.jpg">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="{{ site.url }}">
+	<meta property="twitter:title" content="{{ pageTitle }}">
+	<meta property="twitter:description" content="{{ site.subtitle }}">
+	<meta property="twitter:image" content="{{ site.url }}/images/social.jpg">
+
 	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64x64.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
