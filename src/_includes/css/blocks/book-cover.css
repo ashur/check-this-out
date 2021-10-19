@@ -4,9 +4,16 @@
 	position: relative;
 	padding-left: 0;
 	padding-right: 0;
+	max-height: clamp( 400px, 200vw, 700px );
 	height: 100vh;
 	overflow: hidden;
 }
+	@media (min-width: 800px) {
+		.book-cover {
+			max-height: initial;
+		}
+	}
+
 .book-cover::after {
 	content: "";
 	position: absolute;
