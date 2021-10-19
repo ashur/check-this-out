@@ -33,113 +33,113 @@ page:
 		</div>
 	</header>
 
-	<div class="[][ theme-cream-light ][ ]">
-		<main class="[][][ page-contents paper ]">
-			<div class="[ stack-xl ][ text-center ][ page-section ]">
-				<section class="[ center stack-lg ][ measure ][]">
-					<div class="[ stack-sm ][][]">
-						<h2 class="[][][ page-section-heading ]">Libby is <em class="[][][ pencil pencil--underline ]">awesome</em></h2>
-						<p>An app for Android, iOS, and the web, <a href="https://www.overdrive.com/apps/libby/">Libby</a> is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
-					</div>
+	<main
+		class="[][ theme-cream-light ][ page-contents paper ]"
+	>
+		<div class="[ stack-xl ][ text-center ][ page-section ]">
+			<section class="[ center stack-lg ][ measure ][]">
+				<div class="[ stack-sm ][][]">
+					<h2 class="[][][ page-section-heading ]">Libby is <em class="[][][ pencil pencil--underline ]">awesome</em></h2>
+					<p>An app for Android, iOS, and the web, <a href="https://www.overdrive.com/apps/libby/">Libby</a> is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
+				</div>
 
-					<div class="[ stack-sm ][][]">
-						<p>
-							<a
-								class="[][ inline-block ][ pencil pencil--burst ]"
-								href="https://www.overdrive.com/apps/libby/"
+				<div class="[ stack-sm ][][]">
+					<p>
+						<a
+							class="[][ inline-block ][ pencil pencil--burst ]"
+							href="https://www.overdrive.com/apps/libby/"
+						>
+							<img
+								src="/images/icon-libby.svg"
+								alt="Libby app icon"
+								class="[ center ][][ app-icon ]"
+								width="128"
+								height="128"
 							>
-								<img
-									src="/images/icon-libby.svg"
-									alt="Libby app icon"
-									class="[ center ][][ app-icon ]"
-									width="128"
-									height="128"
-								>
-							</a>
-						</p>
+						</a>
+					</p>
 
-						{% call component( "Disclaimer" ) %}
-							<p class="[ center ][ font-xs ][]"><b>{{ site.title }}</b> is not affiliated with or endorsed by OverDrive&reg;, makers of Libby.</p>
-						{% endcall %}
-					</div>
+					{% call component( "Disclaimer" ) %}
+						<p class="[ center ][ font-xs ][]"><b>{{ site.title }}</b> is not affiliated with or endorsed by OverDrive&reg;, makers of Libby.</p>
+					{% endcall %}
+				</div>
 
-					<p>But you’re not always using Libby when a new title or author catches your eye&hellip;</p>
-				</section>
+				<p>But you’re not always using Libby when a new title or author catches your eye&hellip;</p>
+			</section>
 
-				<section class="[][][]">
-					<div class="[ center stack-lg ][ measure ][]">
-						<div class="[ stack-sm ][][]">
-							<h2 class="[][][ page-section-heading ]">New books abound</h2>
-							<p>There are so many places to find something new to read — best-of lists, links from the group chat, virtual book clubs, you name it.</p>
-						</div>
-
-						<div class="[][][]">
-							{{ component( "Phone", components.PhoneMessages ) }}
-						</div>
-					</div>
-				</section>
-
-				<section class="[ center stack-lg ][ measure ][]">
+			<section class="[][][]">
+				<div class="[ center stack-lg ][ measure ][]">
 					<div class="[ stack-sm ][][]">
-						<h2 class="[][][ page-section-heading ]">Start a new book in four taps</h2>
-						<p>No matter where you are on the internet, {{ site.title }} makes it a cinch to borrow or reserve your next book in Libby.</p>
+						<h2 class="[][][ page-section-heading ]">New books abound</h2>
+						<p>There are so many places to find something new to read — best-of lists, links from the group chat, virtual book clubs, you name it.</p>
 					</div>
 
-					{{ component( "Phone", components.PhoneDemo ) }}
-				</section>
-
-				<section class="[ center stack-lg ][ measure ][]">
-					<div class="[ stack-sm ][][]">
-						<h3 class="[][][ page-section-heading ]">Ready? Let’s get started!</h3>
-						<p>Setup takes a few minutes, tops. All you need to get started is your library card.</p>
+					<div class="[][][]">
+						{{ component( "Phone", components.PhoneMessages ) }}
 					</div>
+				</div>
+			</section>
 
-					<div class="[ stack ][][]">
-						<p>
-							<a
-								class="[][ inline-block ][]"
-								href="/install"
+			<section class="[ center stack-lg ][ measure ][]">
+				<div class="[ stack-sm ][][]">
+					<h2 class="[][][ page-section-heading ]">Start a new book in four taps</h2>
+					<p>No matter where you are on the internet, {{ site.title }} makes it a cinch to borrow or reserve your next book in Libby.</p>
+				</div>
+
+				{{ component( "Phone", components.PhoneDemo ) }}
+			</section>
+
+			<section class="[ center stack-lg ][ measure ][]">
+				<div class="[ stack-sm ][][]">
+					<h3 class="[][][ page-section-heading ]">Ready? Let’s get started!</h3>
+					<p>Setup takes a few minutes, tops. All you need to get started is your library card.</p>
+				</div>
+
+				<div class="[ stack ][][]">
+					<p>
+						<a
+							class="[][ inline-block ][]"
+							href="/install"
+						>
+							<img
+								src="/images/icon-shortcut.png"
+								alt="Orange iOS Shortcut icon"
+								class="[ center ][][ app-icon ]"
+								width="128"
+								height="128"
 							>
-								<img
-									src="/images/icon-shortcut.png"
-									alt="Cream colored book icon on orange background"
-									class="[ center ][][ app-icon ]"
-									width="128"
-									height="128"
-								>
-							</a>
-						</p>
+						</a>
+					</p>
 
-						<p>
-							<a
-								class="[][][ cta-inline ]"
-								href="/install"
-							>Install Now</a>
-						</p>
-					</div>
-				</section>
-			</div>
-		</main>
-
-		<footer class="[ stack ][ font-sm theme-cream ][ page-footer page-section ]">
-			<div class="[ center stack ][ measure ][]">
-				<p>This is a work of appreciation, for public libraries, which are a treasure, and for Libby, which puts whole worlds in our pockets.</p>
-
-				<nav class="[][][]">
-					<p class="[][ font-heading uppercase ][]">{{ site.title }}</p>
-					<ul class="[][][ page-footer-links ]">
-						<li><a href="/about">About</a></li>
-						<li><a href="/install">Get Started</a></li>
-					</ul>
-				</nav>
-			</div>
-
-			<aside class="[ center stack ][ measure ][]">
-				<p>Built and maintained by <a class="[][][]" href="#">Ashur Cabrera</a><br />Denver, Colorado</p>
-				<p><a href="{{ site.url }}">{{ site.hostname }}</a></p>
-				<p>First Edition: October 2021</p>
-				<p class="[][][ page-footer-numbers ]">0 9 8 7 6 5 4 3 2 1</p>
-			</aside>
-		</footer>
-	</div>
+					<p>
+						<a
+							class="[][][ cta-inline ]"
+							href="/install"
+						>Install Now</a>
+					</p>
+				</div>
+			</section>
+		</div>
+	</main>
 </article>
+
+<footer class="[ stack ][ font-sm theme-cream ][ page-footer page-section ]">
+	<div class="[ --center stack ][ measure ][]">
+		<p>This is a work of appreciation; for public libraries, which are a treasure, and for Libby, which puts whole worlds in our pockets.</p>
+
+		<nav class="[][][]">
+			<p class="[][ font-heading uppercase ][]">{{ site.title }}</p>
+			<ul class="[][][ page-footer-links ]">
+				<li><a href="/about">About</a></li>
+				<li><a href="/install">Get Started</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<aside class="[ --center stack ][ measure ][]">
+		<p>Designed, built, and maintained by <a class="[][][]" href="#">Ashur Cabrera</a><br />Denver, Colorado</p>
+		<p><a href="{{ site.url }}">{{ site.hostname }}</a></p>
+		<p>First Edition: October 2021</p>
+		<p class="[][][ page-footer-numbers ]">0 9 8 7 6 5 4 3 2 1</p>
+	</aside>
+</footer>

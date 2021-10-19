@@ -1,17 +1,20 @@
-.page-sections {}
+.page-sections {
+	position: relative;
+	min-height: 120vh;
+}
 
 @media (min-width: 800px) {
 	.page-sections > * {
-		position: relative;
+		position: sticky;
+		top: 0;
 		left: 50vw;
 		right: 0;
 		width: 50vw;
 	}
 	.page-sections > :nth-child(1) {
-		position: fixed;
 		left: 0;
 		right: 50vw;
-		min-height: 100vh;
+		/* min-height: 100vh; */
 	}
 }
 

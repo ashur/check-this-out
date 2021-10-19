@@ -1,7 +1,7 @@
 .page-footer {
 	--section-padding-x: calc( var( --size-2 ) + 4vw );
 	--section-padding-y: var( --section-padding-x );
-	--shadow-depth: var( --size-4 );
+	--shadow-depth: var( --size-5 );
 
 	box-shadow:
 		0
