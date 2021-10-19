@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200px" height="780px" viewBox="0 0 1200 780" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>bg-books-stripes</title>
-    <g id="bg-books-stripes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group" transform="translate(-400.000000, -206.000000)"></g>
-        <g id="Group-2" transform="translate(590.931483, 394.000000) rotate(-15.000000) translate(-590.931483, -394.000000) translate(-619.680097, 174.000000)">
-            <polygon id="Rectangle" fill="#b94d5e" transform="translate(1200.000000, 55.000000) rotate(90.000000) translate(-1200.000000, -55.000000) " points="1145 -1145 1255 -1145 1255 1255 1145 1255"></polygon>
-            <polygon id="Rectangle" fill="#F36B36" transform="translate(1210.611581, 165.000000) rotate(90.000000) translate(-1210.611581, -165.000000) " points="1155.61158 -1035 1265.61158 -1035 1265.61158 1365 1155.61158 1365"></polygon>
-            <polygon id="Rectangle" fill="#FEDC57" transform="translate(1221.223162, 275.000000) rotate(90.000000) translate(-1221.223162, -275.000000) " points="1166.22316 -925 1276.22316 -925 1276.22316 1475 1166.22316 1475"></polygon>
-<!--             <polygon id="Rectangle" fill="#FBF1D3" transform="translate(1200.000000, 385.000000) rotate(90.000000) translate(-1200.000000, -385.000000) " points="1145 -815 1255 -815 1255 1585 1145 1585"></polygon> -->
-        </g>
-    </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8"?><svg version="1.1" viewBox="0 0 1200 780" xmlns="http://www.w3.org/2000/svg"><title>bg-books-stripes</title><g fill="none" fill-rule="evenodd"><g transform="translate(590.93 394) rotate(-15) translate(-1210.6 -220)"><polygon id="Rectangle" transform="translate(1200 55) rotate(90) translate(-1200 -55)" points="1145 -1145 1255 -1145 1255 1255 1145 1255" fill="#b94d5e"/><polygon id="a" transform="translate(1210.6 165) rotate(90) translate(-1210.6 -165)" points="1155.6 -1035 1265.6 -1035 1265.6 1365 1155.6 1365" fill="#F36B36"/><polygon transform="translate(1221.2 275) rotate(90) translate(-1221.2 -275)" points="1166.2 -925 1276.2 -925 1276.2 1475 1166.2 1475" fill="#FEDC57"/></g></g></svg>
