@@ -156,9 +156,17 @@
 			background-color: white;
 
 			-webkit-mask-image: url( /images/iphone-mask-gradient.png );
+			-webkit-mask-image: image-set(
+				"/images/iphone-mask-gradient.avif" type("image/avif"),
+				"/images/iphone-mask-gradient.webp" type("image/webp")
+			);
 			-webkit-mask-size: 100% var( --height );
 			-webkit-mask-repeat: no-repeat;
 			mask-image: url( /images/iphone-mask-gradient.png );
+			mask-image: image-set(
+				"/images/iphone-mask-gradient.avif" type("image/avif"),
+				"/images/iphone-mask-gradient.webp" type("image/webp")
+			);
 			mask-size: 100% var( --height );
 			mask-repeat: no-repeat;
 		}
