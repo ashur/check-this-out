@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>{% if title %}{{ title }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.subtitle }}{% endif %}</title>
+	{% set pageTitle = metadata.title if metadata.title else title %}
+	<title>{% if pageTitle %}{{ pageTitle }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.subtitle }}{% endif %}</title>
 
 	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon-64x64.png">
