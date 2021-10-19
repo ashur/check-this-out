@@ -33,34 +33,38 @@ page:
 		</div>
 	</header>
 
-	<div>
-		<main>
-			<div class="[ stack-lg ][ text-center theme-cream ][ page-section ]">
+	<div class="[][ theme-cream-light ][ ]">
+		<main class="[][][ page-contents paper ]">
+			<div class="[ stack-xl ][ text-center ][ page-section ]">
 				<section class="[ center stack-lg ][ measure ][]">
 					<div class="[ stack-sm ][][]">
-						<h2 class="[][][ page-section-heading ]">Libby is <span class="[][][ pencil pencil--underline ]">awesome</span></h2>
+						<h2 class="[][][ page-section-heading ]">Libby is <em class="[][][ pencil pencil--underline ]">awesome</em></h2>
 						<p>An app for Android, iOS, and the web, <a href="https://www.overdrive.com/apps/libby/">Libby</a> is a great way to borrow e-books, audiobooks, and more from your public library—for free.</p>
 					</div>
 
-					<p>
-						<a
-							class="[][ inline-block ][ pencil pencil--burst ]"
-							href="https://www.overdrive.com/apps/libby/"
-						>
-							<img
-								src="/images/icon-libby.svg"
-								alt="Libby app icon"
-								class="[ center ][][ app-icon ]"
-								width="128"
-								height="128"
+					<div class="[ stack-sm ][][]">
+						<p>
+							<a
+								class="[][ inline-block ][ pencil pencil--burst ]"
+								href="https://www.overdrive.com/apps/libby/"
 							>
-						</a>
-					</p>
+								<img
+									src="/images/icon-libby.svg"
+									alt="Libby app icon"
+									class="[ center ][][ app-icon ]"
+									width="128"
+									height="128"
+								>
+							</a>
+						</p>
+
+						{% call component( "Disclaimer" ) %}
+							<p class="[ center ][ font-xs ][]"><b>{{ site.title }}</b> is not affiliated with or endorsed by OverDrive&reg;, makers of Libby.</p>
+						{% endcall %}
+					</div>
 
 					<p>But you’re not always using Libby when a new title or author catches your eye&hellip;</p>
 				</section>
-
-				<hr class="[][][ pencil ]" />
 
 				<section class="[][][]">
 					<div class="[ center stack-lg ][ measure ][]">
@@ -75,18 +79,14 @@ page:
 					</div>
 				</section>
 
-				<hr class="[][][ pencil ]" />
-
 				<section class="[ center stack-lg ][ measure ][]">
 					<div class="[ stack-sm ][][]">
-						<h2 class="[][][ page-section-heading ]">Start a new book with just a few taps</h2>
+						<h2 class="[][][ page-section-heading ]">Start a new book in four taps</h2>
 						<p>No matter where you are on the internet, {{ site.title }} makes it a cinch to borrow or reserve your next book in Libby.</p>
 					</div>
 
 					{{ component( "Phone", components.PhoneDemo ) }}
 				</section>
-
-				<hr class="[][][ pencil ]" />
 
 				<section class="[ center stack-lg ][ measure ][]">
 					<div class="[ stack-sm ][][]">
@@ -117,18 +117,29 @@ page:
 							>Install Now</a>
 						</p>
 					</div>
-
-					{% call component( "Disclaimer" ) %}
-						<p class="[ center ][ font-sm ][]">Bookmarklet support for browsers on all major platforms coming soon.</p>
-					{% endcall %}
 				</section>
 			</div>
 		</main>
 
-		<footer class="[ stack ][][ page-footer page-section theme-black ]">
-			<div class="[][ text-center ][]">
-				<p class="[ center ][ font-sm measure ][]"><strong>{{ site.title }}</strong> is not affiliated with or endorsed by OverDrive&reg;, makers of Libby. <a href="/about">Learn more</a></p>
+		<footer class="[ stack ][ font-sm theme-cream ][ page-footer page-section ]">
+			<div class="[ center stack ][ measure ][]">
+				<p>This is a work of appreciation, for public libraries, which are a treasure, and for Libby, which puts whole worlds in our pockets.</p>
+
+				<nav class="[][][]">
+					<p class="[][ font-heading uppercase ][]">{{ site.title }}</p>
+					<ul class="[][][ page-footer-links ]">
+						<li><a href="/about">About</a></li>
+						<li><a href="/install">Get Started</a></li>
+					</ul>
+				</nav>
 			</div>
+
+			<aside class="[ center stack ][ measure ][]">
+				<p>Built and maintained by <a class="[][][]" href="#">Ashur Cabrera</a><br />Denver, Colorado</p>
+				<p><a href="{{ site.url }}">{{ site.hostname }}</a></p>
+				<p>First Edition: October 2021</p>
+				<p class="[][][ page-footer-numbers ]">0 9 8 7 6 5 4 3 2 1</p>
+			</aside>
 		</footer>
 	</div>
 </article>
