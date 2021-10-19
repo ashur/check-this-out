@@ -24,13 +24,17 @@
 
 .page-section > * {
 	--measure-size: 48ch;
-	font-size: 1.125em;
 }
 
 .page-section-heading {
+	font-family: var( --font-heading );
 	font-size: var( --size-2 );
+	letter-spacing: -.05em;
 	line-height: 1;
 }
+	.page-section-heading em {
+		font-style: normal;
+	}
 	@media (min-width: 800px) {
 		.page-section-heading {
 			font-size: var( --size-3 );
@@ -41,3 +45,4 @@
 	font-size: var( --size-2 );
 	line-height: 1;
 }
+

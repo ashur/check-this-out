@@ -12,8 +12,15 @@
 	display: flex;
 }
 
+.font-heading {
+	font-family: var( --font-heading );
+}
+
 .font-sm {
-	font-size: calc( var( --font-size ) * 0.75 );
+	font-size: var( --font-size-sm );
+}
+.font-xs {
+	font-size: var( --font-size-xs );
 }
 
 .inline-block {
@@ -45,13 +52,12 @@
 		}
 	}
 
-.sticky {
-	position: sticky;
-	top: 0;
-}
-
 .text-center {
 	text-align: center;
+}
+
+.uppercase {
+	text-transform: uppercase;
 }
 
 .visually-hidden {

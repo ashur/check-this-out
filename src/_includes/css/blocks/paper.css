@@ -1,9 +1,27 @@
 .paper {
+	--shadow-size: calc( var( --size-0 ) + 2vw );
+
+	box-shadow:
+		calc( 1.25 * var( --shadow-size ) )
+		0
+		calc( 1 * var( --shadow-size ) )
+		calc( -1 * var( --shadow-size ) )
+		#E8DBB5
+		inset,
+
+		calc( -1.25 * var( --shadow-size ) )
+		0
+		calc( 1 * var( --shadow-size ) )
+		calc( -1 * var( --shadow-size ) )
+		#E8DBB5
+		inset
+	;
+
 	box-shadow:
 		0
 		0
-		var( --size-2 )
-		var( --theme-shadow-color )
+		calc( 1 * var( --shadow-size ) )
+		hsla(45, 53%, 81%, 0.75)
 		inset
 	;
 }

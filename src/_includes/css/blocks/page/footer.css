@@ -1,0 +1,58 @@
+.page-footer {
+	--section-padding-x: calc( var( --size-2 ) + 4vw );
+	--section-padding-y: var( --section-padding-x );
+	--shadow-depth: var( --size-4 );
+
+	box-shadow:
+		0
+		calc( var( --shadow-depth ) * 2 )
+		calc( var( --shadow-depth ) * 2 )
+		calc( -1 * var( --shadow-depth ) * 2 )
+		hsla(45, 63%, 71%, 0.33)
+		inset,
+
+		0
+		calc( var( --shadow-depth ) * 0.5 )
+		calc( var( --shadow-depth ) * 0.5 )
+		calc( -1 * calc( var( --shadow-depth ) * 1 ) )
+		hsla(45, 63%, 71%, 0.5)
+		inset,
+
+		0
+		calc( var( --shadow-depth ) * 0.25 )
+		calc( var( --shadow-depth ) * 0.25 )
+		calc( -1 * calc( var( --shadow-depth ) * 0.25 ) )
+		hsla(45, 63%, 71%, 0.75)
+		inset,
+
+		0
+		calc( var( --shadow-depth ) * 0.0625 )
+		calc( var( --shadow-depth ) * 0.0625 )
+		calc( -1 * calc( var( --shadow-depth ) * 0.0625 ) )
+		hsla(45, 63%, 71%, 1)
+		inset
+	;
+}
+
+.page-footer-links {
+	list-style-type: none;
+	padding-left: 0;
+}
+.page-footer-links li {
+	/* display: inline-block; */
+	/* font-weight: 600; */
+}
+.page-footer-links > * + * {
+	/* margin-left: var( --size-1 ); */
+}
+
+.page-footer-footnote {
+	border-top: solid var(--color-black) 1px;
+	padding-top: var( --size-0 );
+	font-size: var(--font-size-xs);
+}
+
+.page-footer-numbers {
+	font-variant-numeric: tabular-nums;
+	letter-spacing: 0.25em;
+}

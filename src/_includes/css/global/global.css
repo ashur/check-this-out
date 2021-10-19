@@ -19,6 +19,8 @@
 	--size-6: calc( var( --size-5 ) * var( --ratio ) );
 
 	--font-size: var( --size-0 );
+	--font-size-sm: calc( var( --font-size ) * 0.875 );
+	--font-size-xs: calc( var( --font-size ) * 0.75 );
 
 	/* Composition */
 	--measure-size: 56ch;
@@ -34,7 +36,7 @@
 
 	/* Blocks */
 	--section-padding-x: calc( var( --size-1 ) + 1vw );
-	--section-padding-y: calc( var( --size-2 ) + 5vw );
+	--section-padding-y: calc( var( --size-3 ) + 5vw );
 
 	/* Colors */
 	--color-cream-light: #fdf8e9;
