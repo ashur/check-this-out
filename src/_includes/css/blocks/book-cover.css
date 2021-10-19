@@ -21,6 +21,7 @@
 	background-color: var( --color-black );
 	background-repeat: no-repeat;
 	background-size: 100%;
+	opacity: 0.8;
 }
 
 .book-cover-contents {
