@@ -39,19 +39,19 @@
 				data-framerun="true"
 			>
 				<source
-					x-bind:srcset="'/images/' + screens.bottom.background + '.avif'"
+					x-bind:srcset="screens.bottom.background ? '/images/' + screens.bottom.background + '.avif' : ''"
 					type="image/avif"
 				/>
 				<source
-					x-bind:srcset="'/images/' + screens.bottom.background + '.webp'"
+					x-bind:srcset="screens.bottom.background ? '/images/' + screens.bottom.background + '.webp' : ''"
 					type="image/webp"
 				/>
 				<source
-					x-bind:srcset="'/images/' + screens.bottom.background + '.jpg'"
+					x-bind:srcset="screens.bottom.background ? '/images/' + screens.bottom.background + '.jpg' : ''"
 					type="image/jpg"
 				/>
 				<img
-					x-bind:src="'/images/' + screens.bottom.background + '.jpg'"
+					x-bind:src="screens.bottom.background ? '/images/' + screens.bottom.background + '.jpg' : ''"
 				/>
 			</picture>
 
@@ -62,19 +62,19 @@
 				data-framerun="true"
 			>
 				<source
-					x-bind:srcset="'/images/' + screens.top.background + '.avif'"
+					x-bind:srcset="screens.top.background ? '/images/' + screens.top.background + '.avif' : ''"
 					type="image/avif"
 				/>
 				<source
-					x-bind:srcset="'/images/' + screens.top.background + '.webp'"
+					x-bind:srcset="screens.top.background ? '/images/' + screens.top.background + '.webp' : ''"
 					type="image/webp"
 				/>
 				<source
-					x-bind:srcset="'/images/' + screens.top.background + '.jpg'"
+					x-bind:srcset="screens.top.background ? '/images/' + screens.top.background + '.jpg' : ''"
 					type="image/jpg"
 				/>
 				<img
-					x-bind:src="'/images/' + screens.top.background + '.jpg'"
+					x-bind:src="screens.top.background ? '/images/' + screens.top.background + '.jpg' : ''"
 				/>
 			</picture>
 		</div>
