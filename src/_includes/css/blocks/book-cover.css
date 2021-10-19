@@ -35,6 +35,7 @@
 }
 .book-cover-art {
 	mix-blend-mode: difference;
+	width: 100%;
 }
 
 .book-cover-title {
