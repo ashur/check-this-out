@@ -1,3 +1,3 @@
 module.exports = {
-	url: process.env.URL || "https://checkthisout.xyz"
+	url: process.env.URL || "https://checkthisout.today"
 }
