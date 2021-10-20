@@ -1,4 +1,4 @@
-.book-cover::after {
+/* .book-cover::after {
 	background-image: url( /images/worn-paperback-01-top.jpg ), url( /images/worn-paperback-01-bottom.jpg );
 	background-image:
 		image-set(
@@ -13,4 +13,4 @@
 
 	background-position: top, bottom;
 	mix-blend-mode: screen;
-}
+} */

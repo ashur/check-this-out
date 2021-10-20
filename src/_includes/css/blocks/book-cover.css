@@ -21,6 +21,21 @@
 	background-color: var( --color-black );
 	background-repeat: no-repeat;
 	background-size: 100%;
+	background-image: url( /images/worn-paperback-01-top.jpg ), url( /images/worn-paperback-01-bottom.jpg );
+	background-image:
+		image-set(
+			"/images/worn-paperback-01-top.avif" type("image/avif"),
+			"/images/worn-paperback-01-top.webp" type("image/webp")
+		),
+		image-set(
+			"/images/worn-paperback-01-bottom.avif" type("image/avif"),
+			"/images/worn-paperback-01-bottom.webp" type("image/webp")
+		)
+	;
+
+	background-position: top, bottom;
+	mix-blend-mode: screen;
+
 	opacity: 0.8;
 }
 
