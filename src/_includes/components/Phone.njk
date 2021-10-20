@@ -23,6 +23,7 @@
 	id="{{ props.id }}"
 	class="[ center stack-sm ][ --measure ][ Phone {{ 'Phone--printed' if props.printedEffect else '' }} ]"
 	style="--aspect-ratio: {{ props.aspectRatio if props.aspectRatio else '1.0' }};"
+	aria-label="{{ props.caption | striptags }}"
 >
 	<div
 		class="[ center ][][ Phone-body {{ 'Phone-body--faded' if props.fade else '' }} ]"
@@ -35,6 +36,7 @@
 			<picture
 				x-on:transitionend="frametransitionend"
 
+				aria-hidden="true"
 				class="[][][ Phone-screen Phone-screen-bottom ]"
 				data-framerun="true"
 			>
@@ -52,12 +54,14 @@
 				/>
 				<img
 					x-bind:src="screens.bottom.background ? '/images/' + screens.bottom.background + '.jpg' : ''"
+					alt="{{ props.caption }}"
 				/>
 			</picture>
 
 			<picture
 				x-on:transitionend="frametransitionend"
 
+				aria-hidden="true"
 				class="[][][ Phone-screen Phone-screen-top ]"
 				data-framerun="true"
 			>
@@ -75,6 +79,7 @@
 				/>
 				<img
 					x-bind:src="screens.top.background ? '/images/' + screens.top.background + '.jpg' : ''"
+					alt="{{ props.caption }}"
 				/>
 			</picture>
 		</div>
@@ -93,6 +98,7 @@
 	{% if props.caption %}
 	<figcaption
 		class="[ center ][ measure text-center {{ 'visually-hidden' if props.hideCaption else '' }} ][]"
+		id="{{ props.id }}-caption"
 	>{{ props.caption | safe }}</figcaption>
 	{% endif %}
 </figure>

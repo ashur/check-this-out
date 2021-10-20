@@ -1,7 +1,7 @@
 module.exports = {
 	id: "Phone-Demo",
 	aspectRatio: 1.8,
-	caption: "Select the title or author, choose <strong>Check This Out</strong>, and jump straight to a search in Libby",
+	caption: "Select the title or author, choose <b>Check This Out</b>, and jump straight to a search in Libby",
 
 	autoplay: true,
 	fade: true,
