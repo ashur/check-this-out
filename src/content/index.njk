@@ -101,13 +101,23 @@ page:
 							class="[][ inline-block ][]"
 							href="/install"
 						>
-							<img
-								src="/images/icon-shortcut.png"
-								alt="Orange iOS Shortcut icon"
-								class="[ center ][][ app-icon ]"
-								width="128"
-								height="128"
-							>
+							<picture>
+								<source
+									srcset="/images/icon-shortcut.avif"
+									type="image/avif"
+								/>
+								<source
+									srcset="/images/icon-shortcut.webp"
+									type="image/webp"
+								/>
+								<img
+									src="/images/icon-shortcut.png"
+									alt="Orange iOS Shortcut icon"
+									class="[ center ][][ app-icon ]"
+									width="128"
+									height="128"
+								>
+							</picture>
 						</a>
 					</p>
 
