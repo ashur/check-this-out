@@ -1,3 +1,48 @@
+const FrameWrangler = require( "../../utils/frame-wrangler" );
+
+let frameWrangler = new FrameWrangler({
+	screens: {
+		top: {
+			background: "screen-gideon-2",
+			opacity: 0,
+		},
+		bottom: {
+			background: "screen-gideon-1",
+			opacity: 1,
+		},
+
+		pointer: {
+			x: -0.04,
+			y: 0.395
+		}
+	},
+	duration: 1000
+});
+
+frameWrangler.tapDown( 750 );
+frameWrangler.movePointer( 0.4, null, 600 );
+frameWrangler.showTopScreen();
+frameWrangler.tapUp();
+frameWrangler.setBottomScreenBackground( "screen-gideon-3" );
+frameWrangler.hideTopScreen();
+frameWrangler.movePointer( null, 0.335, 875 );
+frameWrangler.tap();
+frameWrangler.setTopScreenBackground( "screen-gideon-4" );
+frameWrangler.showTopScreen();
+frameWrangler.movePointer( 0.13, 0.74, 1500 );
+frameWrangler.tap();
+frameWrangler.setBottomScreenBackground( "screen-gideon-5" );
+frameWrangler.hideTopScreen();
+frameWrangler.movePointer( 0.425, 0.582, 1500 );
+frameWrangler.setTopScreenBackground( "screen-gideon-6" );
+frameWrangler.tap();
+frameWrangler.showTopScreen();
+frameWrangler.pause( 1000 );
+frameWrangler.movePointer( -0.0075, 0.0075, 1500 );
+frameWrangler.tap();
+frameWrangler.setBottomScreenBackground( "screen-gideon-1" );
+frameWrangler.hideTopScreen();
+
 module.exports = {
 	id: "Phone-Demo",
 	aspectRatio: 1.8,
@@ -9,253 +54,5 @@ module.exports = {
 	pointer: true,
 	printedEffect: true,
 
-	frames: [
-		{
-			// "Gideon the Ninth featured on NPR’s Book Concierge",
-			screens: {
-				top: {
-					background: "screen-gideon-2",
-					opacity: "0"
-				},
-				bottom: {
-					background: "screen-gideon-1",
-					opacity: "1"
-				},
-
-				pointer: {
-					x: -0.04,
-					y: 0.395
-				}
-			},
-			duration: 1000
-		},
-		{
-			// "Pointer tap down",
-			screens: {
-				pointer: {
-					tapDown: true
-				}
-			},
-			duration: 750
-		},
-		{
-			// "Swipe pointer to select text",
-			screens: {
-				pointer: {
-					x: 0.4
-				}
-			},
-			duration: 250
-		},
-		{
-			// "Book Concierge page with book title selected",
-			screens: {
-				top: {
-					opacity: 1
-				},
-			}
-		},
-		{
-			// "Book Concierge page with book title selected",
-			screens: {
-				pointer: {
-					tapDown: false
-				}
-			}
-		},
-		{
-			// "Swap bottom image behind top image",
-			screens: {
-				bottom: {
-					background: "screen-gideon-3"
-				}
-			},
-			duration: 50
-		},
-		{
-			// "Book title selected and iOS text selection menu visible",
-			screens: {
-				top: {
-					opacity: 0
-				}
-			}
-		},
-		{
-			// "Move pointer to Share menu button",
-			screens: {
-				pointer: {
-					y: 0.335
-				}
-			},
-			duration: 1000
-		},
-		{
-			// "Tap down",
-			screens: {
-				pointer: {
-					tapDown: true
-				}
-			},
-			duration: 200
-		},
-		{
-			// "Tap up",
-			screens: {
-				pointer: {
-					tapDown: false
-				}
-			}
-		},
-		{
-			// "Swap top image while layer is hidden",
-			screens: {
-				top: {
-					background: "screen-gideon-4"
-				}
-			}
-		},
-		{
-			// "iOS share sheet is visible showing Check This Out shortcut",
-			screens: {
-				top: {
-					opacity: 1
-				}
-			}
-		},
-		{
-			// "Move pointer to Check This Out share sheet menu item",
-			screens: {
-				pointer: {
-					x: 0.13,
-					y: 0.74
-				}
-			},
-			duration: 1500
-		},
-		{
-			// "Tap down",
-			screens: {
-				pointer: {
-					tapDown: true
-				}
-			},
-			duration: 200
-		},
-		{
-			// "Tap up",
-			screens: {
-				pointer: {
-					tapDown: false
-				}
-			}
-		},
-		{
-			screens: {
-				bottom: {
-					background: "screen-gideon-5"
-				}
-			}
-		},
-		{
-			screens: {
-				top: {
-					opacity: 0
-				}
-			},
-			duration: 500,
-		},
-		{
-			// "Move pointer to Read Sample menu item",
-			screens: {
-				pointer: {
-					x: 0.425,
-					y: 0.582
-				}
-			},
-			duration: 1500,
-		},
-
-		{
-			// "Tap down",
-			screens: {
-				pointer: {
-					tapDown: true
-				}
-			},
-			duration: 200,
-		},
-		{
-			// "Tap up",
-			screens: {
-				pointer: {
-					tapDown: false
-				}
-			},
-			duration: 200,
-		},
-
-		{
-			// "Swap top image while layer is hidden",
-			screens: {
-				top: {
-					background: "screen-gideon-6"
-				}
-			},
-		},
-		{
-			screens: {
-				top: {
-					opacity: 1
-				}
-			},
-			duration: 1000,
-		},
-		{
-			// "Move pointer to Safari in system status bar",
-			screens: {
-				pointer: {
-					x: -0.0075,
-					y:  0.0075,
-				}
-			},
-			duration: 1500,
-		},
-		{
-			// "Tap down",
-			screens: {
-				pointer: {
-					tapDown: true
-				}
-			},
-			duration: 200,
-		},
-		{
-			// "Tap up",
-			screens: {
-				pointer: {
-					tapDown: false
-				}
-			},
-			duration: 200,
-		},
-
-		{
-			screens: {
-				bottom: {
-					background: "screen-gideon-1"
-				}
-			}
-		},
-		{
-			screens: {
-				top: {
-					opacity: 0
-				},
-				pointer: {
-					x: -0.04,
-					y: 0.40,
-				},
-			}
-		},
-	],
+	frames: frameWrangler.frames,
 }

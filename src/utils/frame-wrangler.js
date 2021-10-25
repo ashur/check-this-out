@@ -7,12 +7,19 @@ class FrameWrangler
 
 	movePointer( x, y, duration )
 	{
+		let pointer = {};
+		if( x )
+		{
+			pointer.x = x;
+		}
+		if( y )
+		{
+			pointer.y = y;
+		}
+
 		this.frames.push({
 			screens: {
-				pointer: {
-					x: x,
-					y: y,
-				}
+				pointer: pointer,
 			},
 
 			duration: duration,
@@ -46,6 +53,7 @@ class FrameWrangler
 					background: background,
 				},
 			},
+			duration: 50,
 		});
 	}
 
@@ -57,6 +65,7 @@ class FrameWrangler
 					background: background,
 				},
 			},
+			duration: 50,
 		});
 	}
 
@@ -86,9 +95,33 @@ class FrameWrangler
 			screens: {
 				pointer: {
 					tapDown: false,
-				}
+				},
 			},
 			duration: 200,
+		});
+	}
+
+	tapDown( duration )
+	{
+		this.frames.push({
+			screens: {
+				pointer: {
+					tapDown: true,
+				},
+			},
+			duration: duration || 0,
+		});
+	}
+
+	tapUp( duration )
+	{
+		this.frames.push({
+			screens: {
+				pointer: {
+					tapDown: false,
+				},
+			},
+			duration: duration || 0,
 		});
 	}
 }
