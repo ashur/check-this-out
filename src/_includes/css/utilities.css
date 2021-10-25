@@ -56,6 +56,10 @@
 	text-align: center;
 }
 
+.title-spacing {
+	letter-spacing: -0.0875em;
+}
+
 .uppercase {
 	text-transform: uppercase;
 }
