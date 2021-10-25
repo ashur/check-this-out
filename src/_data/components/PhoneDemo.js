@@ -3,9 +3,9 @@ module.exports = {
 	aspectRatio: 1.8,
 	caption: "Select the title or author, choose <b>Check This Out</b>, and jump straight to a search in Libby",
 
-	autoplay: true,
+	autoplay: false,
 	fade: true,
-	loop: true,
+	loop: false,
 	pointer: true,
 	printedEffect: true,
 
