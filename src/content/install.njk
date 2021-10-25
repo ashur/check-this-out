@@ -1,0 +1,127 @@
+---
+title: Get Started
+layout: layouts/page.njk
+page:
+  theme: theme-black
+---
+{%- from "plugins/css/component.njk" import component with context -%}
+
+<article class="[][ showcase ][ page-sections ]">
+	<div
+		class="[][ theme-cream-light ][ page-contents paper ]"
+		style="height: 100vh; display: grid;"
+	>
+		<nav
+			class="[][ font-heading text-center title-spacing uppercase ][]"
+			style="margin-top: var( --size-4 );"
+		>
+			<a class="[][ no-underline ][]" href="/">Check This Out</a>
+		</nav>
+
+		<aside
+			class="[][ font-xs text-center ][]"
+			style="margin-bottom: var( --size-4 ); align-self: end;"
+		>LXIX</aside>
+	</div>
+
+	<div
+		class="[][ theme-cream-light ][ page-contents paper ]"
+	>
+		{# <nav
+			class="[][ font-heading text-center uppercase ][]"
+			style="margin-top: var( --size-3 ); letter-spacing: -0.0875em;"
+		>
+			<a class="[][ no-underline ][]" href="/">Check This Out</a>
+		</nav> #}
+
+		<div
+			class="[ stack-xl ][ text-center ][ page-section ]"
+		>
+			<header
+				class="[][][]"
+			>
+				<section class="[ center stack-lg ][ measure ][]">
+					<div class="[ stack-sm ][][]">
+						<h1 class="[][][ page-section-heading ]">{{ title }}</h1>
+						<p>Quick and easy, you’ll be up and running in just a few minutes.</p>
+					</div>
+				</section>
+			</header>
+
+			<main
+				class="[ stack-xl ][][]"
+			>
+				<section
+					class="[ stack-lg ][][]"
+				>
+					{# <header
+						class="[ center stack-sm ][ measure ][]"
+					>
+						<h2 class="[][ font-heading ][]">Library details</h2>
+						<p>Before installing {{ site.title }}, we need a bit of information about your public library from Libby</p>
+					</header> #}
+
+					{% call component( "Step",
+						{
+							title: "Library details",
+							step: 1,
+							subtitle: '<a target="_blank" href="https://libbyapp.com/search/libraries">Search for your library</a> on Libby’s website'
+						}
+					) %}
+						<div class="[ stack ][][]">
+							<a target="_blank" href="https://libbyapp.com/search/libraries">
+								{{ component( "Phone", components.Install.Step1 ) }}
+							</a>
+						</div>
+					{% endcall %}
+
+
+					{% call component( "Step",
+						{
+							step: 2,
+							subtitle: "Tap your library in the search results, then copy the URL"
+						}
+					) %}
+						{{ component( "Phone", components.Install.Step2 ) }}
+					{% endcall %}
+
+
+					{% call component( "Step",
+						{
+							step: 3,
+							subtitle: "Paste the URL below"
+						}
+					) %}
+						<picture>
+							<source
+								srcset="/images/icon-shortcut.avif"
+								type="image/avif"
+							/>
+							<source
+								srcset="/images/icon-shortcut.webp"
+								type="image/webp"
+							/>
+							<img
+								src="/images/icon-shortcut.png"
+								alt="Orange iOS Shortcut icon"
+								class="[ center ][][ app-icon ]"
+								width="128"
+								height="128"
+							>
+						</picture>
+					{% endcall %}
+
+
+					{% call component( "Step",
+						{
+							step: 4,
+							subtitle: "There are so many places to find something new to read — best-of lists, links from the group chat, virtual book clubs, you name it."
+						}
+					) %}
+						{{ component( "Phone", components.PhoneMessages ) }}
+					{% endcall %}
+				</section>
+			</main>
+		</div>
+	</div>
+</article>
