@@ -27,12 +27,12 @@ page:
 	<div
 		class="[][ theme-cream-light ][ page-contents paper ]"
 	>
-		{# <nav
+		<nav
 			class="[][ font-heading text-center uppercase ][]"
 			style="margin-top: var( --size-3 ); letter-spacing: -0.0875em;"
 		>
 			<a class="[][ no-underline ][]" href="/">Check This Out</a>
-		</nav> #}
+		</nav>
 
 		<div
 			class="[ stack-xl ][ text-center ][ page-section ]"
@@ -54,13 +54,6 @@ page:
 				<section
 					class="[ stack-lg ][][]"
 				>
-					{# <header
-						class="[ center stack-sm ][ measure ][]"
-					>
-						<h2 class="[][ font-heading ][]">Library details</h2>
-						<p>Before installing {{ site.title }}, we need a bit of information about your public library from Libby</p>
-					</header> #}
-
 					{% call component( "Step",
 						{
 							title: "Library details",
@@ -92,33 +85,6 @@ page:
 							subtitle: "Paste the URL below"
 						}
 					) %}
-						<picture>
-							<source
-								srcset="/images/icon-shortcut.avif"
-								type="image/avif"
-							/>
-							<source
-								srcset="/images/icon-shortcut.webp"
-								type="image/webp"
-							/>
-							<img
-								src="/images/icon-shortcut.png"
-								alt="Orange iOS Shortcut icon"
-								class="[ center ][][ app-icon ]"
-								width="128"
-								height="128"
-							>
-						</picture>
-					{% endcall %}
-
-
-					{% call component( "Step",
-						{
-							step: 4,
-							subtitle: "There are so many places to find something new to read — best-of lists, links from the group chat, virtual book clubs, you name it."
-						}
-					) %}
-						{{ component( "Phone", components.PhoneMessages ) }}
 					{% endcall %}
 				</section>
 			</main>
