@@ -1,6 +1,5 @@
 {#
  # @prop {string} [aspectRatio] - ex., "1.75"
- # @prop {boolean} [autoplay]
  # @prop {string} [caption]
  # @prop {boolean} [fade]
  # @prop {Object[]} frames - Array of frame definitions
@@ -13,7 +12,6 @@
 <figure
 	x-data="PhoneApp({
 		id: '{{ props.id }}',
-		autoplay: {{ props.autoplay === true }},
 		frames: {{ props.frames | dump | safe | replace( '"', "'" ) }},
 		pointer: {{ props.pointer === true }},
 		debug: {{ props.debug === true }},
@@ -356,7 +354,7 @@
 
 {% set criticalScript %}
 <script>
-	let PhoneApp = ({id, autoplay, frames=[], pointer} = {}) =>
+	let PhoneApp = ({id, frames=[], pointer} = {}) =>
 	{
 		let timeouts = [];
 		let transitions = {};
@@ -367,12 +365,12 @@
 				return this.frames[this.frameIndex];
 			},
 
-			autoplay: autoplay,
+			autoplay: false,
 			frameIndex: 0,
 			frames: frames,
 			pointer: pointer,
 
-			showControls: autoplay === false,
+			showControls: true,
 			showPointer: true,
 
 			status: "stopped",

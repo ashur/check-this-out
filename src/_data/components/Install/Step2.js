@@ -53,7 +53,6 @@ module.exports = {
 	aspectRatio: 1.125,
 	caption: "Library search screen in Libby",
 
-	autoplay: true,
 	fade: true,
 	hideCaption: true,
 	loop: false,
