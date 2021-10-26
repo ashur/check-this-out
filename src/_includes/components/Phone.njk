@@ -5,7 +5,6 @@
  # @prop {boolean} [fade]
  # @prop {Object[]} frames - Array of frame definitions
  # @prop {string} id
- # @prop {boolean} [loop]
  # @prop {boolean} [pointer]
  # @prop {boolean} [printedEffect]
  # @callable false
@@ -16,9 +15,11 @@
 		id: '{{ props.id }}',
 		autoplay: {{ props.autoplay === true }},
 		frames: {{ props.frames | dump | safe | replace( '"', "'" ) }},
-		loop: {{ props.loop === true }},
+		pointer: {{ props.pointer === true }},
+		debug: {{ props.debug === true }},
 	})"
-	x-init="$watch( 'frameIndex', () => framestart() )"
+	x-init="$watch( 'frameIndex', () => framestart( 'x-init=$watch' ) )"
+	x-bind:data-status="status"
 
 	id="{{ props.id }}"
 	class="[ center stack-sm ][ --measure ][ Phone {{ 'Phone--printed' if props.printedEffect else '' }} ]"
@@ -38,7 +39,6 @@
 
 				aria-hidden="true"
 				class="[][][ Phone-screen Phone-screen-bottom ]"
-				data-framerun="true"
 			>
 				<source
 					x-bind:srcset="screens.bottom.background ? '/images/' + screens.bottom.background + '.avif' : ''"
@@ -63,7 +63,6 @@
 
 				aria-hidden="true"
 				class="[][][ Phone-screen Phone-screen-top ]"
-				data-framerun="true"
 			>
 				<source
 					x-bind:srcset="screens.top.background ? '/images/' + screens.top.background + '.avif' : ''"
@@ -88,11 +87,22 @@
 		{% set initialPosition = props.frames[0].screens.pointer %}
 		<div
 			x-bind:style="pointer.style"
+			x-on:transitionend="frametransitionend"
 
 			class="[][][ Phone-pointer ]"
 			style="--screen-pointer-x: {{ initialPosition.x }}; --screen-pointer-y: {{ initialPosition.y }};"
 		></div>
 		{% endif %}
+
+		<button
+			@click="play"
+
+			x-cloak
+			x-show="frames.length > 1 && showControls"
+			x-transition.duration.375ms
+
+			class="[][][ Phone-play-button ]"
+		><span class="[][ visually-hidden ][]">Play</span></button>
 	</div>
 
 	{% if props.caption %}
@@ -181,6 +191,7 @@
 	.Phone-pointer {
 		--screen-pointer-x-min: 0.055;
 		--screen-pointer-y-min: 0.0275;
+		--screen-pointer-opacity: 0;
 
 		--size: 15; /* A percentage of the device width */
 		--size-coefficient: calc( 100 / var( --size ) );
@@ -234,18 +245,24 @@
 			transform: scale( var( --screen-pointer-scale, 1 ) );
 			opacity: var( --screen-pointer-opacity, 0.5 );
 
-			transition: transform 0.15s ease, opacity 0.15s ease;
+			transition: transform 0.50s ease, opacity 0.20s ease;
+		}
+
+		.Phone[data-status="playing"] .Phone-pointer {
+			--screen-pointer-opacity: 0.5;
 		}
 
 	/* Both Screens */
 	.Phone-screen {
+		--grayscale: 1;
+
 		display: block;
 		position: absolute;
 		top: 0; right: 0; bottom: 0; left: 0;
 
-		filter: grayscale( 1 ) contrast( 1.125 );
+		filter: grayscale( var( --grayscale ) );
 
-		transition-property: opacity;
+		transition-property: opacity, filter;
 		transition-timing-function: ease;
 
 		/*
@@ -253,14 +270,60 @@
 		 * but default to no animation
 		 */
 		transition-duration: 0s;
-		transition-delay: 0.75s;
+		transition-delay: 0.75s, 2s;
 	}
+		/* Switch to muted color during playback */
+		[data-status="playing"] .Phone-screen {
+			--grayscale: 0.5;
+		}
 
 	.Phone-screen-top {
 		opacity: var( --screen-top-opacity );
 	}
 	.Phone-screen-bottom {
 		opacity: var( --screen-bottom-opacity );
+	}
+
+	/* Play button */
+	.Phone-play-button {
+		--size: var( --size-3 );
+		--inset: var( --size-1 );
+
+		position: absolute;
+		bottom: var( --inset ); right: var( --inset );
+		z-index: 11;
+
+		border: none;
+		border-radius: var( --size--1 );
+
+		background-color: var( --color-teal );
+		background-image: url(/images/icon-play.svg);
+		background-repeat: no-repeat;
+		background-size: 33%;
+		background-position: 53% center;
+
+		cursor: pointer;
+		height: var( --size );
+		width: var( --size );
+
+		box-shadow:
+			0 1px 1px var( --theme-shadow-color ),
+			0 2px 2px var( --theme-shadow-color ),
+			0 4px 4px var( --theme-shadow-color )
+		;
+	}
+
+	/* Debug */
+	.Phone-debug {
+		position: absolute;
+		top: 0; right: 0;
+		z-index: 11;
+
+		background-color: var( --color-black );
+		color: var( --color-cream-light );
+		text-align: left;
+		padding: var( --size--1 );
+		width: 40%;
 	}
 
 	.Phone figcaption {
@@ -278,7 +341,7 @@
 			transition-delay: 0s;
 		}
 		.Phone-screen {
-			transition-duration: 0.75s;
+			transition-duration: 0.75s, 1.345s;
 			transition-delay: 0s;
 		}
 	}
@@ -294,8 +357,11 @@
 
 {% set criticalScript %}
 <script>
-	let PhoneApp = ({id, autoplay, frames=[], loop} = {}) =>
+	let PhoneApp = ({id, autoplay, frames=[], pointer} = {}) =>
 	{
+		let timeouts = [];
+		let transitions = {};
+
 		return {
 			get currentFrame()
 			{
@@ -305,7 +371,13 @@
 			autoplay: autoplay,
 			frameIndex: 0,
 			frames: frames,
-			loop: loop,
+			pointer: pointer,
+
+			showControls: autoplay === false,
+			showPointer: true,
+
+			status: "stopped",
+			ignoreTransitions: true,
 
 			screens: {
 				top: {},
@@ -345,45 +417,15 @@
 
 			init()
 			{
-				this.framestart();
+				// First frame setup
+				this.framestart( "init" );
 			},
 
-			frameend()
+			framestart( caller )
 			{
-				if( this.autoplay )
-				{
-					if( this.frameIndex >= this.frames.length - 1 )
-					{
-						if( this.loop )
-						{
-							this.frameIndex = 0;
-						}
-					}
-					else
-					{
-						this.frameIndex++;
-					}
-				}
-			},
+				console.log( caller );
+				console.log( "→ framestart", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled" );
 
-			framerun()
-			{
-				if( this.currentFrame.duration )
-				{
-					setTimeout( () =>
-					{
-						this.frameend();
-
-					}, this.currentFrame.duration );
-				}
-				else
-				{
-					this.frameend();
-				}
-			},
-
-			framestart()
-			{
 				this.screens.top = Object.assign(
 					this.screens.top,
 					this.currentFrame.screens.top || {}
@@ -397,25 +439,142 @@
 					this.currentFrame.screens.pointer || {}
 				);
 
-				let willTransition = true;
-				willTransition = willTransition && this.frameIndex > 0;
-				willTransition = willTransition && this.currentFrame.screens.top;
-				willTransition = willTransition && this.currentFrame.screens.top.opacity !== undefined;
-
-				// If the top screen isn't transitioning this frame, move along
-				if( !willTransition )
+				// If a frame does not have a duration defined, it is assumed it
+				// will cause a CSS transition which will in turn call framerun()
+				if( this.currentFrame.duration )
 				{
-					this.framerun( this.currentFrame.id );
+					console.log( "   → this.framerun()" );
+					this.framerun();
+				}
+			},
+
+			framerun()
+			{
+				console.log( "framerun", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled" );
+
+				if( this.currentFrame.duration )
+				{
+					let frameIndex = this.frameIndex;
+					let frameDuration = this.currentFrame.duration;
+
+					console.log( "→ setTimeout", frameDuration, `(#${frameIndex})` );
+					let timeout = setTimeout( () =>
+					{
+						console.log( "   → timeout!", frameDuration, `(#${frameIndex})` );
+						this.frameend();
+
+					}, this.currentFrame.duration );
+
+					timeouts.push( timeout );
+				}
+				else
+				{
+					this.frameend();
 				}
 			},
 
 			frametransitionend( event )
 			{
-				// Don't transition after setting values for the initial frame
-				if( this.frameIndex > 0 && event.target.dataset.framerun )
+				if( this.ignoreTransitions )
 				{
+					// Don't handle transitions outside of playback
+					return;
+				}
+
+				if( this.currentFrame.duration )
+				{
+					// Prefer duration over transitions the frame might trigger
+					return;
+				}
+
+				if( transitions[this.frameIndex] !== undefined )
+				{
+					// Don't sweat multiple transitions on the same frame.
+					//
+					// This is a little awkward since there might be additional
+					// transitions later, but it's close enough and better than
+					// trying to juggle an unknown number of transitions
+					return;
+				}
+
+				console.log( "frametransitionend", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled" );
+				console.log( "→", event.target, event.propertyName );
+				console.log( event );
+
+				transitions[this.frameIndex] = true;
+
+				if( event.target.attributes.getNamedItem("x-on:transitionend") )
+				{
+					console.log( "→ framerun()" );
 					this.framerun();
 				}
+				else
+				{
+					console.log( "→ no framerun()" );
+				}
+			},
+
+			frameend()
+			{
+				// console.log( "frameend", `(#${this.frameIndex})` );
+
+				if( this.autoplay )
+				{
+					if( this.frameIndex >= this.frames.length - 1 )
+					{
+						this.stop();
+					}
+					else
+					{
+						this.showControls = false;
+						this.frameIndex++;
+					}
+				}
+			},
+
+			play()
+			{
+				this.ignoreTransitions = false;
+				this.showControls = false;
+
+				setTimeout( () =>
+				{
+					this.status = "playing";
+					this.autoplay = true;
+					this.showPointer = this.pointer;
+
+					if( this.frameIndex >= this.frames.length - 1 )
+					{
+						this.frameIndex = 0;
+					}
+					else
+					{
+						this.frameIndex++;
+					}
+
+					// Don't call framestart() directly, it will be handled by
+					// x-init="$watch(...)" automatically
+
+				}, 750 );
+			},
+
+			stop()
+			{
+				console.log( "stop", `(#${this.frameIndex})` );
+
+				this.status = "stopped";
+				this.autoplay = false;
+				this.showPointer = false;
+
+				timeouts.forEach( timeout => clearTimeout( timeout ) );
+				transitions = {};
+
+				// Reset to first frame
+				this.ignoreTransitions = true;
+				this.frameIndex = 0;
+
+				// Don't show controls until reset is complete
+				setTimeout( () => this.showControls = true, 250 );
 			},
 		}
 	}

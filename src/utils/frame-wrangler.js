@@ -5,6 +5,18 @@ class FrameWrangler
 		this.frames = [ initialFrame ];
 	}
 
+	hideTopScreen()
+	{
+		this.frames.push({
+			name: "hideTopScreen",
+			screens: {
+				top: {
+					opacity: 0,
+				},
+			},
+		});
+	}
+
 	movePointer( x, y, duration )
 	{
 		let pointer = {};
@@ -17,29 +29,25 @@ class FrameWrangler
 			pointer.y = y;
 		}
 
-		this.frames.push({
+		let frame = {
+			name: `movePointer( ${x}, ${y}, ${duration} )`,
 			screens: {
 				pointer: pointer,
-			},
+			}
+		};
 
-			duration: duration,
-		});
-	}
+		if( duration )
+		{
+			frame.duration = duration;
+		}
 
-	hideTopScreen()
-	{
-		this.frames.push({
-			screens: {
-				top: {
-					opacity: 0,
-				},
-			},
-		});
+		this.frames.push( frame );
 	}
 
 	pause( duration )
 	{
 		this.frames.push({
+			name: `pause( ${duration} )`,
 			screens: {},
 			duration: duration,
 		});
@@ -48,6 +56,7 @@ class FrameWrangler
 	setBottomScreenBackground( background )
 	{
 		this.frames.push({
+			name: `setBottomScreenBackground( ${background} )`,
 			screens: {
 				bottom: {
 					background: background,
@@ -60,6 +69,7 @@ class FrameWrangler
 	setTopScreenBackground( background )
 	{
 		this.frames.push({
+			name: `setTopScreenBackground( ${background} )`,
 			screens: {
 				top: {
 					background: background,
@@ -72,6 +82,7 @@ class FrameWrangler
 	showTopScreen()
 	{
 		this.frames.push({
+			name: `showTopScreen()`,
 			screens: {
 				top: {
 					opacity: 1,
@@ -82,28 +93,14 @@ class FrameWrangler
 
 	tap()
 	{
-		this.frames.push({
-			screens: {
-				pointer: {
-					tapDown: true,
-				}
-			},
-			duration: 200,
-		});
-
-		this.frames.push({
-			screens: {
-				pointer: {
-					tapDown: false,
-				},
-			},
-			duration: 200,
-		});
+		this.tapDown( 250 );
+		this.tapUp( 250 );
 	}
 
 	tapDown( duration )
 	{
 		this.frames.push({
+			name: `tapDown( ${duration} )`,
 			screens: {
 				pointer: {
 					tapDown: true,
@@ -116,6 +113,7 @@ class FrameWrangler
 	tapUp( duration )
 	{
 		this.frames.push({
+			name: `tapUp( ${duration} )`,
 			screens: {
 				pointer: {
 					tapDown: false,
