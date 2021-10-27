@@ -19,32 +19,26 @@ let frameWrangler = new FrameWrangler({
 });
 
 frameWrangler.pause( 1000 );
-frameWrangler.movePointer( 0.3, 0.6, 1250 );
+frameWrangler.movePointer( 0.3, 0.6, 1000 );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
-frameWrangler.pause( 1000 );
-frameWrangler.movePointer( 0.4, 0.1, 1250 );
+frameWrangler.pause( 500 );
+frameWrangler.movePointer( 0.4, 0.1, 1000 );
 
 frameWrangler.setBottomScreenBackground( "install/step-02-03" );
-frameWrangler.pause( 250 );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
-frameWrangler.pause( 400 );
 frameWrangler.setTopScreenBackground( "install/step-02-04" );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
 
-frameWrangler.pause( 250 );
 frameWrangler.movePointer( 0.3, 0.175, 1000 );
-frameWrangler.pause( 250 );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
-frameWrangler.pause( 400 );
 frameWrangler.setTopScreenBackground( "install/step-02-02" );
 frameWrangler.movePointer( 0.72, 0.09, 1000 );
-frameWrangler.pause( 250 );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
 
