@@ -34,6 +34,7 @@
 		>
 			<picture
 				x-on:transitionend="frametransitionend"
+				data-transition-source="screen"
 
 				aria-hidden="true"
 				class="[][][ Phone-screen Phone-screen-bottom ]"
@@ -52,12 +53,15 @@
 				/>
 				<img
 					x-bind:src="screens.bottom.background ? '/images/' + screens.bottom.background + '.jpg' : ''"
+					x-on:load="frameimageload"
+
 					alt="{{ props.caption }}"
 				/>
 			</picture>
 
 			<picture
 				x-on:transitionend="frametransitionend"
+				data-transition-source="screen"
 
 				aria-hidden="true"
 				class="[][][ Phone-screen Phone-screen-top ]"
@@ -76,6 +80,8 @@
 				/>
 				<img
 					x-bind:src="screens.top.background ? '/images/' + screens.top.background + '.jpg' : ''"
+					x-on:load="frameimageload"
+
 					alt="{{ props.caption }}"
 				/>
 			</picture>
@@ -86,6 +92,7 @@
 		<div
 			x-bind:style="pointer.style"
 			x-on:transitionend="frametransitionend"
+			data-transition-source="pointer"
 
 			class="[][][ Phone-pointer ]"
 			style="--screen-pointer-x: {{ initialPosition.x }}; --screen-pointer-y: {{ initialPosition.y }};"
@@ -421,7 +428,7 @@
 			framestart( caller )
 			{
 				console.log( caller );
-				console.log( "→ framestart", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled" );
+				console.log( "→ framestart", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
 
 				this.screens.top = Object.assign(
 					this.screens.top,
@@ -438,7 +445,7 @@
 
 				// If a frame does not have a duration defined, it is assumed it
 				// will cause a CSS transition which will in turn call framerun()
-				if( this.currentFrame.duration )
+				if( this.currentFrame.duration !== undefined )
 				{
 					console.log( "   → this.framerun()" );
 					this.framerun();
@@ -447,7 +454,7 @@
 
 			framerun()
 			{
-				console.log( "framerun", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled" );
+				console.log( "framerun", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
 
 				if( this.currentFrame.duration )
 				{
@@ -468,6 +475,20 @@
 				{
 					this.frameend();
 				}
+			},
+
+			frameimageload( event )
+			{
+				if( this.currentFrame.duration )
+				{
+					// Prefer duration over image load
+					return;
+				}
+
+				console.log( "frameimageload", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
+				console.log( "→", event.target.src );
+
+				this.framerun();
 			},
 
 			frametransitionend( event )
@@ -494,8 +515,19 @@
 					return;
 				}
 
-				console.log( "frametransitionend", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled" );
-				console.log( "→", event.target, event.propertyName );
+				if( this.currentFrame.transitionOn )
+				{
+					if( this.currentFrame.transitionOn !== event.target.dataset.transitionSource )
+					{
+						// If we're waiting for a specific element to transition
+						// and this isn't it, hang tight...
+						return;
+					}
+				}
+
+				console.log( "frametransitionend", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
+
+				console.log( "→", event.target.dataset.transitionSource, event.propertyName );
 				console.log( event );
 
 				transitions[this.frameIndex] = true;
@@ -513,7 +545,7 @@
 
 			frameend()
 			{
-				// console.log( "frameend", `(#${this.frameIndex})` );
+				console.log( "frameend", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
 
 				if( this.autoplay )
 				{
