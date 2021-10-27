@@ -7,19 +7,40 @@ class FrameWrangler
 
 	hideTopScreen()
 	{
+		this.showBottomScreen();
+
 		this.frames.push({
-			name: "hideTopScreen",
+			name: "hideTopScreen()",
 			screens: {
 				top: {
 					opacity: 0,
 				},
 			},
+
+			transitionOn: "screen",
+		});
+	}
+
+	hideBottomScreen()
+	{
+		this.frames.push({
+			name: "hideBottomScreen()",
+			screens: {
+				bottom: {
+					opacity: 0,
+				},
+			},
+
+			duration: 0,
 		});
 	}
 
 	movePointer( x, y, duration )
 	{
-		let pointer = {};
+		let pointer = {
+			transitionOn: "pointer"
+		};
+
 		if( x )
 		{
 			pointer.x = x;
@@ -56,18 +77,39 @@ class FrameWrangler
 	setBottomScreenBackground( background )
 	{
 		this.frames.push({
+			name: `setBottomScreenBackground()`,
+			screens: {
+				bottom: {
+					background: "",
+				},
+			},
+
+			duration: 0,
+		});
+
+		this.frames.push({
 			name: `setBottomScreenBackground( ${background} )`,
 			screens: {
 				bottom: {
 					background: background,
 				},
 			},
-			duration: 50,
 		});
 	}
 
 	setTopScreenBackground( background )
 	{
+		this.frames.push({
+			name: `setTopScreenBackground()`,
+			screens: {
+				top: {
+					background: "",
+				},
+			},
+
+			duration: 0,
+		});
+
 		this.frames.push({
 			name: `setTopScreenBackground( ${background} )`,
 			screens: {
@@ -75,7 +117,20 @@ class FrameWrangler
 					background: background,
 				},
 			},
-			duration: 50,
+		});
+	}
+
+	showBottomScreen()
+	{
+		this.frames.push({
+			name: `showBottomScreen()`,
+			screens: {
+				bottom: {
+					opacity: 1,
+				},
+			},
+
+			duration: 0,
 		});
 	}
 
@@ -88,7 +143,11 @@ class FrameWrangler
 					opacity: 1,
 				},
 			},
+
+			transitionOn: "screen",
 		});
+
+		this.hideBottomScreen();
 	}
 
 	tap()
