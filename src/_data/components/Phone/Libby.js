@@ -1,4 +1,4 @@
-const FrameWrangler = require( "../../utils/frame-wrangler" );
+const FrameWrangler = require( "../../../utils/frame-wrangler" );
 
 let frameWrangler = new FrameWrangler({
 	screens: {
