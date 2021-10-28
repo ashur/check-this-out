@@ -20,7 +20,7 @@
 	x-bind:data-status="status"
 
 	id="{{ props.id }}"
-	class="[ center stack-sm ][ --measure ][ Phone {{ 'Phone--printed' if props.printedEffect else '' }} ]"
+	class="[ center stack-sm ][ --measure ][ Phone {{ 'Phone--static' if props.frames.length === 1 }} {{ 'Phone--printed' if props.printedEffect else '' }} ]"
 	style="--aspect-ratio: {{ props.aspectRatio if props.aspectRatio else '1.0' }};"
 	aria-label="{{ props.caption | striptags }}"
 >
@@ -276,8 +276,9 @@
 		transition-duration: 0s;
 		transition-delay: 0.75s, 2s;
 	}
-		/* Switch to muted color during playback */
-		[data-status="playing"] .Phone-screen {
+		/* Switch to muted color during playback or on hover */
+		[data-status="playing"] .Phone-screen,
+		.Phone--static:hover .Phone-screen {
 			--grayscale: 0.5;
 		}
 
