@@ -13,34 +13,39 @@ let frameWrangler = new FrameWrangler({
 
 		pointer: {
 			x: -0.04,
-			y: 0.395
+			y: 0.39
 		}
 	},
-	duration: 1000
 });
 
+frameWrangler.pause( 1000 );
 frameWrangler.tapDown( 750 );
-frameWrangler.movePointer( 0.4, null, 600 );
+frameWrangler.movePointer( 0.4, null, 1000 );
 frameWrangler.showTopScreen();
-frameWrangler.tapUp();
+
 frameWrangler.setBottomScreenBackground( "screen-gideon-3" );
+frameWrangler.tapUp( 250 );
 frameWrangler.hideTopScreen();
-frameWrangler.movePointer( null, 0.335, 875 );
-frameWrangler.tap();
+
 frameWrangler.setTopScreenBackground( "screen-gideon-4" );
+frameWrangler.movePointer( null, 0.33, 1000 );
+frameWrangler.tap( 250 );
 frameWrangler.showTopScreen();
-frameWrangler.movePointer( 0.13, 0.74, 1500 );
-frameWrangler.tap();
+
 frameWrangler.setBottomScreenBackground( "screen-gideon-5" );
+frameWrangler.pause( 500 );
+frameWrangler.movePointer( 0.13, 0.735, 1500 );
+frameWrangler.tap( 250 );
 frameWrangler.hideTopScreen();
+
 frameWrangler.movePointer( 0.425, 0.582, 1500 );
 frameWrangler.setTopScreenBackground( "screen-gideon-6" );
-frameWrangler.tap();
+frameWrangler.tap( 250 );
 frameWrangler.showTopScreen();
+frameWrangler.setBottomScreenBackground( "screen-gideon-1" );
 frameWrangler.pause( 1000 );
 frameWrangler.movePointer( -0.0075, 0.0075, 1500 );
 frameWrangler.tap();
-frameWrangler.setBottomScreenBackground( "screen-gideon-1" );
 frameWrangler.hideTopScreen();
 
 module.exports = {

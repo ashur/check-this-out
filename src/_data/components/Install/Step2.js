@@ -12,12 +12,13 @@ let frameWrangler = new FrameWrangler({
 		},
 
 		pointer: {
-			x: 0.72,
-			y: 0.09,
+			x: 0.7125,
+			y: 0.725,
 		},
 	},
 });
 
+// frameWrangler.pause( 2000 );
 frameWrangler.pause( 1000 );
 frameWrangler.movePointer( 0.3, 0.6, 1000 );
 frameWrangler.tap();
@@ -41,8 +42,6 @@ frameWrangler.setTopScreenBackground( "install/step-02-02" );
 frameWrangler.movePointer( 0.72, 0.09, 1000 );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
-
-frameWrangler.pause( 1000 );
 
 module.exports = {
 	id: "Phone-Install-Step-2",
