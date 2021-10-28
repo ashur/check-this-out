@@ -7,8 +7,6 @@ class FrameWrangler
 
 	hideTopScreen()
 	{
-		this.showBottomScreen();
-
 		this.frames.push({
 			name: "hideTopScreen()",
 			screens: {
@@ -146,8 +144,6 @@ class FrameWrangler
 
 			transitionOn: "screen",
 		});
-
-		this.hideBottomScreen();
 	}
 
 	tap()
