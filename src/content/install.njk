@@ -82,6 +82,53 @@ page:
 						}
 					) %}
 					{% endcall %}
+
+
+					{% call component( "Step",
+						{
+							step: 4,
+							subtitle: 'Open the <a href="App-prefs://prefs:root">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
+						}
+					) %}
+						{{ component( "Phone", components.Phone.Install.Step4 ) }}
+					{% endcall %}
+
+
+
+					{% call component( "Step",
+						{
+							step: 5,
+							subtitle: "Install the iOS Shortcut"
+						}
+					) %}
+						{{ component( "Phone", components.Phone.Install.Step5 ) }}
+
+						<a
+							class="[][ inline-block ][]"
+							href="https://www.icloud.com/shortcuts/0e1a6b2b1d124a8caa8fd1e1745dd882"
+							target="_blank"
+						>
+							<picture>
+								<source
+									srcset="/images/icon-shortcut.avif"
+									type="image/avif"
+								/>
+								<source
+									srcset="/images/icon-shortcut.webp"
+									type="image/webp"
+								/>
+								<img
+									src="/images/icon-shortcut.png"
+									alt="Orange iOS Shortcut icon"
+									class="[ center ][][ app-icon ]"
+									width="128"
+									height="128"
+								>
+							</picture>
+						</a>
+					{% endcall %}
+
+
 				</section>
 			</main>
 		</div>
