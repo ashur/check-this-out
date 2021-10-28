@@ -33,8 +33,8 @@ frameWrangler.tap( 150 );
 frameWrangler.showTopScreen();
 
 frameWrangler.setBottomScreenBackground( "screen-gideon-5" );
-frameWrangler.pause( 500 );
-frameWrangler.movePointer( 0.13, 0.735, 1500 );
+frameWrangler.pause( 250 );
+frameWrangler.movePointer( 0.13, 0.735, 1250 );
 frameWrangler.tap( 150 );
 frameWrangler.hideTopScreen();
 
