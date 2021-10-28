@@ -9,18 +9,11 @@
 >
 	<div class="[ stack-sm ][ text-center ][]">
 		<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
-		<p>{{ props.subtitle | safe }}</p>
+		<p class="[ center ][ measure ][ Step-subtitle ]">{{ props.subtitle | safe }}</p>
 	</div>
 
 	{% if caller %}{{ caller() }}{% endif -%}
 </section>
-{# <section
-	class="[ center stack-lg ][ measure ][]"
-	class="[ stack ][][ Step ]"
->
-	<h2 class="[][ text-center ][]">Step {{ props.step }}</h2>
-	{% if caller %}{{ caller() }}{% endif -%}
-</section> #}
 {% endmacro %}
 
 {% set criticalStyles %}
@@ -29,5 +22,11 @@
 		font-size: var( --size-1 );
 		text-transform: uppercase;
 	}
+	.Step-subtitle {
+		--measure-size: 36ch;
+	}
+		.Step-subtitle strong {
+			white-space: nowrap;
+		}
 </style>
 {% endset %}
