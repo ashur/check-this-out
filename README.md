@@ -1,6 +1,6 @@
 # Check This Out
 
-The website for [checkthisout.xyz].
+The website for [checkthisout.today].
 
 ## Installation
 
@@ -26,3 +26,5 @@ To watch changes to the site contents and run a small local web server, run:
 ```
 npm run serve
 ```
+
+[checkthisout.today]: https://checkthisout.today
