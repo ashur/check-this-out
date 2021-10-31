@@ -1,4 +1,4 @@
-const FrameWrangler = require( "../../../utils/frame-wrangler" );
+const FrameWrangler = require( "../../../../utils/frame-wrangler" );
 
 let frameWrangler = new FrameWrangler({
 	screens: {
@@ -18,7 +18,6 @@ let frameWrangler = new FrameWrangler({
 	},
 });
 
-// frameWrangler.pause( 2000 );
 frameWrangler.pause( 1000 );
 frameWrangler.movePointer( 0.3, 0.6, 1000 );
 frameWrangler.tap();
