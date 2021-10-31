@@ -1,14 +1,19 @@
 .page-article {
-	padding: var( --section-padding-y ) var( --section-padding-x );
+	--page-article-padding-x: var( --section-padding-x );
+	--page-article-padding-y: var( --section-padding-y );
+	--stack-custom-size: var( --stack-lg-size );
+
+	padding: var( --page-article-padding-y ) var( --page-article-padding-x );
+	margin-top: var( --size--3 );
 }
 	@media (min-width: 800px) {
 		.page-article {
+			--stack-custom-size: var( --stack-xl-size );
+
 			padding: var( --size-4 );
-			/* grid-template-columns: 1fr 3fr; */
 			column-gap: var( --size-3 );
 		}
 		.page-article > * {
-			/* border: solid red 1px; */
 		}
 	}
 

@@ -9,6 +9,10 @@
 	margin-right: auto;
 }
 
+.stack-custom > * + * {
+	margin-top: var( --stack-custom-size );
+}
+
 .stack-sm > * + * {
 	margin-top: var( --stack-sm-size );
 }
