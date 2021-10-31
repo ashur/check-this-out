@@ -27,6 +27,14 @@
 	display: inline-block;
 }
 
+.font-features {
+	font-feature-settings: 'ss01';
+}
+
+.font-ligatures {
+	font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+}
+
 .measure {
 	max-width: var( --measure-size );
 }
