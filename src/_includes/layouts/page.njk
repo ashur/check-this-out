@@ -3,16 +3,40 @@ layout: layouts/base.njk
 ---
 {%- from "plugins/css/component.njk" import component with context -%}
 
-{{ content | safe }}
+<div
+	class="[][][ page-layout ]"
+>
+	<header class="[][ theme-black ][ page-header ]">
+		<nav
+			class="[][][]"
+		>
+			<div>
+				<a class="[ inline-block ]" href="/">
+					<span class="[][ visually-hidden ][]">Check This Out</span>
+					<img alt="Check This Out" src="/images/spine-title.svg" class="[][][ spine-title ]" />
+				</a>
+			</div>
+		</nav>
 
-<footer class="[ stack ][ font-sm theme-cream ][ page-footer page-section ]">
-	<p class="[][ measure ][]">This is a work of appreciation; for public libraries, which are a treasure, and for Libby, which puts whole worlds in our pockets.</p>
-	<p class="[][ font-heading title-spacing uppercase ][]">{{ site.title }}</p>
+		<img alt="Taxi logo" src="/icons/spine-logo.svg" class="[][][ spine-logo ]" />
+	</header>
 
-	<aside class="[ stack ][ measure ][]">
-		<p>Designed and built by <a class="[][][]" href="https://ashur.cab/rera">Ashur Cabrera</a><br />Denver, Colorado</p>
-		<p><a class="[][][]" href="{{ site.url }}">{{ site.hostname }}</a></p>
-		<p>First Edition: October 2021</p>
-		<p aria-hidden="true" class="[][][ page-footer-numbers ]">0 9 8 7 6 5 4 3 2 1</p>
-	</aside>
-</footer>
+	<main
+		class="[][][]"
+	>
+		<article class="[ stack-lg ][][ page-article ]">
+			<header class="[][][ page-article-header ]">
+				<h1 class="[ center ][ measure ][ font-features page-section-heading uppercase ]">{{ title }}</h1>
+				{% if subtitle %}<p class="[ center ][ measure ][]">{{ subtitle }}</p>{% endif %}
+			</header>
+
+			<div class="[ center ][][]">
+				{{ content | safe }}
+			</div>
+		</article>
+	</main>
+
+	<div
+		class="[][ theme-yellow ][]"
+	></div>
+</div>

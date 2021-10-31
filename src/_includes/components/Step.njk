@@ -5,19 +5,38 @@
  #}
 {% macro render( props ) %}
 <section
-	class="[ center stack ][ measure ][ Step ]"
+	class="[ center measure stack ][ showcase ][ Step ]"
 >
-	<div class="[ stack-sm ][ text-center ][]">
-		<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
-		<p class="[ center ][ measure ][ Step-subtitle ]">{{ props.subtitle | safe }}</p>
-	</div>
-
 	{% if caller %}{{ caller() }}{% endif -%}
+
+	<header class="[ stack-xs ][][ Step-header ]">
+		<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
+		<p class="[][][ Step-subtitle ]">{{ props.subtitle | safe }}</p>
+	</header>
 </section>
 {% endmacro %}
 
 {% set criticalStyles %}
 <style>
+	.Step {
+		--column-left-width: 3fr;
+		--column-right-width: 2fr;
+
+		column-gap: var( --size-1 );
+
+		--measure-size: 64ch;
+	}
+		.Step:nth-of-type( 2n ) {
+			--column-left-width: 2fr;
+			--column-right-width: 3fr;
+		}
+		.Step:nth-of-type( 2n+2 ) > *:nth-child(1) {
+			order: 1;
+		}
+
+	.Step-header {
+		/* text-align: right; */
+	}
 	.Step-title {
 		font-size: var( --size-1 );
 		text-transform: uppercase;
@@ -25,6 +44,11 @@
 	.Step-subtitle {
 		--measure-size: 36ch;
 	}
+		.Step:nth-of-type( 2n ) .Step-title,
+		.Step:nth-of-type( 2n ) .Step-subtitle {
+			text-align: right;
+		}
+
 		.Step-subtitle strong {
 			white-space: nowrap;
 		}

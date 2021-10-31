@@ -34,16 +34,13 @@
 	;
 }
 
+.page-footer p {
+	font-size: var( --font-size-sm );
+}
+
 .page-footer-links {
 	list-style-type: none;
 	padding-left: 0;
-}
-.page-footer-links li {
-	/* display: inline-block; */
-	/* font-weight: 600; */
-}
-.page-footer-links > * + * {
-	/* margin-left: var( --size-1 ); */
 }
 
 .page-footer-footnote {

@@ -1,0 +1,41 @@
+.page-header {
+	--margin-y: calc( clamp( var( --size-4 ), 10vw, var( --size-6 ) ) / 3 );
+	padding: 0;
+
+	position: relative;
+	display: grid;
+
+	grid-template-rows: 1fr auto;
+	row-gap: var( --size-0 );
+}
+	@media (min-width: 800px) {
+		.page-header {
+			position: sticky;
+			top: 0;
+			height: 100vh;
+		}
+	}
+
+.page-header nav {
+}
+	@media (min-width: 800px) {
+		.page-header nav {
+			display: grid;
+			justify-items: center;
+			background-image: url(/images/bg-spine-stripes.svg);
+			background-repeat: no-repeat;
+			background-position: bottom;
+			background-size: 300%;
+		}
+	}
+
+.page-header .spine-logo {
+	height: var( --size-2 );
+	justify-self: center;
+	margin-bottom: var( --margin-y );
+}
+.page-header .spine-title {
+	justify-self: center;
+	margin-top: var( --margin-y );
+	width: var( --size-1 );
+}

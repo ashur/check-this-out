@@ -1,136 +1,46 @@
 ---
-title: Get Started
+title: Install & Configure
+subtitle: Quick and easy, you’ll be up and running in just a few minutes.
 layout: layouts/page.njk
 page:
-  theme: theme-black
+  theme: theme-cream-light
 ---
 {%- from "plugins/css/component.njk" import component with context -%}
 
-<article class="[][ showcase ][ page-sections ]">
-	<div
-		class="[][ theme-cream-light ][ page-contents paper ]"
-		style="height: 100vh; display: grid;"
-	>
-		<nav
-			class="[][ font-heading text-center title-spacing uppercase ][]"
-			style="margin-top: var( --size-4 );"
-		>
-			<a class="[][ no-underline ][]" href="/">Check This Out</a>
-		</nav>
-
-		<aside
-			class="[][ font-xs text-center ][]"
-			style="margin-bottom: var( --size-4 ); align-self: end;"
-		>LXIX</aside>
-	</div>
-
-	<div
-		class="[][ theme-cream-light ][ page-contents paper ]"
-	>
-		<nav
-			class="[][ font-heading text-center uppercase ][]"
-			style="margin-top: var( --size-3 ); letter-spacing: -0.0875em;"
-		>
-			<a class="[][ no-underline ][]" href="/">Check This Out</a>
-		</nav>
-
-		<div
-			class="[ stack-xl ][ text-center ][ page-section ]"
-		>
-			<header
-				class="[][][]"
-			>
-				<section class="[ center stack-lg ][ measure ][]">
-					<div class="[ stack-sm ][][]">
-						<h1 class="[][][ page-section-heading ]">{{ title }}</h1>
-						<p>Quick and easy, you’ll be up and running in just a few minutes.</p>
-					</div>
-				</section>
-			</header>
-
-			<main
-				class="[ stack-xl ][][]"
-			>
-				<section
-					class="[ stack-lg ][][]"
-				>
-					{% call component( "Step",
-						{
-							title: "Library details",
-							step: 1,
-							subtitle: '<a target="_blank" href="https://libbyapp.com/search/libraries">Search for your library</a> on Libby’s website'
-						}
-					) %}
-						{{ component( "Phone", components.Install.Step1 ) }}
-					{% endcall %}
-
-
-					{% call component( "Step",
-						{
-							step: 2,
-							subtitle: "Tap your library in the search results, then copy the URL"
-						}
-					) %}
-						{{ component( "Phone", components.Install.Step2 ) }}
-					{% endcall %}
-
-
-					{% call component( "Step",
-						{
-							step: 3,
-							subtitle: "Paste the URL below"
-						}
-					) %}
-					{% endcall %}
-
-
-					{% call component( "Step",
-						{
-							step: 4,
-							subtitle: 'Open the <a href="App-prefs://prefs:root">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
-						}
-					) %}
-						{{ component( "Phone", components.Phone.Install.Step4 ) }}
-					{% endcall %}
+<div
+	class="[ center stack-lg ][][]"
+>
+	{% call component( "Step",
+		{
+			title: "Library details",
+			step: 1,
+			subtitle: '<a target="_blank" href="https://libbyapp.com/search/libraries">Search for your library</a> on Libby’s website'
+		}
+	) %}
+		{{ component( "Phone", components.Install.Step1 ) }}
+	{% endcall %}
 
 
 
-					{% call component( "Step",
-						{
-							step: 5,
-							subtitle: "Install the iOS Shortcut"
-						}
-					) %}
-						{{ component( "Phone", components.Phone.Install.Step5 ) }}
-
-						<a
-							class="[][ inline-block ][]"
-							href="https://www.icloud.com/shortcuts/0e1a6b2b1d124a8caa8fd1e1745dd882"
-							target="_blank"
-						>
-							<picture>
-								<source
-									srcset="/images/icon-shortcut.avif"
-									type="image/avif"
-								/>
-								<source
-									srcset="/images/icon-shortcut.webp"
-									type="image/webp"
-								/>
-								<img
-									src="/images/icon-shortcut.png"
-									alt="Orange iOS Shortcut icon"
-									class="[ center ][][ app-icon ]"
-									width="128"
-									height="128"
-								>
-							</picture>
-						</a>
-					{% endcall %}
+	{% call component( "Step",
+		{
+			step: 2,
+			subtitle: "Tap your library in the search results, then copy the URL"
+		}
+	) %}
+		{{ component( "Phone", components.Install.Step2 ) }}
+	{% endcall %}
 
 
-				</section>
-			</main>
-		</div>
-	</div>
-</article>
+	{% call component( "Step",
+		{
+			step: 3,
+			subtitle: "Paste the URL here. We’ll need it again in just a bit."
+		}
+	) %}
+		<div></div>
+	{% endcall %}
+
+
+
+</div>
