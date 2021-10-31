@@ -9,10 +9,6 @@
 	margin-right: auto;
 }
 
-.container {
-	max-width: var( --container-size );
-}
-
 .stack-sm > * + * {
 	margin-top: var( --stack-sm-size );
 }
