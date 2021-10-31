@@ -51,14 +51,21 @@
 	--gap: var( --showcase-gap );
 
 	display: grid;
+	gap: var( --gap );
+	column-gap: var( --gap );
 }
 	@media (min-width: 800px) {
 		.showcase {
 			--column-width: 1fr;
 
-			grid-template-columns: repeat( 2, var( --column-width ) );
+			grid-template-columns: var( --column-left-width, var( --column-width ) ) var( --column-right-width, var( --column-width ) );
 		}
 	}
+
+.sticky {
+	position: sticky;
+	top: var( --sticky-top, 0 );
+}
 
 .text-center {
 	text-align: center;
