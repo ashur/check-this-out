@@ -19,6 +19,7 @@
 	--size-6: calc( var( --size-5 ) * var( --ratio ) );
 
 	--font-size: var( --size-0 );
+	--font-size-md: calc( var( --font-size ) / 0.75 );
 	--font-size-sm: calc( var( --font-size ) * 0.875 );
 	--font-size-xs: calc( var( --font-size ) * 0.75 );
 
