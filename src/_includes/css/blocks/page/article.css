@@ -34,22 +34,18 @@
 	}
 
 .page-article-subtitle {
+	--measure-size: 32ch;
+
+	border-top: solid var( --color-orange ) var(--size--4);
 	font-size: var( --font-size-md );
+	line-height: 1.2;
+	margin-top: var( --size--3 );
+	padding-left: var( --size--3 );
+	padding-right: var( --size--3 );
+	padding-top: var( --size--4 );
 }
 	@media (min-width: 800px) {
 		.page-article-subtitle {
 
 		}
 	}
-
-
-.page-article-title + * {
-	--measure-size: 32ch;
-
-	border-top: solid var(--color-orange) var(--size--4);
-	line-height: 1.2;
-	margin-top: var( --size--3 );
-	padding-top: var( --size--4 );
-	padding-left: var( --size--3 );
-	padding-right: var( --size--3 );
-}
