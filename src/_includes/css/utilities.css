@@ -47,6 +47,10 @@
 	text-decoration: none;
 }
 
+.no-wrap {
+	white-space: nowrap;
+}
+
 .showcase {
 	--gap: var( --showcase-gap );
 

@@ -8,7 +8,7 @@ page:
 {%- from "plugins/css/component.njk" import component with context -%}
 
 <div
-	class="[ center stack-lg ][][]"
+	class="[ center stack-xl ][][]"
 >
 	{% call component( "Step",
 		{
@@ -19,7 +19,6 @@ page:
 	) %}
 		{{ component( "Phone", components.Install.Step1 ) }}
 	{% endcall %}
-
 
 
 	{% call component( "Step",

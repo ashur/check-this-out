@@ -1,18 +1,21 @@
 .page-header {
 	--margin-y: calc( clamp( var( --size-4 ), 10vw, var( --size-6 ) ) / 3 );
+
 	padding: 0;
-
+	padding-top: var( --section-padding-y );
 	position: relative;
-	display: grid;
-
-	grid-template-rows: 1fr auto;
-	row-gap: var( --size-0 );
 }
 	@media (min-width: 800px) {
 		.page-header {
-			position: sticky;
-			top: 0;
+			background-color: var( --color-black );
+			color: var( --color-cream );
+			display: grid;
+			grid-template-rows: 1fr auto;
 			height: 100vh;
+			padding-top: 0;
+			position: sticky;
+			row-gap: var( --size-0 );
+			top: 0;
 		}
 	}
 
@@ -28,6 +31,18 @@
 			background-size: 300%;
 		}
 	}
+
+.page-header .site-title {
+	font-family: var(--font-heading);
+	font-size: var( --size-2 );
+	line-height: 1;
+}
+	@media (min-width: 800px) {
+		.page-header .site-title {
+			display: none;
+		}
+	}
+
 
 .page-header .spine-logo {
 	display: none;

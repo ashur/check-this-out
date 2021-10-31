@@ -6,13 +6,18 @@ layout: layouts/base.njk
 <div
 	class="[][][ page-layout ]"
 >
-	<header class="[][ theme-black ][ page-header ]">
+	<header class="[][][ page-header ]">
 		<nav
 			class="[][][]"
 		>
-			<div>
-				<a class="[ inline-block ]" href="/">
-					<span class="[][ visually-hidden ][]">Check This Out</span>
+			<div
+				class="[][ text-center ][]"
+			>
+				<a
+					class="[ inline-block no-underline ]"
+					href="/"
+				>
+					<p class="[][ font-features font-ligatures title-spacing uppercase ][ site-title ]">Check This Out</p>
 					<img alt="Check This Out" src="/images/spine-title.svg" class="[][][ spine-title ]" />
 				</a>
 			</div>
@@ -30,8 +35,8 @@ layout: layouts/base.njk
 	>
 		<article class="[ stack-custom ][][ page-article ]">
 			<header class="[][][ page-article-header ]">
-				<h1 class="[ center ][ font-features measure uppercase ][ page-article-title ]">{{ title }}</h1>
-				{% if subtitle %}<p class="[ center ][ font-md measure ][ page-article-subtitle ]">{{ subtitle }}</p>{% endif %}
+				<h1 class="[ center ][ font-features uppercase ][ page-article-title ]">{{ title }}</h1>
+				{% if subtitle %}<p class="[ center ][ measure ][ page-article-subtitle ]">{{ subtitle }}</p>{% endif %}
 			</header>
 
 			<div class="[ center ][][]">

@@ -4,7 +4,7 @@
 	--stack-custom-size: var( --stack-lg-size );
 
 	padding: var( --page-article-padding-y ) var( --page-article-padding-x );
-	margin-top: var( --size--3 );
+	padding-top: 0;
 }
 	@media (min-width: 800px) {
 		.page-article {
@@ -19,25 +19,32 @@
 
 .page-article-header {
 	text-align: center;
+	border-top: solid var( --color-orange ) var(--size--4);
 }
+	@media (min-width: 800px) {
+		.page-article-header {
+			border-top: none;
+		}
+	}
 
 .page-article-title {
-	--measure-size: 10ch;
+	border-bottom: solid var( --color-orange ) var(--size--4);
 	font-size: var( --size-3 );
 	line-height: 0.85;
 	letter-spacing: -.05em;
+	margin-top: var( --size--3 );
+	padding-bottom: var( --size--4 );
 }
 	@media (min-width: 800px) {
 		.page-article-title {
 			font-size: var( --size-4 );
+			max-width: 10ch;
 		}
 	}
 
 .page-article-subtitle {
-	--measure-size: 32ch;
+	--measure-size: 28ch;
 
-	border-top: solid var( --color-orange ) var(--size--4);
-	font-size: var( --font-size-md );
 	line-height: 1.2;
 	margin-top: var( --size--3 );
 	padding-left: var( --size--3 );
@@ -46,6 +53,6 @@
 }
 	@media (min-width: 800px) {
 		.page-article-subtitle {
-
+			font-size: var( --font-size-md );
 		}
 	}
