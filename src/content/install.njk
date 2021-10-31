@@ -9,45 +9,118 @@ page:
 
 <div
 	class="[ center stack-xl ][][]"
+	x-data="InstallApp()"
 >
-	{% call component( "Step",
+	{{ component( "Step",
 		{
-			title: "Library details",
+			componentData: components.Phone.Install.Step1,
 			step: 1,
 			subtitle: '<a target="_blank" href="https://libbyapp.com/search/libraries">Search for your library</a> on Libby’s website'
 		}
-	) %}
-		{{ component( "Phone", components.Install.Step1 ) }}
-	{% endcall %}
+	) }}
 
 
 	{% call component( "Step",
 		{
+			componentData: components.Phone.Install.Step2,
 			step: 2,
 			subtitle: "Tap your library in the search results. Copy the URL then paste it below."
 		}
 	) %}
-		{{ component( "Phone", components.Install.Step2 ) }}
+		<input
+			x-model="userLibraryUrl"
+			type="url"
+			placeholder="Libby URL"
+		/>
+		<p
+			aria-live="polite"
+			class="[][ font-xs ][]"
+			x-show="status.type === 'url'"
+			x-text="status.message"
+		></p>
 	{% endcall %}
 
 
-	{% call component( "Step",
+	{{ component( "Step",
 		{
+			componentData: components.Phone.Install.Step3,
 			step: 3,
 			subtitle: 'Open the <a href="App-prefs://prefs:root">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
 		}
-	) %}
-		{{ component( "Phone", components.Phone.Install.Step4 ) }}
-	{% endcall %}
-
-
-	{% call component( "Step",
-		{
-			step: 4,
-			subtitle: "Install the iOS Shortcut"
-		}
-	) %}
-		{{ component( "Phone", components.Phone.Install.Step5 ) }}
-	{% endcall %}
-
+	) }}
 </div>
+
+<script>
+	let InstallApp = () =>
+	{
+		return {
+			status: {
+				message: "",
+				type: null,
+			},
+
+			userLibraryUrl: "",
+
+			get librarySlug()
+			{
+				if( this.libraryUrl )
+				{
+					let pathElements = this.libraryUrl.pathname.split( "/" );
+					if( pathElements[1] !== "library" || pathElements.length !== 3)
+					{
+						return;
+					}
+
+					return pathElements[2];
+				}
+			},
+
+			get libraryUrl()
+			{
+				this.status.type = null;
+				this.status.message = "";
+
+				if( this.userLibraryUrl && this.userLibraryUrl.length > 8 )
+				{
+					try
+					{
+						let userUrl = new URL( this.userLibraryUrl );
+						let baseUrl = "https://libbyapp.com/library/";
+
+						if( userUrl.hostname === "libbyapp.com" )
+						{
+							if( userUrl.pathname.indexOf( "/library" ) === 0 )
+							{
+								this.status.type = "url";
+								this.status.message = "Perfect!";
+								return userUrl;
+							}
+							else
+							{
+								if( baseUrl.indexOf( this.userLibraryUrl ) !== 0 )
+								{
+									this.status.type = "url";
+									this.status.message = "That doesn’t look like the right Libby URL";
+								}
+							}
+						}
+						else
+						{
+							if( baseUrl.indexOf( this.userLibraryUrl ) !== 0 )
+							{
+								this.status.type = "url";
+								this.status.message = "That doesn’t look like a Libby URL";
+							}
+						}
+
+					}
+					catch( error )
+					{
+						this.status.type = "url";
+						this.status.message = "That doesn’t look like a valid URL";
+					}
+				}
+			},
+		};
+	};
+</script>
