@@ -1,0 +1,11 @@
+{
+  "clips" : [
+    {
+      "content" : "${1:selector} {\n\t\n}\n\t@media (min-width: 800px) {\n\t\t${1:selector} {\n\t\t\t\n\t\t}\n\t}\n",
+      "name" : "Responsive Selector",
+      "scope" : "editor",
+      "syntax" : "css",
+      "trigger" : "responsive"
+    }
+  ]
+}
