@@ -24,10 +24,10 @@ layout: layouts/base.njk
 	<main
 		class="[][][]"
 	>
-		<article class="[ stack-lg ][][ page-article ]">
+		<article class="[ stack-xl ][][ page-article ]">
 			<header class="[][][ page-article-header ]">
-				<h1 class="[ center ][ measure ][ font-features page-section-heading uppercase ]">{{ title }}</h1>
-				{% if subtitle %}<p class="[ center ][ measure ][]">{{ subtitle }}</p>{% endif %}
+				<h1 class="[ center ][ font-features measure uppercase ][ --page-section-heading page-article-title ]">{{ title }}</h1>
+				{% if subtitle %}<p class="[ center ][ font-md measure ][]">{{ subtitle }}</p>{% endif %}
 			</header>
 
 			<div class="[ center ][][]">

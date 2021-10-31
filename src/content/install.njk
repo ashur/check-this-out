@@ -25,7 +25,7 @@ page:
 	{% call component( "Step",
 		{
 			step: 2,
-			subtitle: "Tap your library in the search results, then copy the URL"
+			subtitle: "Tap your library in the search results. Copy the URL then paste it below."
 		}
 	) %}
 		{{ component( "Phone", components.Install.Step2 ) }}
@@ -35,12 +35,20 @@ page:
 	{% call component( "Step",
 		{
 			step: 3,
-			subtitle: "Paste the URL here. We’ll need it again in just a bit."
+			subtitle: 'Open the <a href="App-prefs://prefs:root">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
 		}
 	) %}
-		<div></div>
+		{{ component( "Phone", components.Phone.Install.Step4 ) }}
 	{% endcall %}
 
 
+	{% call component( "Step",
+		{
+			step: 4,
+			subtitle: "Install the iOS Shortcut"
+		}
+	) %}
+		{{ component( "Phone", components.Phone.Install.Step5 ) }}
+	{% endcall %}
 
 </div>
