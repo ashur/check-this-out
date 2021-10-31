@@ -22,7 +22,7 @@
 		--column-left-width: 3fr;
 		--column-right-width: 2fr;
 
-		column-gap: var( --size-1 );
+		column-gap: var( --size-0 );
 
 		--measure-size: 64ch;
 	}
@@ -30,13 +30,12 @@
 			--column-left-width: 2fr;
 			--column-right-width: 3fr;
 		}
-		.Step:nth-of-type( 2n+2 ) > *:nth-child(1) {
-			order: 1;
+		@media (min-width: 800px) {
+			.Step:nth-of-type( 2n+2 ) > *:nth-child(1) {
+				order: 1;
+			}
 		}
 
-	.Step-header {
-		/* text-align: right; */
-	}
 	.Step-title {
 		font-size: var( --size-1 );
 		text-transform: uppercase;
@@ -44,13 +43,24 @@
 	.Step-subtitle {
 		--measure-size: 36ch;
 	}
-		.Step:nth-of-type( 2n ) .Step-title,
-		.Step:nth-of-type( 2n ) .Step-subtitle {
-			text-align: right;
-		}
-
 		.Step-subtitle strong {
 			white-space: nowrap;
+		}
+
+	.Step-title,
+	.Step-subtitle {
+		text-align: center;
+	}
+		@media (min-width: 800px) {
+			.Step-title,
+			.Step-subtitle {
+				text-align: left;
+			}
+
+			.Step:nth-of-type( 2n ) .Step-title,
+			.Step:nth-of-type( 2n ) .Step-subtitle {
+				text-align: right;
+			}
 		}
 </style>
 {% endset %}

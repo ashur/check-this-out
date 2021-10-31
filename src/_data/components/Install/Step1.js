@@ -1,6 +1,6 @@
 module.exports = {
 	id: "Phone-Install-Step-1",
-	aspectRatio: 0.875,
+	aspectRatio: 0.95,
 	caption: "Library search screen in Libby",
 
 	autoplay: false,
