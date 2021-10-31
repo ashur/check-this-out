@@ -1,4 +1,7 @@
+{%- from "plugins/css/component.njk" import component with context -%}
+
 {#
+ # @prop {Object} componentData
  # @prop {string} step
  # @prop {string} subtitle
  # @callable true
@@ -7,12 +10,22 @@
 <section
 	class="[ center measure stack ][ showcase ][ Step ]"
 >
-	{% if caller %}{{ caller() }}{% endif -%}
+	{% if props.componentData %}
+		{{ component( "Phone", props.componentData ) }}
+	{% endif %}
 
-	<header class="[ stack-xs ][][ Step-header ]">
-		<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
-		<p class="[][][ Step-subtitle ]">{{ props.subtitle | safe }}</p>
-	</header>
+	<div class="[ stack ][][]">
+		<header class="[ stack-xs ][][ Step-header ]">
+			<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
+			<p class="[][][ Step-subtitle ]">{{ props.subtitle | safe }}</p>
+		</header>
+
+		{% if caller %}
+		<div class="[ stack-sm ][][ Step-content ]">
+			{{ caller() }}
+		</div>
+		{% endif -%}
+	</div>
 </section>
 {% endmacro %}
 
@@ -48,7 +61,8 @@
 		}
 
 	.Step-title,
-	.Step-subtitle {
+	.Step-subtitle,
+	.Step-content {
 		text-align: center;
 	}
 		@media (min-width: 800px) {
@@ -58,9 +72,27 @@
 			}
 
 			.Step:nth-of-type( 2n ) .Step-title,
-			.Step:nth-of-type( 2n ) .Step-subtitle {
+			.Step:nth-of-type( 2n ) .Step-subtitle,
+			.Step:nth-of-type( 2n ) .Step-content {
 				text-align: right;
 			}
 		}
+
+	.Step input[type="url"] {
+		-webkit-appearance: none;
+		background-color: transparent;
+		border-radius: 0;
+		border: solid var( --color-black ) var( --size--4 );
+		padding: var( --size--3 ) var( --size--2 );
+		width: 100%;
+	}
+	.Step input[type="url"]:focus {
+		box-shadow: 0 0 0 var( --size--4 ) var( --color-teal );
+		outline: none;
+	}
+	.Step input[type="url"]::placeholder {
+		color: var( --color-black );
+		opacity: 0.5;
+	}
 </style>
 {% endset %}
