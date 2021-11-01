@@ -27,16 +27,22 @@ page:
 			subtitle: "Tap your library in the search results. Copy the URL then paste it below."
 		}
 	) %}
-		<input
-			x-model="userLibraryUrl"
-			type="url"
-			placeholder="Libby URL"
-		/>
+		<div
+			x-bind:data-validated="librarySlug !== undefined"
+			x-bind:data-error="error.type === 'url'"
+		>
+			<input
+				x-model="userLibraryUrl"
+
+				type="url"
+				placeholder="Libby URL"
+			/>
+		</div>
 		<p
 			aria-live="polite"
 			class="[][ font-xs ][]"
-			x-show="status.type === 'url'"
-			x-text="status.message"
+			x-show="error.type === 'url'"
+			x-text="error.message"
 		></p>
 	{% endcall %}
 
@@ -54,7 +60,7 @@ page:
 	let InstallApp = () =>
 	{
 		return {
-			status: {
+			error: {
 				message: "",
 				type: null,
 			},
@@ -77,8 +83,8 @@ page:
 
 			get libraryUrl()
 			{
-				this.status.type = null;
-				this.status.message = "";
+				this.error.type = null;
+				this.error.message = "";
 
 				if( this.userLibraryUrl && this.userLibraryUrl.length > 8 )
 				{
@@ -89,18 +95,16 @@ page:
 
 						if( userUrl.hostname === "libbyapp.com" )
 						{
-							if( userUrl.pathname.indexOf( "/library" ) === 0 )
+							if( userUrl.pathname.indexOf( "/library/" ) === 0 )
 							{
-								this.status.type = "url";
-								this.status.message = "Perfect!";
 								return userUrl;
 							}
 							else
 							{
 								if( baseUrl.indexOf( this.userLibraryUrl ) !== 0 )
 								{
-									this.status.type = "url";
-									this.status.message = "That doesn’t look like the right Libby URL";
+									this.error.type = "url";
+									this.error.message = "That doesn’t look like the right Libby URL";
 								}
 							}
 						}
@@ -108,16 +112,16 @@ page:
 						{
 							if( baseUrl.indexOf( this.userLibraryUrl ) !== 0 )
 							{
-								this.status.type = "url";
-								this.status.message = "That doesn’t look like a Libby URL";
+								this.error.type = "url";
+								this.error.message = "That doesn’t look like a Libby URL";
 							}
 						}
 
 					}
 					catch( error )
 					{
-						this.status.type = "url";
-						this.status.message = "That doesn’t look like a valid URL";
+						this.error.type = "url";
+						this.error.message = "That doesn’t look like a valid URL";
 					}
 				}
 			},

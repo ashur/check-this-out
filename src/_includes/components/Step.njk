@@ -8,6 +8,7 @@
  #}
 {% macro render( props ) %}
 <section
+	id="step-{{ props.step }}"
 	class="[ center measure stack ][ showcase ][ Step ]"
 >
 	{% if props.componentData %}
@@ -78,6 +79,7 @@
 			}
 		}
 
+	.Step input[type="text"],
 	.Step input[type="url"] {
 		-webkit-appearance: none;
 		background-color: transparent;
@@ -93,6 +95,47 @@
 	.Step input[type="url"]::placeholder {
 		color: var( --color-black );
 		opacity: 0.5;
+	}
+
+	.Step [data-error],
+	.Step [data-validated] {
+		position: relative;
+		display: grid;
+		align-items: center;
+		justify-items: end;
+	}
+	.Step [data-error]::after,
+	.Step [data-validated]::after {
+		align-self: center;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 66%;
+		border-radius: var( --size--4 );
+		content: "";
+		height: var( --size-1 );
+		margin-right: calc( var( --size--4 ) + var( --size--3 ) );
+		position: absolute;
+		width: var( --size-1 );
+	}
+	.Step [data-error] input,
+	.Step [data-validated] input {
+		padding-right: calc( var( --size--3 ) + var( --size--3 ) + var( --size-1 ) );
+	}
+	.Step [data-error]::after {
+		background-color: var( --color-pink );
+		background-image: url( /icons/status-error.svg );
+	}
+	.Step [data-validated]::after {
+		background-color: var( --color-teal );
+		background-image: url( /icons/status-success.svg );
+	}
+
+	.Step .slug {
+		border-radius: var( --size--4 );
+		font-family: Menlo, monospace;
+		font-size: calc( var( --font-size ) - 0.05em );
+		margin-left: var( --size--4 );
+		padding: var( --size--4 ) var( --size--2);
 	}
 </style>
 {% endset %}
