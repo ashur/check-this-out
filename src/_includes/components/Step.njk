@@ -35,10 +35,9 @@
 	.Step {
 		--column-left-width: 3fr;
 		--column-right-width: 2fr;
+		--measure-size: 64ch;
 
 		column-gap: var( --size-0 );
-
-		--measure-size: 64ch;
 	}
 		.Step:nth-of-type( 2n ) {
 			--column-left-width: 2fr;
@@ -68,7 +67,8 @@
 	}
 		@media (min-width: 800px) {
 			.Step-title,
-			.Step-subtitle {
+			.Step-subtitle,
+			.Step-content {
 				text-align: left;
 			}
 
