@@ -54,6 +54,45 @@ page:
 			subtitle: 'Open the <a href="App-prefs://prefs:root">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
 		}
 	) }}
+
+
+	{% call component( "Step",
+		{
+			componentData: components.Phone.Install.Step4,
+			step: 4,
+			subtitle: '<span x-show="librarySlug">Open <a target="_blank" href="https://www.icloud.com/shortcuts/27d1f2285ad344768d5faba6801639a9">this link</a> to install the <strong class="[][ no-wrap ][]">' + site.title + '</strong> Shortcut</span><span x-show="!librarySlug">Before continuing, you’ll need the “slug” for your library.</span>'
+		}
+	) %}
+		<div
+			x-cloak
+			x-show="!librarySlug"
+
+			class="[ stack ][][]"
+		>
+			<p>Head back to <a href="#step-2">Step 2</a> and double-check your Libby library URL.</p>
+		</div>
+
+		<div
+			x-cloak
+			x-show="librarySlug"
+
+			class="[ stack ][][]"
+		>
+			<p
+			>
+				Scroll to the bottom of the screen, then tap <strong>Add Untrusted Shortcut</strong>.
+			</p>
+
+			<p
+			>
+				When prompted “What is your library slug?” type or paste
+				<code
+					class="[][ theme-black ][ slug ]"
+					x-text="librarySlug"
+				></code>
+			</p>
+		</div>
+	{% endcall %}
 </div>
 
 <script>
