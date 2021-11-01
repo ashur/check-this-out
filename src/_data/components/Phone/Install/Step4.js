@@ -32,7 +32,7 @@ frameWrangler.tap( 250 );
 
 frameWrangler.hideTopScreen();
 
-frameWrangler.pause( 1000 );
+frameWrangler.pause( 2000 );
 
 module.exports = {
 	id: "Phone-Install-Step-5",
