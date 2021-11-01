@@ -416,9 +416,6 @@
 
 			framestart( caller )
 			{
-				console.log( caller );
-				console.log( "→ framestart", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
-
 				this.screens.top = Object.assign(
 					this.screens.top,
 					this.currentFrame.screens.top || {}
@@ -436,24 +433,19 @@
 				// will cause a CSS transition which will in turn call framerun()
 				if( this.currentFrame.duration !== undefined )
 				{
-					console.log( "   → this.framerun()" );
 					this.framerun();
 				}
 			},
 
 			framerun()
 			{
-				console.log( "framerun", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
-
 				if( this.currentFrame.duration )
 				{
 					let frameIndex = this.frameIndex;
 					let frameDuration = this.currentFrame.duration;
 
-					console.log( "→ setTimeout", frameDuration, `(#${frameIndex})` );
 					let timeout = setTimeout( () =>
 					{
-						console.log( "   → timeout!", frameDuration, `(#${frameIndex})` );
 						this.frameend();
 
 					}, this.currentFrame.duration );
@@ -473,9 +465,6 @@
 					// Prefer duration over image load
 					return;
 				}
-
-				console.log( "frameimageload", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
-				console.log( "→", event.target.src );
 
 				this.framerun();
 			},
@@ -514,28 +503,16 @@
 					}
 				}
 
-				console.log( "frametransitionend", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
-
-				console.log( "→", event.target.dataset.transitionSource, event.propertyName );
-				console.log( event );
-
 				transitions[this.frameIndex] = true;
 
 				if( event.target.attributes.getNamedItem("x-on:transitionend") )
 				{
-					console.log( "→ framerun()" );
 					this.framerun();
-				}
-				else
-				{
-					console.log( "→ no framerun()" );
 				}
 			},
 
 			frameend()
 			{
-				console.log( "frameend", `#${this.frameIndex} —`, this.currentFrame.name || "Untitled", `${id}` );
-
 				if( this.autoplay )
 				{
 					if( this.frameIndex >= this.frames.length - 1 )
@@ -578,8 +555,6 @@
 
 			stop()
 			{
-				console.log( "stop", `(#${this.frameIndex})` );
-
 				this.status = "stopped";
 				this.autoplay = false;
 				this.showPointer = false;
