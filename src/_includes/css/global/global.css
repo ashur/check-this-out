@@ -26,6 +26,7 @@
 	/* Composition */
 	--measure-size: 56ch;
 	--page-margin: clamp( var( --size-1 ), 5vw, var( --size-3 ) );
+	--container-size: calc( var( --measure-size ) * var( --ratio ) );
 
 	--stack-sm-size: calc( var( --font-size ) / var( --ratio-2 ) );
 	--stack-size: calc( var( --font-size ) * var( --ratio-0 ) );

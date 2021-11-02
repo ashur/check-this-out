@@ -39,9 +39,7 @@ layout: layouts/base.njk
 				{% if subtitle %}<p class="[ center ][ measure ][ page-article-subtitle ]">{{ subtitle }}</p>{% endif %}
 			</header>
 
-			<div class="[ center ][][]">
-				{{ content | safe }}
-			</div>
+			{{ content | safe }}
 		</article>
 	</main>
 

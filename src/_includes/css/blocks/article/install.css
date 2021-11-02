@@ -1,0 +1,10 @@
+.article-install {}
+
+	@media (min-width: 800px) {
+		.article-install {
+			display: grid;
+		}
+			.article-install > *:nth-child(2n) {
+				justify-self: end;
+			}
+	}

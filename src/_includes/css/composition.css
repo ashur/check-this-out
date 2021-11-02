@@ -9,6 +9,10 @@
 	margin-right: auto;
 }
 
+.container {
+	max-width: var( --container-size );
+}
+
 .stack-custom > * + * {
 	margin-top: var( --stack-custom-size );
 }
