@@ -14,10 +14,10 @@ page:
 	{% call component( "Step",
 		{
 			componentData: components.Phone.Install.Step1,
-			step: 1,
-			subtitle: 'Tap and hold <a href="https://libbyapp.com/search/libraries/">this Libby search link</a>, then tap <strong>Open in New Tab</strong>.'
+			step: 1
 		}
 	) %}
+		<p>Tap and hold <a href="https://libbyapp.com/search/libraries/">this Libby search link</a>, then tap <strong>Open in New Tab</strong>.</p>
 		<p>Next, search for your public library system, tap the matching result, then copy the URL and paste it below.</p>
 		<div
 			class="[ stack-sm ][][]"
@@ -43,22 +43,31 @@ page:
 	{% endcall %}
 
 
-	{{ component( "Step",
+	{% call component( "Step",
 		{
 			componentData: components.Phone.Install.Step3,
-			step: 2,
-			subtitle: 'Open the <a x-bind:href="iosClient ? \'App-prefs://prefs:root\' : false">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
+			step: 2
 		}
-	) }}
+	)%}
+		<p>Open the <a x-bind:href="iosClient ? 'App-prefs://prefs:root' : false">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong></p>
+	{% endcall %}
 
 
 	{% call component( "Step",
 		{
 			componentData: components.Phone.Install.Step4,
-			step: 3,
-			subtitle: '<span x-show="librarySlug">Install the <a target="_blank" href="https://www.icloud.com/shortcuts/27d1f2285ad344768d5faba6801639a9">' + site.title + ' shortcut</a> on your iPhone or iPad.</span><span x-show="!librarySlug">Before continuing, head back to <a class="no-wrap" href="#step-2">Step 2</a> and make sure your Libby library URL is correct.</span>'
+			step: 3
 		}
 	) %}
+		<div>
+			<p
+				x-show="librarySlug"
+			>Install the <a target="_blank" href="https://www.icloud.com/shortcuts/27d1f2285ad344768d5faba6801639a9">{{ site.title }} shortcut</a> on your iPhone or iPad.</p>
+			<p
+				x-show="!librarySlug"
+			>Before continuing, head back to <a class="no-wrap" href="#step-2">Step 2</a> and make sure your Libby library URL is correct.</p>
+		</div>
+
 		<div
 			x-cloak
 			x-show="librarySlug"
@@ -85,10 +94,17 @@ page:
 	{% call component( "Step",
 		{
 			componentData: components.Phone.Install.Step5,
-			step: 4,
-			subtitle: '<span x-show="librarySlug">When prompted for a “library slug,” type or paste <code class="[][ theme-black ][ slug ]" x-text="librarySlug"></code> then tap <strong>Done</strong>.</span><span x-show="!librarySlug">Before continuing, head back to <a class="no-wrap" href="#step-2">Step 2</a> and make sure your Libby library URL is correct.</span>'
+			step: 4
 		}
 	) %}
+		<div>
+			<p
+				x-show="librarySlug"
+			>When prompted for a “library slug,” type or paste <code class="[][ theme-black ][ slug ]" x-text="librarySlug"></code> then tap <strong>Done</strong></p>
+			<p
+				x-show="!librarySlug"
+			>Before continuing, head back to <a class="no-wrap" href="#step-2">Step 2</a> and make sure your Libby library URL is correct.</p>
+		</div>
 		<p
 			x-cloak
 			x-show="librarySlug"

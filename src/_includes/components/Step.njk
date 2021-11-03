@@ -3,7 +3,6 @@
 {#
  # @prop {Object} componentData
  # @prop {string} step
- # @prop {string} subtitle
  # @callable true
  #}
 {% macro render( props ) %}
@@ -15,10 +14,9 @@
 		{{ component( "Phone", props.componentData ) }}
 	{% endif %}
 
-	<div class="[ stack ][][]">
-		<header class="[ stack-xs ][][ Step-header ]">
+	<div class="[ stack-sm ][][]">
+		<header class="[ stack ][][ Step-header ]">
 			<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
-			<p class="[][][ Step-subtitle ]">{{ props.subtitle | safe }}</p>
 		</header>
 
 		{% if caller %}
@@ -53,27 +51,16 @@
 		font-size: var( --size-1 );
 		text-transform: uppercase;
 	}
-	.Step-subtitle {
-		--measure-size: 36ch;
-	}
-		.Step-subtitle strong {
-			white-space: nowrap;
-		}
 
-	.Step-title,
-	.Step-subtitle,
-	.Step-content {
+	.Step-title {
 		text-align: center;
 	}
 		@media (min-width: 800px) {
-			.Step-title,
-			.Step-subtitle,
-			.Step-content {
+			.Step-title {
 				text-align: left;
 			}
 
 			.Step:nth-of-type( 2n ) .Step-title,
-			.Step:nth-of-type( 2n ) .Step-subtitle,
 			.Step:nth-of-type( 2n ) .Step-content {
 				text-align: right;
 			}
