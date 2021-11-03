@@ -33,6 +33,37 @@ class FrameWrangler
 		});
 	}
 
+	get images()
+	{
+		return this.frames
+			.map( (frame, index) =>
+			{
+				if( index === 0 )
+				{
+					return;
+				}
+
+				let image;
+				if( frame.screens && frame.screens.top && frame.screens.top.background )
+				{
+					image = frame.screens.top.background;
+				}
+				if( frame.screens && frame.screens.bottom && frame.screens.bottom.background )
+				{
+					image = frame.screens.bottom.background;
+				}
+
+				if( image )
+				{
+					return {
+						path: image,
+						index: index,
+					};
+				}
+			})
+			.filter( frame => frame )
+	}
+
 	movePointer( x, y, duration )
 	{
 		let pointer = {

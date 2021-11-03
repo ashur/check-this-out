@@ -4,6 +4,7 @@
  # @prop {boolean} [fade]
  # @prop {Object[]} frames - Array of frame definitions
  # @prop {string} id
+ # @prop {Object[]} images - Array of image paths
  # @prop {boolean} [pointer]
  # @prop {boolean} [printedEffect]
  # @callable false
@@ -13,6 +14,7 @@
 	x-data="PhoneApp({
 		id: '{{ props.id }}',
 		frames: {{ props.frames | dump | safe | replace( '"', "'" ) }},
+		images: {{ (props.images if props.images else []) | dump | safe | replace( '"', "'" ) }},
 		pointer: {{ props.pointer === true }},
 		debug: {{ props.debug === true }},
 	})"
@@ -350,8 +352,9 @@
 
 {% set criticalScript %}
 <script>
-	let PhoneApp = ({id, frames=[], pointer} = {}) =>
+	let PhoneApp = ({id, frames=[], images=[], pointer} = {}) =>
 	{
+		let imageStage = new Image();
 		let timeouts = [];
 		let transitions = {};
 
@@ -359,6 +362,20 @@
 			get currentFrame()
 			{
 				return this.frames[this.frameIndex];
+			},
+
+			get imageExtension()
+			{
+				let img = document.querySelector( `#${id} img` );
+				if( img.currentSrc )
+				{
+					let pathnameSegments = (new URL( img.currentSrc )).pathname.split( "/" );
+					let filename = pathnameSegments[pathnameSegments.length - 1];
+					let filenameSegments = filename.split( "." );
+					let extname = filenameSegments[filenameSegments.length - 1];
+
+					return extname;
+				}
 			},
 
 			autoplay: false,
@@ -456,6 +473,8 @@
 				{
 					this.frameend();
 				}
+
+				this.loadNextImage();
 			},
 
 			frameimageload( event )
@@ -524,6 +543,21 @@
 						this.showControls = false;
 						this.frameIndex++;
 					}
+				}
+			},
+
+			loadNextImage()
+			{
+				let nextImage = images.find( image =>
+				{
+					return image.index > this.frameIndex
+				});
+
+				if( nextImage && !nextImage.loaded )
+				{
+					let imagePath = `/images/${nextImage.path}.${this.imageExtension}`;
+					imageStage.src = imagePath;
+					nextImage.loaded = true;
 				}
 			},
 
