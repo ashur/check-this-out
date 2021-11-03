@@ -9,7 +9,7 @@
 {% macro render( props ) %}
 <section
 	id="step-{{ props.step }}"
-	class="[ center measure stack ][ showcase ][ Step ]"
+	class="[ measure stack ][ showcase ][ Step ]"
 >
 	{% if props.componentData %}
 		{{ component( "Phone", props.componentData ) }}
