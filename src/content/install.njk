@@ -8,50 +8,46 @@ page:
 {%- from "plugins/css/component.njk" import component with context -%}
 
 <div
-	class="[ center container stack-lg ][][ article-install ]"
+	class="[ center container stack-xl ][][ article-install ]"
 	x-data="InstallApp()"
 >
-	{{ component( "Step",
+	{% call component( "Step",
 		{
 			componentData: components.Phone.Install.Step1,
 			step: 1,
-			subtitle: '<a target="_blank" href="https://libbyapp.com/search/libraries">Search for your library</a> on Libby’s website'
-		}
-	) }}
-
-
-	{% call component( "Step",
-		{
-			componentData: components.Phone.Install.Step2,
-			step: 2,
-			subtitle: "Tap your library in the search results. Copy the URL then paste it below."
+			subtitle: 'Tap and hold <a href="https://libbyapp.com/search/libraries/">this Libby search link</a>, then tap <strong>Open in New Tab</strong>.'
 		}
 	) %}
+		<p>Next, search for your public library system, tap the matching result, then copy the URL and paste it below.</p>
 		<div
-			x-bind:data-validated="librarySlug !== undefined"
-			x-bind:data-error="error.type === 'url'"
+			class="[ stack-sm ][][]"
 		>
-			<input
-				x-model="userLibraryUrl"
+			<div
+				x-bind:data-validated="librarySlug !== undefined"
+				x-bind:data-error="error.type === 'url'"
+			>
+				<input
+					x-model="userLibraryUrl"
 
-				type="url"
-				placeholder="Libby URL"
-			/>
+					type="url"
+					placeholder="Libby URL"
+				/>
+			</div>
+			<p
+				aria-live="polite"
+				class="[][ font-xs ][]"
+				x-show="error.type === 'url'"
+				x-text="error.message"
+			></p>
 		</div>
-		<p
-			aria-live="polite"
-			class="[][ font-xs ][]"
-			x-show="error.type === 'url'"
-			x-text="error.message"
-		></p>
 	{% endcall %}
 
 
 	{{ component( "Step",
 		{
 			componentData: components.Phone.Install.Step3,
-			step: 3,
-			subtitle: 'Open the <a href="App-prefs://prefs:root">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
+			step: 2,
+			subtitle: 'Open the <a x-bind:href="iosClient ? \'App-prefs://prefs:root\' : false">Settings</a> app, scroll to Shortcuts</a>, then enable <strong>Allow Untrusted Shortcuts</strong>'
 		}
 	) }}
 
@@ -59,19 +55,10 @@ page:
 	{% call component( "Step",
 		{
 			componentData: components.Phone.Install.Step4,
-			step: 4,
-			subtitle: '<span x-show="librarySlug">Open <a target="_blank" href="https://www.icloud.com/shortcuts/27d1f2285ad344768d5faba6801639a9">this link</a> to install the <strong class="[][ no-wrap ][]">' + site.title + '</strong> Shortcut</span><span x-show="!librarySlug">Before continuing, you’ll need the “slug” for your library.</span>'
+			step: 3,
+			subtitle: '<span x-show="librarySlug">Install the <a target="_blank" href="https://www.icloud.com/shortcuts/27d1f2285ad344768d5faba6801639a9">' + site.title + ' shortcut</a> on your iPhone or iPad.</span><span x-show="!librarySlug">Before continuing, head back to <a class="no-wrap" href="#step-2">Step 2</a> and make sure your Libby library URL is correct.</span>'
 		}
 	) %}
-		<div
-			x-cloak
-			x-show="!librarySlug"
-
-			class="[ stack ][][]"
-		>
-			<p>Head back to <a href="#step-2">Step 2</a> and double-check your Libby library URL.</p>
-		</div>
-
 		<div
 			x-cloak
 			x-show="librarySlug"
@@ -80,7 +67,7 @@ page:
 		>
 			<p
 			>
-				Scroll to the bottom of the screen, then tap <strong>Add Untrusted Shortcut</strong>.
+				Scroll to the bottom of the “Add Shortcut” screen and tap <strong>Add Untrusted Shortcut</strong>.
 			</p>
 
 			<p
@@ -91,6 +78,23 @@ page:
 					x-text="librarySlug"
 				></code>
 			</p>
+		</div>
+	{% endcall %}
+
+
+	{% call component( "Step",
+		{
+			componentData: components.Phone.Install.Step5,
+			step: 4,
+			subtitle: '<span x-show="librarySlug">When prompted for a “library slug,” type or paste <code class="[][ theme-black ][ slug ]" x-text="librarySlug"></code> then tap <strong>Done</strong>.</span><span x-show="!librarySlug">Before continuing, head back to <a class="no-wrap" href="#step-2">Step 2</a> and make sure your Libby library URL is correct.</span>'
+		}
+	) %}
+		<p
+			x-cloak
+			x-show="librarySlug"
+		>
+			When prompted for a “library slug,” type or paste
+			<code class="[][ theme-black ][ slug ]" x-text="librarySlug"></code>
 		</div>
 	{% endcall %}
 </div>
@@ -104,6 +108,10 @@ page:
 				type: null,
 			},
 
+			get iosClient() {
+				return /iPad|iPhone/.test(navigator.platform);
+			},
+
 			userLibraryUrl: "",
 
 			get librarySlug()
@@ -111,7 +119,7 @@ page:
 				if( this.libraryUrl )
 				{
 					let pathElements = this.libraryUrl.pathname.split( "/" );
-					if( pathElements[1] !== "library" || pathElements.length !== 3)
+					if( pathElements[1] !== "library" || pathElements.length < 3 )
 					{
 						return;
 					}
