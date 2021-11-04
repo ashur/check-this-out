@@ -7,8 +7,16 @@
 	<!-- 🎈🐀 -->
 	<meta name="generator" content="eleventy">
 
-	{% set pageTitle = metadata.title if metadata.title else title %}
-	<title>{% if pageTitle %}{{ pageTitle }} | {{ site.title }}{% else %}{{ site.title }} — {{ site.subtitle }}{% endif %}</title>
+	{%- set pageTitle -%}
+		{%- if metadata.title -%}
+			{{- metadata.title | safe -}}
+		{%- elif title -%}
+			{{- title | safe }} | {{ site.title | safe -}}
+		{%- else -%}
+			{{- site.title | safe }} — {{ site.subtitle | safe -}}
+		{%- endif -%}
+	{% endset %}
+	<title>{{ pageTitle }}</title>
 
 	{% set metaTitle = pageTitle if pageTitle else site.title %}
 	<meta name="title" content="{{ metaTitle }}">
