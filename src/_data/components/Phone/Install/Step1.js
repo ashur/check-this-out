@@ -18,53 +18,62 @@ let frameWrangler = new FrameWrangler({
 	},
 });
 
-frameWrangler.movePointer( 0.42, 0.28, 1500 );
-
 // Tap and hold link
+frameWrangler.movePointer( 0.42, 0.2675, 1250 );
 frameWrangler.tapDown( 500 );
 frameWrangler.showTopScreen();
 frameWrangler.tapUp( 500 );
 
 // Safari tabs
 frameWrangler.setBottomScreenBackground( "install/step-01-03" );
-frameWrangler.movePointer( 0.2, 0.78, 1500 );
-frameWrangler.tap( 500 );
+frameWrangler.movePointer( 0.2, 0.78, 1250 );
+frameWrangler.tap();
 frameWrangler.hideTopScreen();
 frameWrangler.pause( 250 );
 
 // Libby search
 frameWrangler.setTopScreenBackground( "install/step-01-04" );
 frameWrangler.showTopScreen();
-frameWrangler.movePointer( 0.3, 0.3, 1500 );
-frameWrangler.tap( 500 );
+frameWrangler.movePointer( 0.3, 0.3, 1000 );
+frameWrangler.tap();
 
-// Libby search with text
+// Libby search with keyboard
 frameWrangler.setBottomScreenBackground( "install/step-01-05" );
 frameWrangler.hideTopScreen();
-frameWrangler.movePointer( 0.35, 0.4, 1500 );
-frameWrangler.tap( 500 );
 
-// Libby library page
+// Libby search results with keyboard
 frameWrangler.setTopScreenBackground( "install/step-01-06" );
+frameWrangler.pause( 500 );
 frameWrangler.showTopScreen();
-frameWrangler.movePointer( 0.4, 0.045, 1500 );
-frameWrangler.tap( 500 );
+frameWrangler.pause( 500 );
+frameWrangler.movePointer( 0.7375, 0.6125, 750 );
+frameWrangler.tap();
 
-// Safari, URL selected
+// Libby search results
 frameWrangler.setBottomScreenBackground( "install/step-01-07" );
 frameWrangler.hideTopScreen();
-frameWrangler.tap( 500 );
+frameWrangler.movePointer( 0.33, 0.4, 1000 );
+frameWrangler.tap();
 
-// Safari, URL copy
+// Libby library page
 frameWrangler.setTopScreenBackground( "install/step-01-08" );
 frameWrangler.showTopScreen();
-frameWrangler.movePointer( 0.3, 0.1, 1500 );
-frameWrangler.tap( 500 );
+frameWrangler.movePointer( 0.4, 0.045, 1250 );
+frameWrangler.tap();
+
+// Safari, URL selected
+frameWrangler.setBottomScreenBackground( "install/step-01-09" );
+frameWrangler.hideTopScreen();
+frameWrangler.tap();
+
+// Safari, URL copy
+frameWrangler.setTopScreenBackground( "install/step-01-10" );
+frameWrangler.showTopScreen();
+frameWrangler.movePointer( 0.2875, 0.1, 1000 );
+frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
-
-// frameWrangler.setBottomScreenBackground( "install/safari-install-step1" );
-frameWrangler.pause( 1000 );
+frameWrangler.pause( 2000 );
 
 module.exports = {
 	id: "Phone-Install-Step-1",
@@ -80,5 +89,3 @@ module.exports = {
 	frames: frameWrangler.frames,
 	images: frameWrangler.images,
 }
-
-console.log( frameWrangler.images );
