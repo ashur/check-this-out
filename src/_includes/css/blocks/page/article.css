@@ -3,7 +3,6 @@
 	--page-article-padding-y: var( --section-padding-y );
 	--stack-custom-size: var( --stack-lg-size );
 
-	padding: var( --page-article-padding-y ) var( --page-article-padding-x );
 	padding-top: 0;
 }
 	@media (min-width: 800px) {

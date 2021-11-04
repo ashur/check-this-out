@@ -132,7 +132,7 @@
 	}
 
 	.Phone-body {
-		--width: 90%;
+		--width: 100%;
 
 		position: relative;
 		overflow-y: hidden;
@@ -141,6 +141,12 @@
 		width: var( --width );
 		padding-top: calc( var( --aspect-ratio ) * var( --width ) );
 	}
+		@media (min-width: 800px) {
+			.Phone-body {
+				--width: 90%;
+			}
+		}
+
 		/* Device body */
 		.Phone-body::after {
 			z-index: 2;

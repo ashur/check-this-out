@@ -36,12 +36,55 @@
 		--measure-size: 64ch;
 
 		column-gap: var( --size-0 );
+
+		padding: calc( var( --size-2 ) + 4vw );
+		padding-top: calc( var( --stack-xl-size ) / 2 );
+		padding-bottom: calc( var( --stack-xl-size ) / 2 );
+
+		--shadow-depth: var( --size-2 );
+		box-shadow:
+			0
+			calc( var( --shadow-depth ) * 2 )
+			calc( var( --shadow-depth ) * 2 )
+			calc( -1 * var( --shadow-depth ) * 2 )
+			hsla(45, 63%, 71%, 0.33)
+			inset,
+
+			0
+			calc( var( --shadow-depth ) * 0.5 )
+			calc( var( --shadow-depth ) * 0.5 )
+			calc( -1 * calc( var( --shadow-depth ) * 1 ) )
+			hsla(45, 63%, 71%, 0.5)
+			inset,
+
+			0
+			calc( var( --shadow-depth ) * 0.25 )
+			calc( var( --shadow-depth ) * 0.25 )
+			calc( -1 * calc( var( --shadow-depth ) * 0.25 ) )
+			hsla(45, 63%, 71%, 0.75)
+			inset,
+
+			0
+			calc( var( --shadow-depth ) * 0.0625 )
+			calc( var( --shadow-depth ) * 0.0625 )
+			calc( -1 * calc( var( --shadow-depth ) * 0.0625 ) )
+			hsla(45, 63%, 71%, 1)
+			inset
+		;
 	}
+		.Step:nth-of-type( 1 ) {
+			box-shadow: none;
+			padding-top: var( --stack-lg-size );
+		}
 		.Step:nth-of-type( 2n ) {
 			--column-left-width: 2fr;
 			--column-right-width: 3fr;
 		}
 		@media (min-width: 800px) {
+			.Step {
+				box-shadow: none;
+				padding: 0;
+			}
 			.Step:nth-of-type( 2n+2 ) > *:nth-child(1) {
 				order: 1;
 			}
