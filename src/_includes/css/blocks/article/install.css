@@ -1,7 +1,10 @@
-.article-install {}
+.article-install {
+	--stack-custom-size: 0;
+}
 
 	@media (min-width: 800px) {
 		.article-install {
+			--stack-custom-size: var( --stack-lg-size );
 			display: grid;
 		}
 			.article-install > *:nth-child(2n) {
