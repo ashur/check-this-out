@@ -17,8 +17,17 @@ page:
 			step: 1
 		}
 	) %}
-		<p>Tap and hold <a href="https://libbyapp.com/search/libraries/">this Libby search link</a>, then tap <strong>Open in New Tab</strong>.</p>
-		<p>Next, search for your public library system, tap the matching result, then copy the URL and paste it below.</p>
+		<div>
+			<p
+				x-show="iosClient"
+			>Tap and hold <a href="https://libbyapp.com/search/libraries/">this Libby search link</a>, then tap <strong>Open in New Tab</strong>.</p>
+
+			<p
+				x-show="!iosClient"
+			>Open <a href="https://libbyapp.com/search/libraries/" target="_blank">this Libby search link</a> in your current browser.</p>
+		</div>
+
+		<p>Next, search for your public library system, <span x-text="iosClient ? 'tap' : 'click'">tap</span> the matching result, then copy the URL and paste it below.</p>
 		<div
 			class="[ stack-sm ][][]"
 		>
