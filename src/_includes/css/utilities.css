@@ -16,6 +16,10 @@
 	font-family: var( --font-heading );
 }
 
+.font-mono {
+	font-family: var( --font-mono );
+}
+
 .font-sm {
 	font-size: var( --font-size-sm );
 }
@@ -49,6 +53,10 @@
 
 .no-wrap {
 	white-space: nowrap;
+}
+
+.relative {
+	position: relative;
 }
 
 .showcase {

@@ -1,0 +1,35 @@
+.integrated-fieldset {
+	--integrated-item-size: var( --size-1 );
+
+	display: grid;
+	position: relative;
+	border: none;
+	padding: 0;
+}
+
+.integrated-fieldset input {
+	padding-right: calc(var(--size-2) + var( --size--4 )) !important;
+}
+
+.integrated-fieldset input + * {
+	align-self: center;
+	top: 0; right: 0; bottom: 0;
+	position: absolute;
+}
+
+.integrated-fieldset input + button {
+	background-color: var( --color-black );
+	background-image: var( --background-image );
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 60%;
+	border: none;
+	color: var( --color-cream-light );
+	cursor: pointer;
+	display: grid;
+	width: var( --size-2 );
+}
+	.integrated-fieldset input + button[data-status="success"] {
+		background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='85' height='67' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M7.145 27.136l32.527 32.527m-14.142 0L77.855 7.337' stroke='%23fdf8e9' stroke-width='20' fill='none'/%3E%3C/svg%3E" );
+		background-color: var( --color-teal );
+	}

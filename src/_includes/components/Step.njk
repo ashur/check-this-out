@@ -118,8 +118,12 @@
 		padding: var( --size--3 ) var( --size--2 );
 		width: 100%;
 	}
-	.Step input[type="url"]:focus {
+	.Step input:focus {
 		box-shadow: 0 0 0 var( --size--4 ) var( --color-teal );
+		outline: none;
+	}
+	.Step button:focus-visible {
+		box-shadow: 0 0 0 var( --size--4 ) var( --color-teal ) inset;
 		outline: none;
 	}
 	.Step input[type="url"]::placeholder {
