@@ -18,40 +18,36 @@ let frameWrangler = new FrameWrangler({
 	},
 });
 
-frameWrangler.pause( 1000 );
-frameWrangler.movePointer( 0.3, 0.6, 1000 );
+frameWrangler.movePointer( 0.37, 0.8175, 1000 );
 frameWrangler.tap();
-frameWrangler.showTopScreen();
-frameWrangler.pause( 500 );
-frameWrangler.movePointer( 0.4, 0.1, 1000 );
 
+// Safari share sheet
+frameWrangler.showTopScreen();
+frameWrangler.movePointer( 0.125, 0.63125, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-02-03" );
 frameWrangler.tap();
-frameWrangler.hideTopScreen();
 
-frameWrangler.setTopScreenBackground( "install/step-02-04" );
+// Add Bookmark
+frameWrangler.hideTopScreen();
+frameWrangler.setTopScreenBackground( "install/step-02-01" );
+frameWrangler.movePointer( 0.7375, 0.05125, 1000 );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
-
-frameWrangler.movePointer( 0.3, 0.175, 1000 );
-frameWrangler.tap();
+frameWrangler.setBottomScreenBackground( "install/step-02-01" );
 frameWrangler.hideTopScreen();
 
-frameWrangler.setTopScreenBackground( "install/step-02-02" );
-frameWrangler.movePointer( 0.72, 0.09, 1000 );
-frameWrangler.tap();
-frameWrangler.showTopScreen();
+frameWrangler.pause( 500 );
 
 module.exports = {
 	id: "Phone-Install-Step-2",
-	aspectRatio: 1.125,
-	caption: "Library search screen in Libby",
+	aspectRatio: 2.1,
+	caption: "Add bookmark",
 
-	fade: true,
 	hideCaption: true,
 	loop: false,
 	pointer: true,
 	printedEffect: true,
 
 	frames: frameWrangler.frames,
+	images: frameWrangler.images,
 }
