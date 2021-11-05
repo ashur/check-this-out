@@ -30,7 +30,7 @@ frameWrangler.tap();
 // Add Bookmark
 frameWrangler.hideTopScreen();
 frameWrangler.setTopScreenBackground( "install/step-02-01" );
-frameWrangler.movePointer( 0.7375, 0.05125, 1000 );
+frameWrangler.movePointer( 0.7375, 0.05125, 1175 );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
 frameWrangler.setBottomScreenBackground( "install/step-02-01" );

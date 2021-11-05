@@ -77,11 +77,11 @@ frameWrangler.pause( 2000 );
 
 module.exports = {
 	id: "Phone-Install-Step-1",
-	aspectRatio: 1.85,
+	aspectRatio: 2.1,
 	caption: "Library search screen in Libby",
 
 	autoplay: false,
-	fade: true,
+	fade: false,
 	hideCaption: true,
 	pointer: true,
 	printedEffect: true,
