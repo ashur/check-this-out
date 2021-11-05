@@ -126,7 +126,11 @@
 		color: var( --color-black );
 		opacity: 0.5;
 	}
+</style>
+{% endset %}
 
+{% set asyncStyles %}
+<style>
 	.Step [data-error],
 	.Step [data-validated] {
 		position: relative;
@@ -158,14 +162,6 @@
 	.Step [data-validated]::after {
 		background-color: var( --color-teal );
 		background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='85' height='67' xmlns:v='https://vecta.io/nano'%3E%3Cpath d='M7.145 27.136l32.527 32.527m-14.142 0L77.855 7.337' stroke='%23fdf8e9' stroke-width='20' fill='none'/%3E%3C/svg%3E" );
-	}
-
-	.Step .slug {
-		border-radius: var( --size--4 );
-		font-family: Menlo, monospace;
-		font-size: calc( var( --font-size ) - 0.05em );
-		margin-left: var( --size--4 );
-		padding: var( --size--4 ) var( --size--2);
 	}
 </style>
 {% endset %}
