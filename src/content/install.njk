@@ -15,18 +15,17 @@ metadata:
 >
 	{% call component( "Step",
 		{
-			componentData: components.Phone.Install.Step2,
+			componentData: components.Phone.Install.Step1,
 			step: 1
 		}
 	)%}
-		<p>Save <strong>{{ site.title }}</strong>—the page you’re on now—to your browser favorites or bookmarks.</p>
-		<p>We’ll come back and edit the address in just a moment.</p>
+		<p>Save this page to your browser favorites or bookmarks. We’ll come back and edit the address in just a moment.</p>
 	{% endcall %}
 
 
 	{% call component( "Step",
 		{
-			componentData: components.Phone.Install.Step1,
+			componentData: components.Phone.Install.Step2,
 			step: 2
 		}
 	) %}
@@ -37,7 +36,7 @@ metadata:
 
 			<p
 				x-show="!iosClient"
-			>Open <a href="https://libbyapp.com/search/libraries/" target="_blank">this Libby search link</a> in your current browser.</p>
+			>Open <a href="https://libbyapp.com/search/libraries/" target="_blank">this Libby search link</a> in your browser.</p>
 		</div>
 
 		<p>Next, search for your library system and <span x-text="iosClient ? 'tap' : 'click'">tap</span> the matching result to view its Libby page.</p>
