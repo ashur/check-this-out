@@ -323,10 +323,14 @@
 		height: var( --size );
 		width: var( --size );
 
+		--shadow-color: rgba( 0, 0, 0, 0.1 );
 		box-shadow:
-			0 1px 1px var( --theme-shadow-color ),
-			0 2px 2px var( --theme-shadow-color ),
-			0 4px 4px var( --theme-shadow-color )
+			0 1px 1px var( --shadow-color ),
+			0 2px 2px var( --shadow-color ),
+			0 4px 4px var( --shadow-color ),
+			0 8px 8px var( --shadow-color ),
+			0 12px 12px var( --shadow-color ),
+			0 24px 24px var( --shadow-color )
 		;
 	}
 
