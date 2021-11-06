@@ -18,15 +18,17 @@ let frameWrangler = new FrameWrangler({
 	},
 });
 
+frameWrangler.pause( 1000 );
+
 // Tap and hold link
-frameWrangler.movePointer( 0.42, 0.1575, 1250 );
+frameWrangler.movePointer( 0.42, 0.1625, 1000 );
 frameWrangler.tapDown( 500 );
 frameWrangler.showTopScreen();
 frameWrangler.tapUp( 500 );
 
 // Safari tabs
 frameWrangler.setBottomScreenBackground( "install/step-02-03" );
-frameWrangler.movePointer( 0.2, 0.68, 1000 );
+frameWrangler.movePointer( 0.125, 0.705, 1000 );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 frameWrangler.pause( 250 );
@@ -34,7 +36,7 @@ frameWrangler.pause( 250 );
 // Libby search
 frameWrangler.setTopScreenBackground( "install/step-02-04" );
 frameWrangler.showTopScreen();
-frameWrangler.movePointer( 0.3, 0.2575, 1000 );
+frameWrangler.movePointer( 0.3, 0.2675, 1000 );
 frameWrangler.tap();
 
 // Libby search with keyboard
@@ -46,13 +48,13 @@ frameWrangler.setTopScreenBackground( "install/step-02-06" );
 frameWrangler.pause( 500 );
 frameWrangler.showTopScreen();
 frameWrangler.pause( 500 );
-frameWrangler.movePointer( 0.7375, 0.54, 750 );
+frameWrangler.movePointer( 0.7375, 0.5575, 750 );
 frameWrangler.tap();
 
 // Libby search results
 frameWrangler.setBottomScreenBackground( "install/step-02-07" );
 frameWrangler.hideTopScreen();
-frameWrangler.movePointer( 0.33, 0.35, 1000 );
+frameWrangler.movePointer( 0.33, 0.3675, 1000 );
 frameWrangler.tap();
 
 // Libby library page
@@ -80,7 +82,7 @@ frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Safari tabs
-frameWrangler.movePointer( 0.7425, 0.8175, 1000 );
+frameWrangler.movePointer( 0.7475, 0.845, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-02-11" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
@@ -92,19 +94,19 @@ frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Step 2, with keyboard
-frameWrangler.movePointer( 0.25, 0.425, 1000 );
+frameWrangler.movePointer( 0.25, 0.445, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-02-12" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
 // Step 2, with Paste
-frameWrangler.movePointer( 0.2, 0.275, 1000 );
+frameWrangler.movePointer( 0.2, 0.285, 1000 );
 frameWrangler.setTopScreenBackground( "install/step-02-13" );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Step 2, with pasted URL
-frameWrangler.movePointer( 0.07, 0.225, 1000 );
+frameWrangler.movePointer( 0.07, 0.23, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-02-14" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
@@ -114,7 +116,7 @@ frameWrangler.pause( 2000 );
 
 module.exports = {
 	id: "Phone-Install-Step-2",
-	aspectRatio: 2.1,
+	aspectRatio: 2.025,
 	caption: "Library search screen in Libby",
 
 	autoplay: false,
