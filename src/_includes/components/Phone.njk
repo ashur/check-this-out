@@ -20,6 +20,7 @@
 	})"
 	x-init="$watch( 'frameIndex', () => framestart( 'x-init=$watch' ) )"
 	x-bind:data-status="status"
+	x-on:click="if( status === 'playing' ){ pause() }"
 
 	id="{{ props.id }}"
 	class="[ center stack-sm ][ --measure ][ Phone {{ 'Phone--static' if props.frames.length === 1 }} {{ 'Phone--printed' if props.printedEffect else '' }} ]"
@@ -305,7 +306,8 @@
 		--inset-y: var( --size--1 );
 
 		position: absolute;
-		bottom: var( --inset-y ); right: var( --inset-x );
+		top: calc( 50% - var( --size) / 2 );
+		left: calc( 50% - var( --size) / 2 );
 		z-index: 11;
 
 		border: none;
@@ -566,6 +568,13 @@
 					imageStage.src = imagePath;
 					nextImage.loaded = true;
 				}
+			},
+
+			pause()
+			{
+				this.autoplay = false;
+				this.status = "paused";
+				this.showControls = true;
 			},
 
 			play()
