@@ -3,40 +3,44 @@ const FrameWrangler = require( "../../../../utils/frame-wrangler" );
 let frameWrangler = new FrameWrangler({
 	screens: {
 		top: {
-			background: "install/step-04-02",
+			background: "install/step-03-02",
 			opacity: 0
 		},
 		bottom: {
-			background: "install/step-04-01",
+			background: "install/step-03-01",
 			opacity: 1
 		},
 
 		pointer: {
-			x: 0.7125,
-			y: 0.725,
+			x: 0.37,
+			y: 0.43,
 		},
 	},
 });
 
+// Step 3
 frameWrangler.pause( 1000 );
-frameWrangler.movePointer( 0.33, 0.6125, 1500 );
-frameWrangler.tap( 250 );
-
+frameWrangler.movePointer( 0.56, 0.815, 1000 );
+frameWrangler.tap();
 frameWrangler.showTopScreen();
 
-frameWrangler.setBottomScreenBackground( "install/step-04-03" );
-frameWrangler.movePointer( 0.7125, null, 1500 );
-frameWrangler.tap( 250 );
+// Safari favorites
+frameWrangler.movePointer( 0.75, 0.815, 1000 );
+frameWrangler.setBottomScreenBackground( "install/step-03-03" );
+frameWrangler.tap();
 frameWrangler.hideTopScreen();
+
+// Safari favorites, edit mode
+frameWrangler.movePointer( 0.3, 0.155, 1250 );
+frameWrangler.tap();
 
 frameWrangler.pause( 1000 );
 
 module.exports = {
-	id: "Phone-Install-Step-4",
-	aspectRatio: 1.15,
+	id: "Phone-Install-Step-3",
+	aspectRatio: 2.1,
 	caption: "Shortcut settings",
 
-	fade: true,
 	hideCaption: true,
 	loop: false,
 	pointer: true,
