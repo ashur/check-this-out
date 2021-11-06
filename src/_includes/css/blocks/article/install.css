@@ -7,7 +7,4 @@
 			--stack-custom-size: var( --stack-lg-size );
 			display: grid;
 		}
-			.article-install > *:nth-child(2n) {
-				justify-self: end;
-			}
 	}

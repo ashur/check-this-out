@@ -8,12 +8,8 @@
 {% macro render( props ) %}
 <section
 	id="step-{{ props.step }}"
-	class="[ measure stack ][ showcase ][ Step ]"
+	class="[ center measure stack ][ showcase ][ Step ]"
 >
-	{% if props.componentData %}
-		{{ component( "Phone", props.componentData ) }}
-	{% endif %}
-
 	<div class="[ stack-sm ][][]">
 		<header class="[ stack ][][ Step-header ]">
 			<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
@@ -25,17 +21,21 @@
 		</div>
 		{% endif -%}
 	</div>
+
+	{% if props.componentData %}
+		{{ component( "Phone", props.componentData ) }}
+	{% endif %}
 </section>
 {% endmacro %}
 
 {% set criticalStyles %}
 <style>
 	.Step {
-		--column-left-width: 3fr;
+		--column-left-width: 2fr;
 		--column-right-width: 2fr;
-		--measure-size: 64ch;
+		--measure-size: 72ch;
 
-		column-gap: var( --size-0 );
+		column-gap: var( --size-1 );
 
 		padding: calc( var( --size-2 ) + 4vw );
 		padding-top: calc( var( --stack-xl-size ) / 2 );
@@ -76,17 +76,25 @@
 			box-shadow: none;
 			padding-top: var( --stack-lg-size );
 		}
-		.Step:nth-of-type( 2n ) {
-			--column-left-width: 2fr;
-			--column-right-width: 3fr;
-		}
 		@media (min-width: 800px) {
 			.Step {
 				box-shadow: none;
 				padding: 0;
 			}
-			.Step:nth-of-type( 2n+2 ) > *:nth-child(1) {
+			.Step > *:nth-child(1) {
 				order: 1;
+			}
+			.Step:nth-of-type( 2n+2 ) > *:nth-child(1) {
+				/* order: 1; */
+			}
+		}
+
+	.Step-header {
+
+	}
+		@media (min-width: 800px) {
+			.Step-header {
+				margin-top: var( --stack-lg-size );
 			}
 		}
 
@@ -101,11 +109,6 @@
 		@media (min-width: 800px) {
 			.Step-title {
 				text-align: left;
-			}
-
-			.Step:nth-of-type( 2n ) .Step-title,
-			.Step:nth-of-type( 2n ) .Step-content {
-				text-align: right;
 			}
 		}
 
