@@ -127,7 +127,7 @@ metadata:
 
 			get bookmarklet()
 			{
-				return `let d=document;let w=window;let ts;if(w.getSelection){ts=w.getSelection().toString()}else if(d.selection&&d.selection.type!="Control"){ts=d.selection.createRange().text}let url=\`https://libbyapp.com/library/${this.librarySlug }/search/query-\${ts}/page-1\`;w.open(url, '_blank');`
+				return `let d=document;let w=window;let ts;if(w.getSelection){ts=w.getSelection().toString()}else if(d.selection&&d.selection.type!="Control"){ts=d.selection.createRange().text}let url=\`https://libbyapp.com/library/${this.librarySlug }/search/query-\${ts}/page-1\`;w.location.href=url;`
 			},
 
 			get iosClient() {
