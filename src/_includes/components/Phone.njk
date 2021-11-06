@@ -20,7 +20,6 @@
 	})"
 	x-init="$watch( 'frameIndex', () => framestart( 'x-init=$watch' ) )"
 	x-bind:data-status="status"
-	x-on:click="if( status === 'playing' ){ pause() }"
 
 	id="{{ props.id }}"
 	class="[ center stack-sm ][ --measure ][ Phone {{ 'Phone--static' if props.frames.length === 1 }} {{ 'Phone--printed' if props.printedEffect else '' }} ]"
@@ -105,7 +104,7 @@
 		<button
 			@click="play"
 
-			x-show="frames.length > 1 && showControls"
+			x-show="frames.length > 1"
 			x-transition.duration.375ms
 
 			class="[][][ Phone-play-button ]"
@@ -301,38 +300,51 @@
 
 	/* Play button */
 	.Phone-play-button {
-		--size: var( --size-3 );
-		--inset-x: var( --size-1 );
+		--inset-x: var( --size-0 );
 		--inset-y: var( --size--1 );
-
+		background: transparent;
+		border-radius: var( --size-2 );
+		border: none;
+		bottom: var( --inset-y );
+		cursor: pointer;
+		left: var( --inset-x );
 		position: absolute;
-		top: calc( 50% - var( --size) / 2 );
-		left: calc( 50% - var( --size) / 2 );
+		top: var( --inset-y );
+		width: calc( 100% - 2 * var( --inset-x ) );
 		z-index: 11;
 
-		border: none;
-		border-radius: var( --size--1 );
-
-		background-color: var( --color-teal );
-		background-image: url(/images/icon-play.svg);
-		background-repeat: no-repeat;
-		background-size: 33%;
-		background-position: 53% center;
-
-		cursor: pointer;
-		height: var( --size );
-		width: var( --size );
-
-		--shadow-color: rgba( 0, 0, 0, 0.1 );
-		box-shadow:
-			0 1px 1px var( --shadow-color ),
-			0 2px 2px var( --shadow-color ),
-			0 4px 4px var( --shadow-color ),
-			0 8px 8px var( --shadow-color ),
-			0 12px 12px var( --shadow-color ),
-			0 24px 24px var( --shadow-color )
-		;
+		transition: opacity 0.25s ease;
 	}
+		.Phone-play-button::after {
+			--shadow-color: rgba( 0, 0, 0, 0.1 );
+			--size: var( --size-3 );
+
+			background-color: var( --color-teal );
+			background-image: url(/images/icon-play.svg);
+			background-position: 53% center;
+			background-repeat: no-repeat;
+			background-size: 33%;
+			border-radius: var( --size--1 );
+			box-shadow:
+				0 1px 1px var( --shadow-color ),
+				0 2px 2px var( --shadow-color ),
+				0 4px 4px var( --shadow-color ),
+				0 8px 8px var( --shadow-color ),
+				0 12px 12px var( --shadow-color ),
+				0 24px 24px var( --shadow-color )
+			;
+			content: "";
+			display: block;
+			height: var( --size );
+			left: calc( 50% - var( --size) / 2 );
+			position: absolute;
+			top: calc( 50% - var( --size) / 2 );
+			width: var( --size );
+		}
+
+		[data-status="playing"] .Phone-play-button {
+			opacity: 0;
+		}
 
 	.Phone figcaption {
 		--measure-size: 40ch;
@@ -395,10 +407,6 @@
 			frameIndex: 0,
 			frames: frames,
 			pointer: pointer,
-
-			showControls: true,
-			showPointer: true,
-
 			status: "stopped",
 			ignoreTransitions: true,
 
@@ -446,6 +454,8 @@
 
 			framestart( caller )
 			{
+				window.addEventListener( "blur", () => this.pause(), true );
+
 				this.screens.top = Object.assign(
 					this.screens.top,
 					this.currentFrame.screens.top || {}
@@ -553,10 +563,11 @@
 					}
 					else
 					{
-						this.showControls = false;
 						this.frameIndex++;
 					}
 				}
+
+				window.removeEventListener( "blur", () => this.pause(), true );
 			},
 
 			loadNextImage()
@@ -576,42 +587,42 @@
 
 			pause()
 			{
-				this.autoplay = false;
-				this.status = "paused";
-				this.showControls = true;
+				if( this.status === "playing" )
+				{
+					this.autoplay = false;
+					this.status = "paused";
+				}
 			},
 
 			play()
 			{
-				this.ignoreTransitions = false;
-				this.showControls = false;
-
-				setTimeout( () =>
+				if( this.status === "playing" )
 				{
-					this.status = "playing";
-					this.autoplay = true;
-					this.showPointer = this.pointer;
+					return this.pause();
+				}
 
-					if( this.frameIndex >= this.frames.length - 1 )
-					{
-						this.frameIndex = 0;
-					}
-					else
-					{
-						this.frameIndex++;
-					}
+				this.ignoreTransitions = false;
+				this.status = "playing";
+				this.autoplay = true;
+				// this.showPointer = this.pointer;
 
-					// Don't call framestart() directly, it will be handled by
-					// x-init="$watch(...)" automatically
+				if( this.frameIndex >= this.frames.length - 1 )
+				{
+					this.frameIndex = 0;
+				}
+				else
+				{
+					this.frameIndex++;
+				}
 
-				}, 750 );
+				// Don't call framestart() directly, it will be handled by
+				// x-init="$watch(...)" automatically
 			},
 
 			stop()
 			{
 				this.status = "stopped";
 				this.autoplay = false;
-				this.showPointer = false;
 
 				timeouts.forEach( timeout => clearTimeout( timeout ) );
 				transitions = {};
@@ -619,9 +630,6 @@
 				// Reset to first frame
 				this.ignoreTransitions = true;
 				this.frameIndex = 0;
-
-				// Don't show controls until reset is complete
-				setTimeout( () => this.showControls = true, 250 );
 			},
 		}
 	}
