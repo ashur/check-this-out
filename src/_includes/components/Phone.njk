@@ -601,19 +601,24 @@
 					return this.pause();
 				}
 
+				let timeout = this.status === "paused" ? 500 : 0;
+
 				this.ignoreTransitions = false;
 				this.status = "playing";
 				this.autoplay = true;
-				// this.showPointer = this.pointer;
 
-				if( this.frameIndex >= this.frames.length - 1 )
+				setTimeout( () =>
 				{
-					this.frameIndex = 0;
-				}
-				else
-				{
-					this.frameIndex++;
-				}
+					if( this.frameIndex >= this.frames.length - 1 )
+					{
+						this.frameIndex = 0;
+					}
+					else
+					{
+						this.frameIndex++;
+					}
+
+				}, timeout );
 
 				// Don't call framestart() directly, it will be handled by
 				// x-init="$watch(...)" automatically
