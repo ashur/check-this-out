@@ -31,15 +31,13 @@
 {% set criticalStyles %}
 <style>
 	.Step {
-		--column-left-width: 2fr;
+		--column-left-width: 3fr;
 		--column-right-width: 2fr;
-		--measure-size: 48ch;
 
 		column-gap: var( --size-1 );
-
-		padding: calc( var( --size-2 ) + 4vw );
-		padding-top: calc( var( --stack-xl-size ) / 2 );
 		padding-bottom: calc( var( --stack-xl-size ) / 2 );
+		padding-top: calc( var( --stack-xl-size ) / 2 );
+		padding: calc( var( --size-2 ) + 4vw );
 
 		--shadow-depth: var( --size-2 );
 		box-shadow:
@@ -79,6 +77,7 @@
 		@media (min-width: 800px) {
 			.Step {
 				box-shadow: none;
+				max-width: 72ch;
 				padding: 0;
 			}
 			.Step > *:nth-child(1) {
