@@ -8,9 +8,9 @@
 {% macro render( props ) %}
 <section
 	id="step-{{ props.step }}"
-	class="[ center measure stack ][ showcase ][ Step ]"
+	class="[ center stack ][ showcase ][ Step ]"
 >
-	<div class="[ stack-sm ][][]">
+	<div class="[ center stack-sm ][ measure ][]">
 		<header class="[ stack ][][ Step-header ]">
 			<h3 class="[][ font-heading ][ Step-title ]">Step {{ props.step }}</h3>
 		</header>
@@ -33,7 +33,7 @@
 	.Step {
 		--column-left-width: 2fr;
 		--column-right-width: 2fr;
-		--measure-size: 72ch;
+		--measure-size: 48ch;
 
 		column-gap: var( --size-1 );
 
@@ -88,6 +88,14 @@
 				/* order: 1; */
 			}
 		}
+	.Step > * {
+		max-width: var( --measure-size );
+	}
+		@media (min-width: 800px) {
+			.Step > * {
+				max-width: initial;
+			}
+		}
 
 	.Step-header {
 
@@ -133,6 +141,13 @@
 		color: var( --color-black );
 		opacity: 0.5;
 	}
+
+	/* .Step .slug {
+		border-radius: var( --size--4 );
+		font-family: Menlo, monospace;
+		font-size: calc( var( --font-size ) - 0.05em );
+		padding: var( --size--4 ) var( --size--3);
+	} */
 </style>
 {% endset %}
 
