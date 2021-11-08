@@ -21,7 +21,7 @@ let frameWrangler = new FrameWrangler({
 frameWrangler.pause( 1000 );
 
 // Tap and hold link
-frameWrangler.movePointer( 0.42, 0.1625, 1000 );
+frameWrangler.movePointer( 0.42, 0.1875, 1000 );
 frameWrangler.tapDown( 500 );
 frameWrangler.showTopScreen();
 frameWrangler.tapUp( 500 );
@@ -31,7 +31,7 @@ frameWrangler.setBottomScreenBackground( "install/step-02-03" );
 frameWrangler.movePointer( 0.125, 0.705, 1000 );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
-frameWrangler.pause( 250 );
+frameWrangler.pause( 100 );
 
 // Libby search
 frameWrangler.setTopScreenBackground( "install/step-02-04" );
@@ -60,7 +60,7 @@ frameWrangler.tap();
 // Libby library page
 frameWrangler.setTopScreenBackground( "install/step-02-08" );
 frameWrangler.showTopScreen();
-frameWrangler.movePointer( 0.4, 0.0375, 1250 );
+frameWrangler.movePointer( 0.4, 0.03875, 1250 );
 frameWrangler.tap();
 
 // Safari, URL selected
@@ -94,7 +94,7 @@ frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Step 2, with keyboard
-frameWrangler.movePointer( 0.25, 0.445, 1000 );
+frameWrangler.movePointer( 0.25, 0.4675, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-02-12" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
@@ -110,7 +110,6 @@ frameWrangler.movePointer( 0.07, 0.23, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-02-14" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
-
 
 frameWrangler.pause( 2000 );
 
