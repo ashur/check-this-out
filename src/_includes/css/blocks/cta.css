@@ -1,18 +1,37 @@
 .cta {
-	--cta-padding-x: var( --size-2 );
-	--cta-padding-y: var( --size--2 );
+	--cta-padding-x: var( --size-3 );
+	--cta-padding-y: var( --size--1 );
 
-	display: inline-block;
-	border: solid var( --theme-cta-border-color, transparent ) var( --cta-border-width, 2px );
-	padding: var( --cta-padding-y ) var( --cta-padding-x );
 	background-color: var( --theme-cta-background-color, var( --theme-text-color ) );
+	/* border: solid var( --theme-cta-border-color, transparent ) var( --cta-border-width, 2px ); */
+	border-radius: var( --size--3 );
+	box-shadow:
+		0 1px 1px var( --theme-shadow-color ),
+		0 2px 2px var( --theme-shadow-color ),
+		0 4px 4px var( --theme-shadow-color ),
+		0 8px 8px var( --theme-shadow-color ),
+		0 12px 12px var( --theme-shadow-color ),
+		0 24px 24px var( --theme-shadow-color )
+	;
 	color: var( --theme-cta-text-color, var( --theme-background-color ) );
+	display: inline-block;
+	font-weight: 700;
+	padding: var( --cta-padding-y ) var( --cta-padding-x );
 	text-decoration: none;
 }
 
 .cta:focus-visible {
 	outline: none;
 	box-shadow: 0 0 0 var( --cta-border-width, 3px ) var( --theme-accent-color );
+	box-shadow:
+		0 0 0 var( --cta-border-width, 3px ) var( --theme-accent-color ),
+		0 1px 1px var( --theme-shadow-color ),
+		0 2px 2px var( --theme-shadow-color ),
+		0 4px 4px var( --theme-shadow-color ),
+		0 8px 8px var( --theme-shadow-color ),
+		0 12px 12px var( --theme-shadow-color ),
+		0 24px 24px var( --theme-shadow-color )
+	;
 }
 
 .cta-inline {
