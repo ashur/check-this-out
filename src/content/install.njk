@@ -84,7 +84,7 @@ metadata:
 			>
 				<input
 					class="[][ font-mono ][]"
-					x-bind:value="encodeURI('javascript:(function(){' + bookmarklet + '})()')"
+					x-bind:value="bookmarklet"
 					type="text"
 				>
 				<button
@@ -127,7 +127,9 @@ metadata:
 
 			get bookmarklet()
 			{
-				return `let d=document;let w=window;let ts;if(w.getSelection){ts=w.getSelection().toString()}else if(d.selection&&d.selection.type!="Control"){ts=d.selection.createRange().text}let url=\`https://libbyapp.com/library/${this.librarySlug }/search/query-\${ts}/page-1\`;w.location.href=url;`
+				let bookmarklet = "var d=document;var w=window;var ts;if(w.getSelection){ts=w.getSelection().toString()}else if(d.selection&&d.selection.type!='Control'){ts=d.selection.createRange().text}var url='https://libbyapp.com/library/" + this.librarySlug + "/search/query-'+ts+'/page-1';w.location.href=url;";
+
+				return encodeURI('javascript:(function(){' + bookmarklet + '})()');
 			},
 
 			get iosClient() {
