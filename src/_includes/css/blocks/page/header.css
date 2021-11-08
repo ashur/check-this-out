@@ -17,6 +17,32 @@
 			row-gap: var( --size-0 );
 			top: 0;
 		}
+		.page-header::after {
+			background-image: url( /images/worn-spine-center.jpg ), url( /images/worn-spine-right.jpg ), url( /images/worn-spine-left.jpg );
+			background-image:
+				image-set(
+					"/images/worn-spine-center.avif" type("image/avif"),
+					"/images/worn-spine-center.webp" type("image/webp")
+				),
+				image-set(
+					"/images/worn-spine-right.avif" type("image/avif"),
+					"/images/worn-spine-right.webp" type("image/webp")
+				),
+				image-set(
+					"/images/worn-spine-left.avif" type("image/avif"),
+					"/images/worn-spine-left.webp" type("image/webp")
+				)
+			;
+			background-position: 52%, right, left;
+			background-repeat: no-repeat;
+			background-size: cover;
+			content: "";
+			mix-blend-mode: screen;
+			opacity: 1;
+			position: absolute;
+			top: 0; right: 0; bottom: 0; left: 0;
+			z-index: 1;
+		}
 	}
 
 .page-header nav {
@@ -25,10 +51,22 @@
 		.page-header nav {
 			display: grid;
 			justify-items: center;
-			background-image: url(/images/bg-spine-stripes.svg);
-			background-repeat: no-repeat;
-			background-position: bottom;
-			background-size: 300%;
+			position: relative;
+		}
+			.page-header nav::after {
+				background-image: url(/images/bg-spine-stripes.svg);
+				background-position: bottom;
+				background-repeat: no-repeat;
+				background-size: 300%;
+				content: "";
+				position: absolute;
+				top: 0; right: 0; bottom: 0; left: 0;
+				z-index: 0;
+			}
+
+		.page-header nav a[href="/"] {
+			z-index: 2;
+			position: relative;
 		}
 	}
 
