@@ -1,6 +1,6 @@
 module.exports = {
 	id: "Phone-Messages",
-	aspectRatio: 1.25,
+	aspectRatio: 1.35,
 	caption: `Person asking via text, "what’s that book you recommended?" Another person responds, "Gideon the Ninth" with a link to NPR’s book concierge`,
 
 	autoplay: false,
@@ -14,7 +14,7 @@ module.exports = {
 			description: `Person asking via text, "what’s that book you recommended?" Another person responds, "Gideon the Ninth" with a link to NPR’s book concierge`,
 			screens: {
 				bottom: {
-					background: "screen-imessage",
+					background: "index/screen-messages",
 					opacity: "1"
 				},
 			},
