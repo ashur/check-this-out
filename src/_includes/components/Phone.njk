@@ -284,6 +284,21 @@
 		 */
 		transition-duration: 0s;
 		transition-delay: 0.75s, 2s;
+
+		-webkit-mask-image: url( /images/screen-mask.png );
+		-webkit-mask-image: image-set(
+			"/images/screen-mask.avif" type("image/avif"),
+			"/images/screen-mask.webp" type("image/webp")
+		);
+		-webkit-mask-size: 100%;
+		-webkit-mask-repeat: no-repeat;
+		mask-image: url( /images/screen-mask.png );
+		mask-image: image-set(
+			"/images/screen-mask.avif" type("image/avif"),
+			"/images/screen-mask.webp" type("image/webp")
+		);
+		mask-size: 100%;
+		mask-repeat: no-repeat;
 	}
 		/* Switch to muted color during playback or on hover */
 		[data-status="playing"] .Phone-screen,
@@ -428,6 +443,7 @@
 			pointer: {
 				x: 0.0,
 				y: 0.0,
+				tapDown: false,
 
 				get style()
 				{
