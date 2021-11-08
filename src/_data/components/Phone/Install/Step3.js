@@ -20,12 +20,12 @@ let frameWrangler = new FrameWrangler({
 
 // Bookmarklet widget, copied
 frameWrangler.pause( 1000 );
-frameWrangler.movePointer( 0.655, 0.268, 1000 );
+frameWrangler.movePointer( 0.655, 0.278, 1000 );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Safari favorites
-frameWrangler.movePointer( 0.56, 0.8175, 1000 );
+frameWrangler.movePointer( 0.56, 0.8475, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-03-03" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
@@ -37,13 +37,13 @@ frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Edit favorite
-frameWrangler.movePointer( 0.25, 0.155, 1000 );
+frameWrangler.movePointer( 0.25, 0.16, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-03-05" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
 // Select address field
-frameWrangler.movePointer( 0.5, 0.1925, 1000 );
+frameWrangler.movePointer( 0.5, 0.2, 1000 );
 frameWrangler.setTopScreenBackground( "install/step-03-06" );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
@@ -61,13 +61,13 @@ frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Paste
-frameWrangler.movePointer( null, 0.1425, 1000 );
+frameWrangler.movePointer( null, 0.15, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-03-09" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
 // Done
-frameWrangler.movePointer( 0.71, 0.768, 1000 );
+frameWrangler.movePointer( 0.71, 0.799, 1000 );
 frameWrangler.setTopScreenBackground( "install/step-03-04" );
 frameWrangler.tap();
 frameWrangler.showTopScreen();
@@ -76,14 +76,15 @@ frameWrangler.showTopScreen();
 frameWrangler.movePointer( 0.4, 0.0525, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-03-01" );
 frameWrangler.tapDown( 250 );
-frameWrangler.movePointer( null, 0.5, 250 );
+frameWrangler.movePointer( 0.4, 0.5, 250 );
 frameWrangler.hideTopScreen();
+frameWrangler.tapUp( 250 );
 
 frameWrangler.pause( 1000 );
 
 module.exports = {
 	id: "Phone-Install-Step-3",
-	aspectRatio: 2.1,
+	aspectRatio: 2.025,
 	caption: "Shortcut settings",
 
 	hideCaption: true,
