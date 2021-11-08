@@ -7,7 +7,6 @@
 	display: block;
 	position: absolute;
 	top: 0; right: 0; bottom: 0; left: 0;
-	/* height: 1em; */
 	background-repeat: no-repeat;
 	mix-blend-mode: multiply;
 	opacity: 0.7;
@@ -23,4 +22,19 @@
 	);
 	background-size: contain;
 	background-position: center bottom;
+}
+
+.pencil--circle::after {
+	background-image: url( /images/pencil-disclaimer.jpg );
+	background-size: contain;
+	background-position: center;
+	background-image: image-set(
+		"/images/pencil-disclaimer.avif" type("image/avif"),
+		"/images/pencil-disclaimer.webp" type("image/webp")
+	);
+
+	bottom: calc( -1 * var(--size-1) );
+	left: calc( -1 * var(--size-0) );
+	right: calc( -1 * var(--size--1) );
+	top: calc( -1 * var(--size-1) );
 }
