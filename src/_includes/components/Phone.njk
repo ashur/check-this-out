@@ -283,7 +283,7 @@
 		 * but default to no animation
 		 */
 		transition-duration: 0s;
-		transition-delay: 0.75s, 2s, 1s;
+		transition-delay: 0.75s, 2s, var( --screen-translate-delay, 0.75s );
 	}
 		/* Switch to muted color during playback or on hover */
 		[data-status="playing"] .Phone-screen,
@@ -292,10 +292,14 @@
 		}
 
 	.Phone-screen-top {
+		--screen-translate-delay: var( --screen-top-translate-delay );
+
 		opacity: var( --screen-top-opacity );
 		transform: translateX( var( --screen-top-translateX, 0 ) );
 	}
 	.Phone-screen-bottom {
+		--screen-translate-delay: var( --screen-bottom-translate-delay );
+
 		opacity: var( --screen-bottom-opacity );
 		transform: translateX( var( --screen-bottom-translateX, 0 ) );
 	}
@@ -332,21 +336,6 @@
 		z-index: 11;
 
 		transition: opacity 0.25s ease;
-
-		/* -webkit-mask-image: url( /images/screen-mask.png );
-		-webkit-mask-image: image-set(
-			"/images/screen-mask.avif" type("image/avif"),
-			"/images/screen-mask.webp" type("image/webp")
-		);
-		-webkit-mask-size: 100%;
-		-webkit-mask-repeat: no-repeat;
-		mask-image: url( /images/screen-mask.png );
-		mask-image: image-set(
-			"/images/screen-mask.avif" type("image/avif"),
-			"/images/screen-mask.webp" type("image/webp")
-		);
-		mask-size: 100%;
-		mask-repeat: no-repeat; */
 	}
 		.Phone-play-button::after {
 			--shadow-color: rgba( 0, 0, 0, 0.1 );
@@ -405,7 +394,7 @@
 			transition-delay: 0s;
 		}
 		.Phone-screen {
-			transition-duration: 0.75s, 1.345s, 1s;
+			transition-duration: 0.75s, 1.345s, var( --screen-translate-delay, 0.75s );
 			transition-delay: 0s;
 		}
 	}
@@ -466,6 +455,15 @@
 						`--screen-bottom-opacity: ${this.bottom.opacity || 0}`,
 						`--screen-bottom-translateX: ${this.bottom.translateX || 0}`,
 					];
+
+					if( this.top.opacity === 0 )
+					{
+						styles.push( `--screen-top-translate-delay: 0s` );
+					}
+					if( this.bottom.opacity === 0 )
+					{
+						styles.push( `--screen-bottom-translate-delay: 0s` );
+					}
 
 					return styles.join( "; " );
 				},
