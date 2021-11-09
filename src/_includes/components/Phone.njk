@@ -31,7 +31,7 @@
 	>
 		<div
 			x-bind:style="screens.style"
-			class="[][ absolute ][]"
+			class="[][ absolute ][ Phone-screen-mask ]"
 			style="--screen-top-opacity: 0;"
 		>
 			<picture
@@ -283,8 +283,25 @@
 		 * but default to no animation
 		 */
 		transition-duration: 0s;
-		transition-delay: 0.75s, 2s;
+		transition-delay: 0.75s, 2s, 1s;
+	}
+		/* Switch to muted color during playback or on hover */
+		[data-status="playing"] .Phone-screen,
+		.Phone--static:hover .Phone-screen {
+			--grayscale: 0.3;
+		}
 
+	.Phone-screen-top {
+		opacity: var( --screen-top-opacity );
+		transform: translateX( var( --screen-top-translateX, 0 ) );
+	}
+	.Phone-screen-bottom {
+		opacity: var( --screen-bottom-opacity );
+		transform: translateX( var( --screen-bottom-translateX, 0 ) );
+	}
+
+	.Phone-screen-mask {
+		background-color: var( --color-black );
 		-webkit-mask-image: url( /images/screen-mask.png );
 		-webkit-mask-image: image-set(
 			"/images/screen-mask.avif" type("image/avif"),
@@ -299,18 +316,6 @@
 		);
 		mask-size: 100%;
 		mask-repeat: no-repeat;
-	}
-		/* Switch to muted color during playback or on hover */
-		[data-status="playing"] .Phone-screen,
-		.Phone--static:hover .Phone-screen {
-			--grayscale: 0.3;
-		}
-
-	.Phone-screen-top {
-		opacity: var( --screen-top-opacity );
-	}
-	.Phone-screen-bottom {
-		opacity: var( --screen-bottom-opacity );
 	}
 
 	/* Play button */
