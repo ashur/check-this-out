@@ -18,22 +18,9 @@
 			top: 0;
 		}
 		.page-header::after {
-			background-image: url( /images/worn-spine-center.jpg ), url( /images/worn-spine-right.jpg ), url( /images/worn-spine-left.jpg );
-			background-image:
-				image-set(
-					"/images/worn-spine-center.avif" type("image/avif"),
-					"/images/worn-spine-center.webp" type("image/webp")
-				),
-				image-set(
-					"/images/worn-spine-right.avif" type("image/avif"),
-					"/images/worn-spine-right.webp" type("image/webp")
-				),
-				image-set(
-					"/images/worn-spine-left.avif" type("image/avif"),
-					"/images/worn-spine-left.webp" type("image/webp")
-				)
-			;
-			background-position: 52%, right, left;
+			background-image: url( /images/worn-spine.jpg );
+			background-image: image-set( "/images/worn-spine.avif" type("image/avif") );
+			background-position: top center;
 			background-repeat: no-repeat;
 			background-size: cover;
 			content: "";
