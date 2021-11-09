@@ -126,6 +126,20 @@ class FrameWrangler
 		});
 	}
 
+	setBottomScreenTranslateX( tx )
+	{
+		this.frames.push({
+			name: `setBottomScreenTranslateX()`,
+			screens: {
+				bottom: {
+					translateX: tx,
+				},
+			},
+
+			duration: 0,
+		});
+	}
+
 	setTopScreenBackground( background )
 	{
 		this.frames.push({
@@ -146,6 +160,20 @@ class FrameWrangler
 					background: background,
 				},
 			},
+		});
+	}
+
+	setTopScreenTranslateX( tx )
+	{
+		this.frames.push({
+			name: `setTopScreenTranslateX()`,
+			screens: {
+				top: {
+					translateX: tx,
+				},
+			},
+
+			duration: 1000,
 		});
 	}
 

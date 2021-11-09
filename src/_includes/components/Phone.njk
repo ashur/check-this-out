@@ -135,7 +135,7 @@
 		--width: 100%;
 
 		position: relative;
-		overflow-y: hidden;
+		overflow: hidden;
 
 		height: 0;
 		width: var( --width );
@@ -275,7 +275,7 @@
 
 		filter: grayscale( var( --grayscale ) );
 
-		transition-property: opacity, filter;
+		transition-property: opacity, filter, transform;
 		transition-timing-function: ease;
 
 		/*
@@ -405,7 +405,7 @@
 			transition-delay: 0s;
 		}
 		.Phone-screen {
-			transition-duration: 0.75s, 1.345s;
+			transition-duration: 0.75s, 1.345s, 1s;
 			transition-delay: 0s;
 		}
 	}
@@ -462,7 +462,9 @@
 				{
 					let styles = [
 						`--screen-top-opacity: ${this.top.opacity || 0}`,
+						`--screen-top-translateX: ${this.top.translateX || 0}`,
 						`--screen-bottom-opacity: ${this.bottom.opacity || 0}`,
+						`--screen-bottom-translateX: ${this.bottom.translateX || 0}`,
 					];
 
 					return styles.join( "; " );
