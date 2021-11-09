@@ -47,6 +47,20 @@ class FrameWrangler
 		});
 	}
 
+	hidePointer()
+	{
+		this.frames.push({
+			name: "hidePointer()",
+			screens: {
+				pointer: {
+					hide: true,
+				},
+			},
+
+			transitionOn: "pointer",
+		});
+	}
+
 	get images()
 	{
 		return this.frames
@@ -216,6 +230,20 @@ class FrameWrangler
 			},
 
 			transitionOn: "screen",
+		});
+	}
+
+	showPointer()
+	{
+		this.frames.push({
+			name: "showPointer()",
+			screens: {
+				pointer: {
+					hide: false,
+				},
+			},
+
+			transitionOn: "pointer",
 		});
 	}
 
