@@ -5,6 +5,20 @@ class FrameWrangler
 		this.frames = [ initialFrame ];
 	}
 
+	clearTopScreenBackground()
+	{
+		this.frames.push({
+			name: `clearTopScreenBackground()`,
+			screens: {
+				top: {
+					background: "",
+				},
+			},
+
+			duration: 0,
+		});
+	}
+
 	hideTopScreen()
 	{
 		this.frames.push({
@@ -173,7 +187,7 @@ class FrameWrangler
 				},
 			},
 
-			duration: 1000,
+			duration: 0,
 		});
 	}
 
