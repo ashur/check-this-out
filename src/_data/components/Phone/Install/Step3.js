@@ -37,7 +37,7 @@ frameWrangler.tap();
 frameWrangler.showTopScreen();
 
 // Edit favorite
-frameWrangler.movePointer( 0.25, 0.16, 1000 );
+frameWrangler.movePointer( 0.25, 0.26, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-03-05" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
@@ -76,7 +76,7 @@ frameWrangler.showTopScreen();
 frameWrangler.movePointer( 0.4, 0.0525, 1000 );
 frameWrangler.setBottomScreenBackground( "install/step-03-01" );
 frameWrangler.tapDown( 250 );
-frameWrangler.movePointer( 0.4, 0.5, 250 );
+frameWrangler.movePointer( 0.37, 0.43, 250 );
 frameWrangler.hideTopScreen();
 frameWrangler.tapUp( 250 );
 
