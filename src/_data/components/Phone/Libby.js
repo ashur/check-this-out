@@ -56,7 +56,7 @@ frameWrangler.pause( 2000 );
 module.exports = {
 	id: "Phone-Demo",
 	aspectRatio: 2.025,
-	caption: "Select the title or author, choose <b>Check This Out</b>, and jump straight to a search in Libby",
+	caption: "Select the title or author, tap the <b>Check This Out</b> bookmarklet, and jump straight to a search in Libby",
 
 	autoplay: false,
 	fade: true,
