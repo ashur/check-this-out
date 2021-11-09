@@ -20,6 +20,8 @@ let frameWrangler = new FrameWrangler({
 	},
 });
 
+frameWrangler.pause( 1000 );
+
 // Select text
 frameWrangler.movePointer( -0.04, 0.38, 1000 );
 frameWrangler.tapDown( 750 );
@@ -37,7 +39,7 @@ frameWrangler.clearTopScreenBackground();
 // Launch Libby
 frameWrangler.setTopScreenTranslateX( "100%" );
 frameWrangler.setTopScreenBackground( "index/libby-04" );
-frameWrangler.movePointer( 0.135, 0.16, 250 );
+frameWrangler.movePointer( 0.135, 0.26, 250 );
 frameWrangler.showTopScreen();
 frameWrangler.tap();
 frameWrangler.setBottomScreenTranslateX( "-100%" );
