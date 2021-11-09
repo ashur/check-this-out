@@ -1,0 +1,14 @@
+.install-copy-button {
+	background-color: var(--color-black);
+	background-image: url( /icons/button-copy.svg );
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 55%;
+	border-radius: var( --size--4 );
+	display: inline-block;
+	height: 1.5em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+	vertical-align: bottom;
+	width: 1.5em;
+}
