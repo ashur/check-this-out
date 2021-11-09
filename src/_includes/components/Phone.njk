@@ -107,7 +107,7 @@
 			x-show="frames.length > 1"
 			x-transition.duration.375ms
 
-			class="[][][ Phone-play-button ]"
+			class="[][][ Phone-play-button Phone-screen-mask ]"
 		><span class="[][ visually-hidden ][]">Play</span></button>
 	</div>
 
@@ -320,20 +320,33 @@
 
 	/* Play button */
 	.Phone-play-button {
-		--inset-x: var( --size-0 );
-		--inset-y: var( --size--1 );
 		background: transparent;
 		border-radius: var( --size-2 );
 		border: none;
-		bottom: var( --inset-y );
+		bottom: 0;
 		cursor: pointer;
-		left: var( --inset-x );
+		left: 0;
 		position: absolute;
-		top: var( --inset-y );
-		width: calc( 100% - 2 * var( --inset-x ) );
+		top: 0;
+		width: 100%;
 		z-index: 11;
 
 		transition: opacity 0.25s ease;
+
+		/* -webkit-mask-image: url( /images/screen-mask.png );
+		-webkit-mask-image: image-set(
+			"/images/screen-mask.avif" type("image/avif"),
+			"/images/screen-mask.webp" type("image/webp")
+		);
+		-webkit-mask-size: 100%;
+		-webkit-mask-repeat: no-repeat;
+		mask-image: url( /images/screen-mask.png );
+		mask-image: image-set(
+			"/images/screen-mask.avif" type("image/avif"),
+			"/images/screen-mask.webp" type("image/webp")
+		);
+		mask-size: 100%;
+		mask-repeat: no-repeat; */
 	}
 		.Phone-play-button::after {
 			--shadow-color: rgba( 0, 0, 0, 0.1 );
@@ -361,6 +374,17 @@
 			top: calc( 50% - var( --size) / 2 );
 			width: var( --size );
 		}
+
+		.Phone-play-button:focus-visible {
+			outline: none;
+			background: linear-gradient( rgba(31, 209, 184, 0.4), rgba(31, 209, 184, 0 ) );
+		}
+			.Phone-play-button:focus-visible::after {
+				background-color: var( --color-black );
+				box-shadow:
+					0 0 0 var( --size--2 ) var( --color-teal )
+				;
+			}
 
 		[data-status="playing"] .Phone-play-button {
 			opacity: 0;
