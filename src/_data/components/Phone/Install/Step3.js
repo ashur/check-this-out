@@ -14,6 +14,7 @@ let frameWrangler = new FrameWrangler({
 		pointer: {
 			x: 0.37,
 			y: 0.43,
+			hide: false,
 		},
 	},
 });
@@ -78,8 +79,10 @@ frameWrangler.setBottomScreenBackground( "install/step-03-01" );
 frameWrangler.tapDown( 250 );
 frameWrangler.movePointer( 0.37, 0.43, 250 );
 frameWrangler.hideTopScreen();
-frameWrangler.tapUp( 250 );
+frameWrangler.tapUp( 1000 );
 
+// Wrap up
+frameWrangler.hidePointer();
 frameWrangler.pause( 1000 );
 
 module.exports = {

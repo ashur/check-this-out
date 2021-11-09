@@ -16,6 +16,7 @@ let frameWrangler = new FrameWrangler({
 		pointer: {
 			x: 0.37,
 			y: 0.43,
+			hide: false,
 		},
 	},
 });
@@ -53,7 +54,10 @@ frameWrangler.movePointer( 0.415, 0.51, 1000 );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
-frameWrangler.pause( 2000 );
+// Wrap up
+frameWrangler.pause( 500 );
+frameWrangler.hidePointer();
+frameWrangler.pause( 1500 );
 
 module.exports = {
 	id: "Phone-Demo",

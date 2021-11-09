@@ -14,6 +14,7 @@ let frameWrangler = new FrameWrangler({
 		pointer: {
 			x: 0.37,
 			y: 0.43,
+			hide: false,
 		},
 	},
 });
@@ -111,7 +112,9 @@ frameWrangler.setBottomScreenBackground( "install/step-02-14" );
 frameWrangler.tap();
 frameWrangler.hideTopScreen();
 
-frameWrangler.pause( 2000 );
+// Wrap up
+frameWrangler.hidePointer();
+frameWrangler.pause( 1000 );
 
 module.exports = {
 	id: "Phone-Install-Step-2",
