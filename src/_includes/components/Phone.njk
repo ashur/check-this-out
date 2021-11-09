@@ -472,6 +472,7 @@
 			pointer: {
 				x: 0.0,
 				y: 0.0,
+				hide: false,
 				tapDown: false,
 
 				get style()
@@ -480,6 +481,11 @@
 						`--screen-pointer-x: ${this.x}`,
 						`--screen-pointer-y: ${this.y}`,
 					];
+
+					if( this.hide )
+					{
+						styles.push( `--screen-pointer-opacity: 0` );
+					}
 
 					if( this.tapDown )
 					{
