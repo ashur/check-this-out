@@ -48,6 +48,7 @@ metadata:
 			<div
 				x-bind:data-validated="librarySlug !== undefined"
 				x-bind:data-error="error.type === 'url'"
+				@input="saveLibraryUrl()"
 			>
 				<input
 					x-model="userLibraryUrl"
@@ -213,6 +214,27 @@ metadata:
 				{
 					event.target.dataset.status = "";
 				}, 2000 );
+			},
+
+			init()
+			{
+				let sessionLibraryUrl = sessionStorage.getItem( "libraryUrl" );
+				if( sessionLibraryUrl )
+				{
+					this.userLibraryUrl = sessionLibraryUrl;
+				}
+			},
+
+			saveLibraryUrl()
+			{
+				if( this.librarySlug )
+				{
+					sessionStorage.setItem( "libraryUrl", this.libraryUrl );
+				}
+				else
+				{
+					sessionStorage.removeItem( "libraryUrl" );
+				}
 			}
 		};
 	};
