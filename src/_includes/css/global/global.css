@@ -75,3 +75,10 @@ h2,
 h3 {
 	letter-spacing: -0.05em;
 }
+
+h2 a:focus-visible,
+p a:focus-visible {
+	text-decoration: underline;
+	text-decoration-color: var( --theme-accent-color );
+	text-decoration-thickness: 0.15em;
+}

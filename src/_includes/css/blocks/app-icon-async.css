@@ -1,0 +1,16 @@
+.app-icon-link:focus-visible {
+	outline: none;
+}
+
+.app-icon-link:focus-visible .app-icon {
+	box-shadow: 0 0 0 var( --cta-border-width, 3px ) var( --theme-accent-color );
+	box-shadow:
+		0 0 0 var( --cta-border-width, 3px ) var( --theme-accent-color ),
+		0 1px 1px var( --theme-shadow-color ),
+		0 2px 2px var( --theme-shadow-color ),
+		0 4px 4px var( --theme-shadow-color ),
+		0 8px 8px var( --theme-shadow-color ),
+		0 12px 12px var( --theme-shadow-color ),
+		0 24px 24px var( --theme-shadow-color )
+	;
+}
