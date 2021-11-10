@@ -106,6 +106,12 @@ page:
 							href="/install"
 						>Install Now</a>
 					</p>
+
+					{% call component( "Disclaimer" ) %}
+					<p
+						class="[ center ][ font-xs ][ pencil pencil--circle ]"
+					><b>{{ site.title }}</b> works in any modern browser, but works best on desktops and mobile Safari.</p>
+				{% endcall %}
 				</div>
 			</section>
 		</div>
