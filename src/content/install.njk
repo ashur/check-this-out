@@ -107,16 +107,40 @@ metadata:
 	{% endcall %}
 
 
-	{#
 	{% call component( "Step",
 		{
-			componentData: components.Phone.Install.Step5,
+			componentData: components.Phone.Install.Step4,
 			step: 4
 		}
-	) %}
+	)%}
+		<div
+			x-cloak
+			x-show="librarySlug"
+			class="[ stack ][][]"
+		>
+			<p>Let’s take your new bookmarklet for a spin!</p>
+			<p>Select one of the titles below, open your bookmarks, and tap <strong>{{ site.title }}</strong> to search for that book in Libby.</p>
 
+			<ul>
+				<li>The City We Became</li>
+				<li>Gideon the Ninth</li>
+				<li>Mexican Gothic</li>
+				<li>Ancillary Justice</li>
+			</ul>
+
+			<p>And don’t forget, {{ site.title }} works great with author names too!</p>
+			<ul>
+				<li>N. K. Jemisin</li>
+				<li>Tamsyn Muir</li>
+				<li>Silvia Moreno-Garcia</li>
+				<li>Ann Leckie</li>
+			</ul>
+		</div>
+
+		<p
+			x-show="!librarySlug"
+		>Before continuing, head back to <a class="no-wrap" href="#step-2">Step 2</a> and make sure your Libby library URL is correct.</p>
 	{% endcall %}
-	#}
 </div>
 
 <script>
@@ -130,7 +154,7 @@ metadata:
 
 			get bookmarklet()
 			{
-				let bookmarklet = "var d=document;var w=window;var ts;if(w.getSelection){ts=w.getSelection().toString()}else if(d.selection&&d.selection.type!='Control'){ts=d.selection.createRange().text}var url='https://libbyapp.com/library/" + this.librarySlug + "/search/query-'+ts+'/page-1';w.location.href=url;";
+				let bookmarklet = `let d=document;let w=window;let ts;if(w.getSelection){ts=w.getSelection().toString()}else if(d.selection&&d.selection.type!="Control"){ts=d.selection.createRange().text}let url=\`https://libbyapp.com/library/${this.librarySlug }/search/query-\${ts}/page-1\`;w.open(url, '_blank');`;
 
 				return encodeURI('javascript:(function(){' + bookmarklet + '})()');
 			},
