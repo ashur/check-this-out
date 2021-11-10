@@ -7,6 +7,7 @@ An unordered list of links that I discovered or found helpful and inspiring whil
 - [CUBE CSS](https://cube.fyi/)
 - [Smoother & sharper shadows with layered box-shadows](https://tobiasahlin.com/blog/layered-smooth-box-shadows/)
 - [Structuring Eleventy projects](https://www.webstoemp.com/blog/eleventy-projects-structure/)
+- [Replace Trending](https://replace-trending.herokuapp.com/)
 
 ## Other
 
