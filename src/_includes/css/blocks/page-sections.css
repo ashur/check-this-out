@@ -14,16 +14,60 @@
 	.page-sections > :nth-child(1) {
 		left: 0;
 		right: 50vw;
-		/* min-height: 100vh; */
 	}
 }
 
 .page-section {
+	--section-padding-x: calc( var(--size-2) + 4vw );
+	--section-padding-y: calc( var(--size-2) + 4vw );
+
 	padding: var( --section-padding-y ) var( --section-padding-x );
 }
-	.page-section.fullbleed--bottom {
-		padding-bottom: 0;
+
+.page-sections-shadow .page-section {
+	--shadow-depth: var( --size-2 );
+	box-shadow:
+		0
+		calc( var( --shadow-depth ) * 2 )
+		calc( var( --shadow-depth ) * 2 )
+		calc( -1 * var( --shadow-depth ) * 2 )
+		hsla(45, 63%, 71%, 0.33)
+		inset,
+
+		0
+		calc( var( --shadow-depth ) * 0.5 )
+		calc( var( --shadow-depth ) * 0.5 )
+		calc( -1 * calc( var( --shadow-depth ) * 1 ) )
+		hsla(45, 63%, 71%, 0.5)
+		inset,
+
+		0
+		calc( var( --shadow-depth ) * 0.25 )
+		calc( var( --shadow-depth ) * 0.25 )
+		calc( -1 * calc( var( --shadow-depth ) * 0.25 ) )
+		hsla(45, 63%, 71%, 0.75)
+		inset,
+
+		0
+		calc( var( --shadow-depth ) * 0.0625 )
+		calc( var( --shadow-depth ) * 0.0625 )
+		calc( -1 * calc( var( --shadow-depth ) * 0.0625 ) )
+		hsla(45, 63%, 71%, 1)
+		inset
+	;
+}
+	@media (min-width: 800px) {
+		.page-sections-shadow .page-section {
+			box-shadow: none;
+		}
 	}
+
+.page-sections-shadow .page-section:nth-child(1) {
+	padding-top: calc( var( --section-padding-y ) * 1.5 );
+}
+.page-sections-shadow .page-section:last-child {
+	padding-bottom: calc( var( --section-padding-y ) * 1.5 );
+}
 
 .page-section > * {
 	--measure-size: 48ch;
