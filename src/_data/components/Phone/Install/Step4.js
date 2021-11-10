@@ -44,10 +44,16 @@ frameWrangler.setBottomScreenTranslateX( "-100%" );
 frameWrangler.setTopScreenTranslateX( 0 );
 
 // Libby
-frameWrangler.pause( 2000 );
+frameWrangler.pause( 1000 );
 
 // Wrap up
+frameWrangler.hideBottomScreen();
 frameWrangler.setBottomScreenTranslateX( 0 );
+frameWrangler.setBottomScreenBackground( "install/step-04-04" );
+frameWrangler.showBottomScreen();
+frameWrangler.hideTopScreen();
+
+frameWrangler.pause( 500 );
 frameWrangler.hidePointer();
 frameWrangler.pause( 1000 );
 
