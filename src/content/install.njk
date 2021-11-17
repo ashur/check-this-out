@@ -52,6 +52,7 @@ metadata:
 			>
 				<input
 					x-model="userLibraryUrl"
+					id="userLibraryUrl"
 
 					type="url"
 					placeholder="Libby URL"
@@ -59,6 +60,8 @@ metadata:
 			</div>
 			<p
 				aria-live="polite"
+				id="userLibraryUrl-status"
+
 				class="[][ font-xs ][]"
 				x-show="error.type === 'url'"
 				x-text="error.message"
@@ -84,6 +87,7 @@ metadata:
 				class="[][ relative ][ integrated-fieldset ]"
 			>
 				<input
+					id="bookmarklet"
 					aria-hidden="true"
 					class="[][ font-mono ][]"
 					x-bind:value="bookmarklet"
@@ -116,6 +120,7 @@ metadata:
 		<div
 			x-cloak
 			x-show="librarySlug"
+			id="usageInstructions"
 			class="[ stack ][][]"
 		>
 			<p>Let’s take your new bookmarklet for a spin!</p>
