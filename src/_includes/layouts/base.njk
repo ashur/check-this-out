@@ -57,6 +57,8 @@
 	{% endif %}
 
 	{{ plugins.esc.asyncScripts({ identifier: page.filePathStem }) | safe }}
+
+	<script defer data-domain="checkthisout.today" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="[][ {{ page.theme }} ][]">
 	{{ content | safe }}
