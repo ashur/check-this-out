@@ -1,3 +1,4 @@
+const addRemoteData = require( "@aaashur/eleventy-plugin-add-remote-data" );
 const markdownIt = require( "markdown-it" );
 const {eleventyPlugin: eleventyPluginEsc} = require( "eleventy-plugin-esc" );
 
@@ -26,6 +27,12 @@ module.exports = config =>
 			],
 		});
 	}
+
+	config.addPlugin( addRemoteData, {
+		data: {
+			robots: "https://api.ashur.cab/robots/v2.json",
+		},
+	} );
 
 	/* Markdown */
 	let mdOptions = {
