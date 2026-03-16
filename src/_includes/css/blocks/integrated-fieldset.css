@@ -27,6 +27,7 @@
 	color: var( --color-cream-light );
 	cursor: pointer;
 	display: grid;
+	height: var( --size-2 );
 	width: var( --size-2 );
 }
 	.integrated-fieldset input + button[data-status="success"] {
